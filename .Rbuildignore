@@ -1,0 +1,9 @@
+^packrat/
+^\.Rprofile$
+^.*\.Rproj$
+^\.Rproj\.user$
+^README\.Rmd$
+^README-.*\.png$
+^docs$
+^data-raw$
+^\.travis\.yml$
