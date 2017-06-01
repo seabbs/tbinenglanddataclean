@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 # tbinenglanddataclean
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tbinenglanddataclean)](https://cran.r-project.org/package=tbinenglanddataclean)
-[![Build Status](https://travis-ci.org/seabbs/tbinenglanddataclean.svg?token=napHgofvLGcDytsExcjp&branch=master)](https://travis-ci.org/seabbs/tbinenglanddataclean)
+[![Build Status](https://travis-ci.org/seabbs/tbinenglanddataclean.svg?branch=master)](https://travis-ci.org/seabbs/tbinenglanddataclean)
 [![codecov](https://codecov.io/gh/seabbs/tbinenglanddataclean/branch/master/graph/badge.svg)](https://codecov.io/gh/seabbs/tbinenglanddataclean)
 
 tbinenglanddataclean is an R package that contains the summary data, scripts, and documentation to reproduce clean and munge available TB data in England.
