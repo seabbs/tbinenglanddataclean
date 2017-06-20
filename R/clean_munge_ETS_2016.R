@@ -31,7 +31,7 @@ clean_munge_ETS_2016 <- function(data_path = NULL,
     stop("The pathway to the data to munge and clean has not been specified")
   }
 
-  if (is.null(save_path)) {
+  if (is.null(save_path) & save) {
     stop("The pathway to save munged and cleaned data has not been specified")
   }
 
