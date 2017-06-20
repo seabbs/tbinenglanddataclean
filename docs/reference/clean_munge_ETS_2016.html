@@ -81,8 +81,8 @@
 format, cleans it to a tidy format, and finally munges required variables for future analysis.</p>
     
 
-    <pre class="usage"><span class='fu'>clean_munge_ETS_2016</span>(<span class='kw'>data_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"clean_ETS_2016"</span>,
-  <span class='kw'>save_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>clean_munge_ETS_2016</span>(<span class='kw'>data_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"clean_ETS_2016"</span>, <span class='kw'>save_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -92,13 +92,21 @@ format, cleans it to a tidy format, and finally munges required variables for fu
       <td><p>A character string containing the file pathway for the 2016 ETS data.</p></td>
     </tr>
     <tr>
+      <th>return</th>
+      <td><p>Logical, defaults to <code>TRUE</code>. Specifies whether to return cleanded data.</p></td>
+    </tr>
+    <tr>
+      <th>save</th>
+      <td><p>Logical, defaults to <code>FALSE</code>. Specifies whether to save data</p></td>
+    </tr>
+    <tr>
       <th>save_name</th>
       <td><p>A character string containing the name to save the tidy ETS data under.</p></td>
     </tr>
     <tr>
       <th>save_path</th>
       <td><p>A character string containing the file pathway to the folder into
-which to save the tidy ETS datafor the 2016 ETS data.</p></td>
+which to save the tidy ETS data for the 2016 ETS data.</p></td>
     </tr>
     </table>
     

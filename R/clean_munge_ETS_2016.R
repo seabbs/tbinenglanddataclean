@@ -6,9 +6,11 @@
 #' - Setting factor variable baslines
 #' - Munge new variables
 #' @param data_path A character string containing the file pathway for the 2016 ETS data.
+#' @param return Logical, defaults to \code{TRUE}. Specifies whether to return cleanded data.
+#' @param save Logical, defaults to \code{FALSE}. Specifies whether to save data
 #' @param save_name A character string containing the name to save the tidy ETS data under.
 #' @param save_path A character string containing the file pathway to the folder into
-#' which to save the tidy ETS datafor the 2016 ETS data.
+#' which to save the tidy ETS data for the 2016 ETS data.
 #'
 #' @return A tidy tibble of TB notficiations in England from 2000 to 2016, with a row for
 #' each notification.
@@ -21,6 +23,8 @@
 #' @examples
 #'
 clean_munge_ETS_2016 <- function(data_path = NULL,
+                                 return = TRUE,
+                                 save = FALSE,
                                  save_name = "clean_ETS_2016",
                                  save_path = NULL) {
   if (is.null(data_path)) {
@@ -275,7 +279,11 @@ clean_munge_ETS_2016 <- function(data_path = NULL,
   ## Limit data set to England
   df <- df %>% filter(country %in% c("England"))
 
-  save(df, file = file.path(save_path, paste0(save_name, ".rda")))
+  if (save) {
+    save(df, file = file.path(save_path, paste0(save_name, ".rda")))
+  }
 
-  return()
+  if (return) {
+    return(df)
+  }
 }

@@ -4,16 +4,20 @@
 \alias{clean_munge_ETS_2016}
 \title{Clean and Munge 2016 Enhanced Tuberculosis Surviellance Data}
 \usage{
-clean_munge_ETS_2016(data_path = NULL, save_name = "clean_ETS_2016",
-  save_path = NULL)
+clean_munge_ETS_2016(data_path = NULL, return = TRUE, save = FALSE,
+  save_name = "clean_ETS_2016", save_path = NULL)
 }
 \arguments{
 \item{data_path}{A character string containing the file pathway for the 2016 ETS data.}
 
+\item{return}{Logical, defaults to \code{TRUE}. Specifies whether to return cleanded data.}
+
+\item{save}{Logical, defaults to \code{FALSE}. Specifies whether to save data}
+
 \item{save_name}{A character string containing the name to save the tidy ETS data under.}
 
 \item{save_path}{A character string containing the file pathway to the folder into
-which to save the tidy ETS datafor the 2016 ETS data.}
+which to save the tidy ETS data for the 2016 ETS data.}
 }
 \value{
 A tidy tibble of TB notficiations in England from 2000 to 2016, with a row for
