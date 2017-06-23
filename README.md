@@ -10,7 +10,7 @@ tbinenglanddataclean is an R package that contains the summary data, scripts, an
 Installation
 ------------
 
-You can install ModelTransVsDirectBCG from github with:
+You can install tbinenglanddataclean from github with:
 
 ``` r
 # install.packages("devtools")
