@@ -1,18 +1,23 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-tbinenglanddataclean
-====================
+prettypublisher
+===============
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/tbinenglanddataclean)](https://cran.r-project.org/package=tbinenglanddataclean) [![Build Status](https://travis-ci.org/seabbs/tbinenglanddataclean.svg?branch=master)](https://travis-ci.org/seabbs/tbinenglanddataclean) [![codecov](https://codecov.io/gh/seabbs/tbinenglanddataclean/branch/master/graph/badge.svg)](https://codecov.io/gh/seabbs/tbinenglanddataclean)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/prettypublisher)](https://cran.r-project.org/package=prettypublisher) [![Build Status](https://travis-ci.org/seabbs/prettypublisher.svg?branch=master)](https://travis-ci.org/seabbs/prettypublisher) [![codecov](https://codecov.io/gh/seabbs/prettypublisher/branch/master/graph/badge.svg)](https://codecov.io/gh/seabbs/prettypublisher)
 
-tbinenglanddataclean is an R package that contains the summary data, scripts, and documentation to reproduce clean and munge available TB data in England.
+prettypublisher is an R package that aims to improve your workflow by allowing an easier transition from literate code to a paper draft ready for journal submission.
 
 Installation
 ------------
 
-You can install tbinenglanddataclean from github with:
+You can install prettypublisher from github with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("seabbs/tbinenglanddataclean")
+devtools::install_github("seabbs/prettypublisher")
 ```
+
+Example
+-------
+
+This is a basic example of using prettypublisher within a dplyr work flow to produce a pretty table
