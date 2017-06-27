@@ -1,6 +1,7 @@
 #' Clean and Munge 2016 Enhanced Tuberculosis Surviellance Data
 #' @description A function that imports the ETS data as a stata file, converts it to rds
 #' format, cleans it to a tidy format, and finally munges required variables for future analysis.
+#' Data can be applied for [here](https://www.gov.uk/government/publications/tuberculosis-tb-in-england-surveillance-data)
 #' @details Function has 3 distinct sections:
 #' - Data Import
 #' - Setting factor variable baslines
@@ -11,7 +12,7 @@
 #' @param save_name A character string containing the name to save the tidy ETS data under.
 #' @param save_path A character string containing the file pathway to the folder into
 #' which to save the tidy ETS data for the 2016 ETS data.
-#'
+#' @param verbose  A logical indicating whether summary information should be provided.
 #' @return A tidy tibble of TB notficiations in England from 2000 to 2016, with a row for
 #' each notification.
 #' @export
@@ -24,9 +25,10 @@
 #'
 clean_munge_ETS_2016 <- function(data_path = NULL,
                                  return = TRUE,
-                                 save = FALSE,
+                                 save = TRUE,
                                  save_name = "clean_ETS_2016",
-                                 save_path = NULL) {
+                                 save_path = "~/data/tbinenglanddataclean",
+                                 verbose = TRUE) {
   if (is.null(data_path)) {
     stop("The pathway to the data to munge and clean has not been specified")
   }
@@ -280,7 +282,11 @@ clean_munge_ETS_2016 <- function(data_path = NULL,
   df <- df %>% filter(country %in% c("England"))
 
   if (save) {
-    save(df, file = file.path(save_path, paste0(save_name, ".rda")))
+    file_save_path <- file.path(save_path, paste0(save_name, ".rda"))
+    if (verbose) {
+      message("Cleaned ETS data saved to: ", file_save_path)
+    }
+    save(df, file = file_save_path)
   }
 
   if (return) {

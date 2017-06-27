@@ -4,8 +4,9 @@
 \alias{clean_munge_ETS_2016}
 \title{Clean and Munge 2016 Enhanced Tuberculosis Surviellance Data}
 \usage{
-clean_munge_ETS_2016(data_path = NULL, return = TRUE, save = FALSE,
-  save_name = "clean_ETS_2016", save_path = NULL)
+clean_munge_ETS_2016(data_path = NULL, return = TRUE, save = TRUE,
+  save_name = "clean_ETS_2016", save_path = "~/data/tbinenglanddataclean",
+  verbose = TRUE)
 }
 \arguments{
 \item{data_path}{A character string containing the file pathway for the 2016 ETS data.}
@@ -18,6 +19,8 @@ clean_munge_ETS_2016(data_path = NULL, return = TRUE, save = FALSE,
 
 \item{save_path}{A character string containing the file pathway to the folder into
 which to save the tidy ETS data for the 2016 ETS data.}
+
+\item{verbose}{A logical indicating whether summary information should be provided.}
 }
 \value{
 A tidy tibble of TB notficiations in England from 2000 to 2016, with a row for
@@ -26,6 +29,7 @@ each notification.
 \description{
 A function that imports the ETS data as a stata file, converts it to rds
 format, cleans it to a tidy format, and finally munges required variables for future analysis.
+Data can be applied for \href{https://www.gov.uk/government/publications/tuberculosis-tb-in-england-surveillance-data}{here}
 }
 \details{
 Function has 3 distinct sections:

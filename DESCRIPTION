@@ -7,7 +7,11 @@ License: GPL-3 | file LICENSE
 Imports: magrittr,
     haven,
     dplyr,
-    purrr
+    purrr,
+    plotly,
+    readr,
+    ggplot2,
+    tidyr
 Suggests: testthat,
     knitr,
     rmarkdown
