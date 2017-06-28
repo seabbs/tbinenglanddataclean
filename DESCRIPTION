@@ -11,7 +11,9 @@ Imports: magrittr,
     plotly,
     readr,
     ggplot2,
-    tidyr
+    tidyr,
+    epiR,
+    tibble
 Suggests: testthat,
     knitr,
     rmarkdown

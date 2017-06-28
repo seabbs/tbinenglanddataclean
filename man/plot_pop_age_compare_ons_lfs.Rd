@@ -4,11 +4,13 @@
 \alias{plot_pop_age_compare_ons_lfs}
 \title{A Function to Plot Differences Between LFS and ONS Data}
 \usage{
-plot_pop_age_compare_ons_lfs(df)
+plot_pop_age_compare_ons_lfs(df, theme_set = theme_minimal)
 }
 \arguments{
 \item{df}{A Dataframe as produced by \code{\link[tbinenglanddataclean]{combine_ons_with_lfs}} of
 population demographics}
+
+\item{theme_set}{The ggpplot theme to be used defaults to minimal.}
 }
 \value{
 A ggplot summarising the differences between both ONS and LFS datasets

@@ -8,7 +8,7 @@ clean_demographics_uk(data_path = "~/data/UK_demographics",
   demo_2000 = "UK_2000_age.csv", demo_2001_2015 = "UK_2001_2015_age.csv",
   countries = c("E"), return = TRUE, save = TRUE,
   save_name = "E_demo_2000_2015", save_path = "~/data/tbinenglanddataclean",
-  verbose = TRUE, interactive = TRUE, theme = theme_minimal())
+  verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
 }
 \arguments{
 \item{data_path}{A charater string containing the file path to the demographic data.}
@@ -32,7 +32,7 @@ dataset. By default only England (E) is included.}
 
 \item{interactive}{Logical, defaults to \code{TRUE}. Should the summary graphs be returned as interactive objects.}
 
-\item{theme}{The ggplot theme to apply to the summary graphs, defaults to theme_minimal}
+\item{theme_set}{The ggplot theme to apply to the summary graphs, defaults to theme_minimal}
 }
 \value{
 A tidy tibble of demographic data by age between 2000 and 2015 for the specified countries.

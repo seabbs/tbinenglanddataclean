@@ -20,7 +20,7 @@ clean_labour_force_survey(data_path = "~/data/LFS", years = 2000:2016,
   "PWT16"), `2016` = c("AGE", "SEX", "CRY12", "COUNTRY", "PWT16")),
   return = TRUE, save = TRUE, save_name = "formatted_LFS_2000_2016",
   save_path = "~/data/tbinenglanddataclean", verbose = TRUE,
-  interactive = TRUE, theme = theme_minimal())
+  interactive = TRUE, theme_set = theme_minimal)
 }
 \arguments{
 \item{data_path}{A charater string containing the file path to the demographic data.}
@@ -42,7 +42,7 @@ to extract from a given year and this should be named with the year of data to e
 
 \item{interactive}{Logical, defaults to \code{TRUE}. Should the summary graphs be returned as interactive objects.}
 
-\item{theme}{The ggplot theme to apply to the summary graphs, defaults to theme_minimal}
+\item{theme_set}{The ggplot theme to apply to the summary graphs, defaults to theme_minimal}
 }
 \value{
 A tidy data frame of population broken down by country, age, sex and UK birth status

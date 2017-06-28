@@ -10,7 +10,7 @@ combine_ons_with_lfs(data_path = "~/data/tbinenglanddataclean",
   lfs_name = "formatted_LFS_2000_2016.rds", countries = "England",
   return = TRUE, save = TRUE, save_name = "E_ons_lfs_2000_2016",
   save_path = "~/data/tbinenglanddataclean", verbose = TRUE,
-  interactive = TRUE, theme = theme_minimal())
+  interactive = TRUE, theme_set = theme_minimal)
 }
 \arguments{
 \item{data_path}{A charater string containing the file path to the demographic data.}
@@ -35,7 +35,7 @@ demographic datasets.}
 
 \item{interactive}{Logical, defaults to \code{TRUE}. Should the summary graphs be returned as interactive objects.}
 
-\item{theme}{The ggplot theme to apply to the summary graphs, defaults to theme_minimal}
+\item{theme_set}{The ggplot theme to apply to the summary graphs, defaults to theme_minimal}
 }
 \value{
 A tidy tibble of demographic data by age between 2000 and 2015 for the specified countries

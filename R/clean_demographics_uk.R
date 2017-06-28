@@ -4,7 +4,7 @@
 #' with demographics from 2001 to 2015 and demographics from 2000 only. Demographic data can be filtered
 #' by country, and either saved to disk or returned to the R enviroment. Summary plots can be returned in
 #' order to check the data. Data can be downloaded [here](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland)
-#' @inheritParams clean_munge_ETS_2016
+#' @inheritParams clean_munge_ets_2016
 #' @param data_path A charater string containing the file path to the demographic data.
 #' @param demo_2000 A character string containing the file name of the demographic data for 2000.
 #' @param demo_2001_2015 A character string containing the file name of the demographic data from 2001-2015
@@ -13,7 +13,7 @@
 #' @param save_name A character string contaning the file name for the data to be saved under.
 #' @param save_path The filepath for the data to be saved in
 #' @param interactive Logical, defaults to \code{TRUE}. Should the summary graphs be returned as interactive objects.
-#' @param theme The ggplot theme to apply to the summary graphs, defaults to theme_minimal
+#' @param theme_set The ggplot theme to apply to the summary graphs, defaults to theme_minimal
 #' @return A tidy tibble of demographic data by age between 2000 and 2015 for the specified countries.
 #' @export
 #' @import magrittr
@@ -21,7 +21,6 @@
 #' @import dplyr
 #' @importFrom tidyr gather
 #' @import ggplot2
-#' @importFrom plotly ggplotly
 #' @examples
 #'
 clean_demographics_uk <- function(data_path = "~/data/UK_demographics",
@@ -34,7 +33,7 @@ clean_demographics_uk <- function(data_path = "~/data/UK_demographics",
                                   save_path = "~/data/tbinenglanddataclean",
                                   verbose = TRUE,
                                   interactive = TRUE,
-                                  theme = theme_minimal()) {
+                                  theme_set = theme_minimal) {
 
   ## demographics from 2001 to 2015
   demo_2001_2015 <- read_csv(file.path(data_path, demo_2001_2015))
@@ -96,14 +95,10 @@ if (verbose) {
     ggplot(aes(x = Age, y = Population)) +
     geom_bar(stat = "identity") +
     facet_wrap(~Year) +
-    theme() +
+    theme_set() +
     theme(axis.text.x = element_text(angle = 45)) -> p
 
-  if (interactive) {
-    print(ggplotly(p))
-  }else {
-    print(p)
-  }
+  interactive_plot(p, interactive)
 
 
 
@@ -113,18 +108,19 @@ if (verbose) {
     ggplot(aes(x = Age, y = Population)) +
     geom_bar(stat = "identity") +
     facet_wrap(~Year) +
-    theme() +
+    theme_set() +
     theme(axis.text.x = element_text(angle = 45)) -> p1
 
-  if (interactive) {
-    print(ggplotly(p1))
-  }else{
-    print(p1)
-  }
+  interactive_plot(p1, interactive)
 }
 
 ## save data to repo and to data folder
 if (save) {
+
+  if (!dir.exists(save_path)) {
+    dir.create(save_path)
+  }
+
   file_save_to <- file.path(save_path, paste0(save_name, ".rds"))
 
   if (verbose) {

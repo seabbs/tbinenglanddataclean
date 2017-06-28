@@ -42,7 +42,7 @@ clean_labour_force_survey <- function(data_path = "~/data/LFS",
                           save_path = "~/data/tbinenglanddataclean",
                           verbose = TRUE,
                           interactive = TRUE,
-                          theme = theme_minimal()) {
+                          theme_set = theme_minimal) {
 
   # Read in LFS data --------------------------------------------------------
   ## data notes
@@ -97,7 +97,7 @@ clean_labour_force_survey <- function(data_path = "~/data/LFS",
 
     if (verbose) {
       message("Cleaning LFS data from: ", year)
-      message("Variables extracted from dataset: ", year_var)
+      message("Variables extracted from dataset: ", paste(year_var, collapse = ", "))
     }
     ## Account for no avail of country in 2000 and format in R format
     if (year == 2000)
@@ -265,13 +265,10 @@ if (verbose) {
     ggplot(aes(x = Age)) +
     geom_bar(alpha = 0.4) +
     facet_wrap(~CoB, scales = 'free', nrow = 3) +
+    theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p
 
-  if (interactive) {
-    print(ggplotly(p))
-  }else {
-    print(p)
-  }
+  interactive_plot(p, interactive)
 
 
   ## 2005 distribution by UK birth status
@@ -280,13 +277,10 @@ if (verbose) {
     ggplot(aes(x = Age)) +
     geom_bar(alpha = 0.4) +
     facet_wrap(~CoB, scales = 'free', nrow = 3) +
+    theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p1
 
-  if (interactive) {
-    print(ggplotly(p1))
-  }else {
-    print(p1)
-  }
+  interactive_plot(p1, interactive)
 
 
   ## 2010 distribution by UK birth status
@@ -295,13 +289,10 @@ if (verbose) {
     ggplot(aes(x = Age)) +
     geom_bar(alpha = 0.4) +
     facet_wrap(~CoB, scales = 'free', nrow = 3) +
+    theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p2
 
-  if (interactive) {
-    print(ggplotly(p2))
-  }else {
-    print(p2)
-  }
+  interactive_plot(p2, interactive)
 
 
 
@@ -311,13 +302,10 @@ if (verbose) {
     ggplot(aes(x = Age)) +
     geom_bar(alpha = 0.4) +
     facet_wrap(~CoB, scales = 'free', nrow = 3) +
+    theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p3
 
-  if (interactive) {
-    print(ggplotly(p3))
-  }else {
-    print(p3)
-  }
+  interactive_plot(p3, interactive)
 
   ## 2000 distribution by Country
   form_LFS_data %>%
@@ -325,13 +313,10 @@ if (verbose) {
     ggplot(aes(x = Age)) +
     geom_bar(alpha = 0.4) +
     facet_wrap(~Country, scales = 'free', nrow = 3) +
+    theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p4
 
-  if (interactive) {
-    print(ggplotly(p4))
-  }else {
-    print(p4)
-  }
+  interactive_plot(p4, interactive)
 
   ## 2005 distribution by Country
   form_LFS_data %>%
@@ -339,26 +324,21 @@ if (verbose) {
     ggplot(aes(x = Age)) +
     geom_bar(alpha = 0.4) +
     facet_wrap(~Country, scales = 'free', nrow = 3) +
+    theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p5
 
-  if (interactive) {
-    print(ggplotly(p5))
-  }else {
-    print(p5)
-  }
+  interactive_plot(p5, interactive)
+
   ## 2010 distribution by Country
   form_LFS_data %>%
     filter(Year %in% 2010) %>%
     ggplot(aes(x = Age)) +
     geom_bar(alpha = 0.4) +
     facet_wrap(~Country, scales = 'free', nrow = 3) +
+    theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p6
 
-  if (interactive) {
-    print(ggplotly(p6))
-  }else {
-    print(p6)
-  }
+  interactive_plot(p6, interactive)
 
   ## 2015 distribution by Country
   form_LFS_data %>%
@@ -366,18 +346,20 @@ if (verbose) {
     ggplot(aes(x = Age)) +
     geom_bar(alpha = 0.4) +
     facet_wrap(~Country, scales = 'free', nrow = 3) +
+    theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p7
 
-  if (interactive) {
-    print(ggplotly(p7))
-  }else {
-    print(p7)
-  }
+  interactive_plot(p7, interactive)
 
 }
 
   ## save formatted LFS data
   if (save) {
+
+    if (!dir.exists(save_path)) {
+      dir.create(save_path)
+    }
+
     save_file_path <- file.path(save_path, paste0(save_name, ".rds"))
 
     if (verbose) {

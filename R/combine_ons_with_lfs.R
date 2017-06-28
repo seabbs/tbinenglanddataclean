@@ -27,8 +27,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
                                       save_path = "~/data/tbinenglanddataclean",
                                       verbose = TRUE,
                                       interactive = TRUE,
-                                      theme = theme_minimal()) {
-
+                                      theme_set = theme_minimal) {
 
   demo_path <- file.path(data_path, ons_name)
   if (verbose) {
@@ -62,7 +61,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
   # Bind data ---------------------------------------------------------------
   demo_2000_2016_strat_est <- demo_2000_2015 %>%
     full_join(demo_2000_2016_strat_est, by = c('Year', 'Age', 'CoB', 'Population')) %>%
-    mutate(CoB=factor(CoB, levels = c('Total', 'UK born', 'Non-UK born')))
+    mutate(CoB = factor(CoB, levels = c('Total', 'UK born', 'Non-UK born')))
 
 
 
@@ -92,11 +91,6 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
              cut(breaks = c(0, 15, 65, 91), right = FALSE,
                  ordered_result = TRUE, labels = c('0-14', '15-64', '65+'))) -> demo_2000_2016_strat_est
 
-  if (verbose) {
-    ## Check breakdown
-    table(demo_2000_2016_strat_est$`Age group (condensed)`, demo_2000_2016_strat_est$Age)
-  }
-
   # Plots to visualise ------------------------------------------------------
  if (verbose) {
    ## Plots of Non-UK born over time
@@ -105,13 +99,10 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
      ggplot(aes(x = Age, y = Population)) +
      geom_density(alpha = 0.4) +
      facet_wrap(~Year) +
+     theme_set() +
      theme(axis.text.x = element_text(angle = 90)) -> p
 
-   if (interactive) {
-     print(ggplotly(p))
-   }else {
-     print(p)
-   }
+   interactive_plot(p, interactive)
 
    ## Plots of UK born over time
    demo_2000_2016_strat_est %>%
@@ -119,13 +110,10 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
      ggplot(aes(x = Age, y = Population)) +
      geom_density(alpha = 0.4) +
      facet_wrap(~Year) +
+     theme_set() +
      theme(axis.text.x = element_text(angle = 90)) -> p1
 
-   if (interactive) {
-     print(ggplotly(p1))
-   }else {
-     print(p1)
-   }
+   interactive_plot(p1, interactive)
 
 
    ## Compare Population strat by year - 2000
@@ -134,13 +122,10 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
      ggplot(aes(x = Age, y = Population)) +
      geom_density(alpha = 0.4) +
      facet_wrap(~CoB) +
+     theme_set() +
      theme(axis.text.x = element_text(angle = 90)) -> p2
 
-   if (interactive) {
-     print(ggplotly(p2))
-   }else {
-     print(p2)
-   }
+ interactive_plot(p2, interactive)
 
 
    ## Compare Population strat by year - 2005
@@ -149,13 +134,10 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
      ggplot(aes(x = Age, y = Population)) +
      geom_density(alpha = 0.4) +
      facet_wrap(~CoB) +
+     theme_set() +
      theme(axis.text.x = element_text(angle = 90)) -> p3
 
-   if (interactive) {
-     print(ggplotly(p3))
-   }else {
-     print(p3)
-   }
+   interactive_plot(p3, interactive)
 
 
    ## Compare Population strat by year - 2010
@@ -164,13 +146,10 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
      ggplot(aes(x = Age, y = Population)) +
      geom_density(alpha = 0.4) +
      facet_wrap(~CoB) +
+     theme_set() +
      theme(axis.text.x = element_text(angle = 90)) -> p4
 
-   if (interactive) {
-     print(ggplotly(p4))
-   }else {
-     print(p4)
-   }
+   interactive_plot(p4, interactive)
 
 
    ## Compare Population strat by year - 2015
@@ -179,13 +158,10 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
      ggplot(aes(x = Age, y = Population)) +
      geom_density(alpha = 0.4) +
      facet_wrap(~CoB) +
+     theme_set() +
      theme(axis.text.x = element_text(angle = 90)) -> p5
 
-   if (interactive) {
-     print(ggplotly(p5))
-   }else {
-     print(p5)
-   }
+   interactive_plot(p5, interactive)
 
 
 
@@ -197,30 +173,31 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
      summarise(Population = sum(Population)) %>%
      ggplot(aes(x = Year, y = Population, fill = CoB, colour = CoB)) +
      geom_point() +
-     geom_line() -> p6
+     geom_line() +
+     theme_set() -> p6
 
-   if (interactive) {
-     print(ggplotly(p6))
-   }else {
-     print(p6)
-   }
+   interactive_plot(p6, interactive)
  }
 
   if (verbose) {
     #current bug in plotly for negative values in box plots means this will not present the correct results so use static table
     demo_2000_2016_strat_est %>%
-      plot_pop_age_compare_ons_lfs -> p7
-    print(p7)
+      plot_pop_age_compare_ons_lfs(theme_set = theme_set) -> p7
+    interactive_plot(p7, interactive = FALSE)
 
     ## plot removing 85+ due to distortion
     demo_2000_2016_strat_est %>%
       filter(!(`Age group` %in% c('85-89', '90+'))) %>%
-      plot_pop_age_compare_ons_lfs -> p8
-    print(p8)
+      plot_pop_age_compare_ons_lfs(theme_set = theme_set) -> p8
+    interactive_plot(p8, interactive = FALSE)
 
   }
 
   if (save) {
+    if (!dir.exists(save_path)) {
+      dir.create(save_path)
+    }
+
     save_file_path <- file.path(data_path, paste0(save_name, ".rds"))
     if (verbose) {
       message("ONS combined with LFS data saved to: ", save_file_path)

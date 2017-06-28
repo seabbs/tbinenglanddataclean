@@ -23,10 +23,10 @@
 #' @importFrom stats relevel
 #' @examples
 #'
-clean_munge_ETS_2016 <- function(data_path = NULL,
+clean_munge_ets_2016 <- function(data_path = NULL,
                                  return = TRUE,
                                  save = TRUE,
-                                 save_name = "clean_ETS_2016",
+                                 save_name = "clean_ets_2016",
                                  save_path = "~/data/tbinenglanddataclean",
                                  verbose = TRUE) {
   if (is.null(data_path)) {
@@ -282,11 +282,16 @@ clean_munge_ETS_2016 <- function(data_path = NULL,
   df <- df %>% filter(country %in% c("England"))
 
   if (save) {
-    file_save_path <- file.path(save_path, paste0(save_name, ".rda"))
+
+    if (!dir.exists(save_path)) {
+      dir.create(save_path)
+    }
+
+    file_save_path <- file.path(save_path, paste0(save_name, ".rds"))
     if (verbose) {
       message("Cleaned ETS data saved to: ", file_save_path)
     }
-    save(df, file = file_save_path)
+    saveRDS(df, file = file_save_path)
   }
 
   if (return) {
