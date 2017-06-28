@@ -51,7 +51,7 @@ for 2000 to 2015.
 \description{
 This functions automatically detects Labour Force Survey data in the specified
 directory and reads it into R. It then extracts the age, sex, UK birth status, and country.
-From this it creates a tidy dataset. The data can be downloaded \href{https://www.ons.gov.uk/surveys/informationforhouseholdsandindividuals/householdandindividualsurveys/labourforcesurveylfs}{here}.
+From this it creates a tidy dataset. The data can be downloaded \href{https://discover.ukdataservice.ac.uk/catalogue/?sn=5461}{here}.
 }
 \examples{
 

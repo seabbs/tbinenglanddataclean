@@ -2,7 +2,7 @@
 #'
 #' @description This functions automatically detects Labour Force Survey data in the specified
 #' directory and reads it into R. It then extracts the age, sex, UK birth status, and country.
-#' From this it creates a tidy dataset. The data can be downloaded [here](https://www.ons.gov.uk/surveys/informationforhouseholdsandindividuals/householdandindividualsurveys/labourforcesurveylfs).
+#' From this it creates a tidy dataset. The data can be downloaded [here](https://discover.ukdataservice.ac.uk/catalogue/?sn=5461).
 #' @inheritParams clean_demographics_uk
 #' @param years A numeric vector specifying which years of data to clean
 #' @param years_var A named list of character strings. Each character string should contain the variables
