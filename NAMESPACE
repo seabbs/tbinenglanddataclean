@@ -3,6 +3,8 @@
 export(clean_demographics_uk)
 export(clean_labour_force_survey)
 export(clean_munge_ETS_2016)
+export(combine_ons_with_lfs)
+export(plot_pop_age_compare_ons_lfs)
 import(dplyr)
 import(ggplot2)
 import(magrittr)

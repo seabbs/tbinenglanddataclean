@@ -34,7 +34,7 @@ to extract from a given year and this should be named with the year of data to e
 
 \item{save}{Logical, defaults to \code{FALSE}. Specifies whether to save data}
 
-\item{save_name}{A character string contaning the file name for the dat a to be saved under.}
+\item{save_name}{A character string contaning the file name for the data to be saved under.}
 
 \item{save_path}{The filepath for the data to be saved in}
 

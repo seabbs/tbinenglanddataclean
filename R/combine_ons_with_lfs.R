@@ -1,8 +1,26 @@
+#' A Function that Combines the ONS Demographic Data, with the LFS
+#' Demographic Data
+#'
+#' @description This function takes demographic data summarised by \code{\link[tbinenglanddataclean]{clean_demographics_uk}} and
+#' \code{\link[tbinenglanddataclean]{clean_labour_force_survey}} and combines it into a single tidy dataset.
+#' Summary statistics and plots can be returned to check both datasets.
+#' @inherit clean_demographics_uk
+#' @param ons_name Character string of the file name of the ONS demographic data.
+#' @param lfs_name Character string of the file name of the LFS demographic data.
+#' @param countries  A character string, the countries to include in the
+#' dataset. By default only England is included. Note this is reliant on the data being present in the
+#' demographic datasets.
+#'
+#' @return A tidy tibble of demographic data by age between 2000 and 2015 for the specified countries
+#' for both ONS and LFS data.
+#' @export
+#'
+#' @examples
+#'
 combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
-                                 ons_name = "demo_2000_2015.rds",
+                                 ons_name = "E_demo_2000_2015.rds",
                                  lfs_name = "formatted_LFS_2000_2016.rds",
                                  countries = "England",
-                                      years = 2000:2016,
                                       return = TRUE,
                                       save = TRUE,
                                       save_name = "E_ons_lfs_2000_2016",
@@ -11,47 +29,40 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
                                       interactive = TRUE,
                                       theme = theme_minimal()) {
 
-  # Load packages -----------------------------------------------------------
-  pack_dir <- '../packages.R'
-  source(pack_dir)
 
-  ## Load data
-
-  local_data_dir <- '../../../data'
-
-  ## directory for data
-  data_dir <- '~/data'
-
-  ##load demographic data
-  demo_path <- paste0(data_dir, '/UK_demographics', '/demo_2000_2015.rds')
+  demo_path <- file.path(data_path, ons_name)
+  if (verbose) {
+    message("Loading demographic data from: ", demo_path)
+  }
   demo_2000_2015 <- readRDS(demo_path)
 
-  ##load LFS data
-  LFS_path <- paste0(data_dir, '/LFS', '/formatted_LFS_2000_2016.rds')
-  LFS_data <- readRDS(LFS_path)
-
+  lfs_path <- file.path(data_path, lfs_name)
+  if (verbose) {
+    message("Loading labour force survey data from: ", lfs_path)
+  }
+  lfs_data <- readRDS(lfs_path)
 
 
   # munge LFS to generate yearly population counts --------------------------
 
-  LFS_data %>%
+  lfs_data %>%
     filter(Country %in% countries) %>%
     group_by(Year, Age, CoB) %>%
-    summarise(Population=sum(Weight)) -> demo_2000_2016_strat_est
+    summarise(Population = sum(Weight)) -> demo_2000_2016_strat_est
 
 
 
   # Format demographics for consistency -------------------------------------
   demo_2000_2015 %>%
-    mutate(CoB='Total') %>%
-    mutate(CoB=CoB) %>%
-    mutate(Year=as.character(Year) %>% as.numeric) -> demo_2000_2015
+    mutate(CoB = 'Total') %>%
+    mutate(CoB = CoB) %>%
+    mutate(Year = as.character(Year) %>% as.numeric) -> demo_2000_2015
 
 
   # Bind data ---------------------------------------------------------------
   demo_2000_2016_strat_est <- demo_2000_2015 %>%
-    full_join(demo_2000_2016_strat_est, by= c('Year', 'Age', 'CoB', 'Population')) %>%
-    mutate(CoB=factor(CoB, levels=c('Total', 'UK born', 'Non-UK born')))
+    full_join(demo_2000_2016_strat_est, by = c('Year', 'Age', 'CoB', 'Population')) %>%
+    mutate(CoB=factor(CoB, levels = c('Total', 'UK born', 'Non-UK born')))
 
 
 
@@ -59,18 +70,18 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
   demo_2000_2016_strat_est <- demo_2000_2016_strat_est %>%
     filter(!(CoB %in% 'Total')) %>%
     group_by(Age, Year) %>%
-    summarise(Population=sum(Population)) %>%
-    mutate(CoB='Total (LFS)') %>%
+    summarise(Population = sum(Population)) %>%
+    mutate(CoB = 'Total (LFS)') %>%
     bind_rows(demo_2000_2016_strat_est) %>%
-    mutate(CoB=factor(CoB, levels=c('Total', 'Total (LFS)', 'UK born', 'Non-UK born')))
+    mutate(CoB = factor(CoB, levels = c('Total', 'Total (LFS)', 'UK born', 'Non-UK born')))
 
 
 
   # Add 5 year age groups ---------------------------------------------------
   demo_2000_2016_strat_est %>%
-    mutate(`Age group`=Age %>%  as.character %>% replace(Age %in% '90+', '90') %>%
+    mutate(`Age group` = Age %>%  as.character %>% replace(Age %in% '90+', '90') %>%
              as.numeric %>%
-             cut(breaks=seq(0,95,5), right = FALSE,
+             cut(breaks = seq(0,95,5), right = FALSE,
                  ordered_result = TRUE,
                  labels = c(paste(seq(0,85,5), seq(4,89,5), sep = '-'), '90+'))) -> demo_2000_2016_strat_est
 
@@ -91,7 +102,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
    ## Plots of Non-UK born over time
    demo_2000_2016_strat_est %>%
      filter(Year %% 5 == 0, CoB %in% 'Non-UK born') %>%
-     ggplot(aes(x = Age, y=Population)) +
+     ggplot(aes(x = Age, y = Population)) +
      geom_density(alpha = 0.4) +
      facet_wrap(~Year) +
      theme(axis.text.x = element_text(angle = 90)) -> p
@@ -123,7 +134,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
      ggplot(aes(x = Age, y = Population)) +
      geom_density(alpha = 0.4) +
      facet_wrap(~CoB) +
-     theme(axis.text.x = element_text(angle=90)) -> p2
+     theme(axis.text.x = element_text(angle = 90)) -> p2
 
    if (interactive) {
      print(ggplotly(p2))
@@ -135,10 +146,10 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
    ## Compare Population strat by year - 2005
    demo_2000_2016_strat_est %>%
      filter(Year %in% 2005, !is.na(CoB)) %>%
-     ggplot(aes(x=Age, y=Population)) +
-     geom_density(alpha=0.4) +
+     ggplot(aes(x = Age, y = Population)) +
+     geom_density(alpha = 0.4) +
      facet_wrap(~CoB) +
-     theme(axis.text.x = element_text(angle=90)) -> p3
+     theme(axis.text.x = element_text(angle = 90)) -> p3
 
    if (interactive) {
      print(ggplotly(p3))
@@ -195,20 +206,19 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
    }
  }
 
-  #Look at population over time by age group
-  source('../../functions/plot_demographics.R')
+  if (verbose) {
+    #current bug in plotly for negative values in box plots means this will not present the correct results so use static table
+    demo_2000_2016_strat_est %>%
+      plot_pop_age_compare_ons_lfs -> p7
+    print(p7)
 
+    ## plot removing 85+ due to distortion
+    demo_2000_2016_strat_est %>%
+      filter(!(`Age group` %in% c('85-89', '90+'))) %>%
+      plot_pop_age_compare_ons_lfs -> p8
+    print(p8)
 
-  #current bug in plotly for negative values in box plots means this will not present the correct results so use static table
-  demo_2000_2016_strat_est %>%
-    plot_pop_age_compare_ONS_LFS -> p7
-  print(p7)
-
-  ## plot removing 85+ due to distortion
-  demo_2000_2016_strat_est %>%
-    filter(!(`Age group` %in% c('85-89', '90+'))) %>%
-    plot_pop_age_compare_ONS_LFS -> p8
-  print(p8)
+  }
 
   if (save) {
     save_file_path <- file.path(data_path, paste0(save_name, ".rds"))
@@ -220,4 +230,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
 
   }
 
+  if (return) {
+    return(demo_2000_2016_strat_est)
+  }
 }

@@ -10,7 +10,7 @@
 #' @param demo_2001_2015 A character string containing the file name of the demographic data from 2001-2015
 #' @param countries A character string, indicating with intials the countries to include in the
 #' dataset. By default only England (E) is included.
-#' @param save_name A character string contaning the file name for the dat a to be saved under.
+#' @param save_name A character string contaning the file name for the data to be saved under.
 #' @param save_path The filepath for the data to be saved in
 #' @param interactive Logical, defaults to \code{TRUE}. Should the summary graphs be returned as interactive objects.
 #' @param theme The ggplot theme to apply to the summary graphs, defaults to theme_minimal
