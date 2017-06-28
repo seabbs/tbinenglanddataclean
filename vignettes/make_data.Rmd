@@ -15,7 +15,10 @@ vignette: >
 ```{r setup}
 library(tbinenglanddataclean)
 
+## turn on/off interactive graphs
 interactive <- FALSE
+
+## rebuild existing data sets
 rebuild <- FALSE
 ```
 
