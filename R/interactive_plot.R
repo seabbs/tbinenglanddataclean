@@ -10,10 +10,7 @@
 #' @export
 #' @importFrom plotly ggplotly
 #' @examples
-#' library(ggplot2)
 #'
-#' p <- ggplot(iris, aes(x = Petal.Length, y = Petal.Width)) + geom_point()
-#' interactive_plot(p, interactive = FALSE)
 #'
 interactive_plot <- function(plot,
                              interactive = TRUE,

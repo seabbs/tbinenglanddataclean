@@ -27,7 +27,5 @@ is Interactive.
 \examples{
 library(ggplot2)
 
-p <- ggplot(iris, aes(x = Petal.Length, y = Petal.Width)) + geom_point()
-interactive_plot(p, interactive = FALSE)
 
 }
