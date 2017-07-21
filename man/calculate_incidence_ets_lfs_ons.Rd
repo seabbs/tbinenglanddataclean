@@ -10,8 +10,8 @@ calculate_incidence_ets_lfs_ons(data_path = "~/data/tbinenglanddataclean",
   grouped_incidence_name = "age_grouped_incidence",
   condensed_grouped_incidence_name = "condensed_age_group_incidence",
   cases_demo_incidence_name = "cases_demo_incidence",
-  save_path = "~/data/tbinenglanddataclean", verbose = TRUE,
-  interactive = TRUE, theme_set = theme_minimal)
+  save_path = "~/data/tbinenglanddataclean", save_format = "rds",
+  verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
 }
 \arguments{
 \item{data_path}{A charater string containing the file path to the demographic data.}
@@ -36,6 +36,9 @@ grouped data under.}
 \item{cases_demo_incidence_name}{A character string indicating the name to save the cases, and demographic data under.}
 
 \item{save_path}{The filepath for the data to be saved in}
+
+\item{save_format}{A character vector specifying the format/formats to save the data into, defaults to rds. Currently
+csv is also supported. See \code{\link[idmodelr]{save_data}} for details.}
 
 \item{verbose}{A logical indicating whether summary information should be provided.}
 

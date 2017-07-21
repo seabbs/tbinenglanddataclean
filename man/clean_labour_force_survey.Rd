@@ -19,8 +19,8 @@ clean_labour_force_survey(data_path = "~/data/LFS", years = 2000:2016,
   "CRY12", "COUNTRY", "PWT16"), `2015` = c("AGE", "SEX", "CRY12", "COUNTRY",
   "PWT16"), `2016` = c("AGE", "SEX", "CRY12", "COUNTRY", "PWT16")),
   return = TRUE, save = TRUE, save_name = "formatted_LFS_2000_2016",
-  save_path = "~/data/tbinenglanddataclean", verbose = TRUE,
-  interactive = TRUE, theme_set = theme_minimal)
+  save_path = "~/data/tbinenglanddataclean", save_format = "rds",
+  verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
 }
 \arguments{
 \item{data_path}{A charater string containing the file path to the demographic data.}
@@ -37,6 +37,9 @@ to extract from a given year and this should be named with the year of data to e
 \item{save_name}{A character string contaning the file name for the data to be saved under.}
 
 \item{save_path}{The filepath for the data to be saved in}
+
+\item{save_format}{A character vector specifying the format/formats to save the data into, defaults to rds. Currently
+csv is also supported. See \code{\link[idmodelr]{save_data}} for details.}
 
 \item{verbose}{A logical indicating whether summary information should be provided.}
 

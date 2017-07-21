@@ -25,6 +25,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
                                       save = TRUE,
                                       save_name = "E_ons_lfs_2000_2016",
                                       save_path = "~/data/tbinenglanddataclean",
+                                      save_format = "rds",
                                       verbose = TRUE,
                                       interactive = TRUE,
                                       theme_set = theme_minimal) {
@@ -194,17 +195,13 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
   }
 
   if (save) {
-    if (!dir.exists(save_path)) {
-      dir.create(save_path)
-    }
-
-    save_file_path <- file.path(data_path, paste0(save_name, ".rds"))
-    if (verbose) {
-      message("ONS combined with LFS data saved to: ", save_file_path)
-    }
-
-    saveRDS(demo_2000_2016_strat_est, file = save_file_path)
-
+    save_data(demo_2000_2016_strat_est,
+              name = save_name,
+              path = data_path,
+              format = save_format,
+              message = "ONS combined with LFS data saved to: ",
+              verbose = verbose
+    )
   }
 
   if (return) {

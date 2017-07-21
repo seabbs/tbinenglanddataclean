@@ -12,6 +12,8 @@
 #' @param save_name A character string containing the name to save the tidy ETS data under.
 #' @param save_path A character string containing the file pathway to the folder into
 #' which to save the tidy ETS data for the 2016 ETS data.
+#' @param save_format A character vector specifying the format/formats to save the data into, defaults to rds. Currently
+#'   csv is also supported. See \code{\link[idmodelr]{save_data}} for details.
 #' @param verbose  A logical indicating whether summary information should be provided.
 #' @return A tidy tibble of TB notficiations in England from 2000 to 2016, with a row for
 #' each notification.
@@ -21,6 +23,7 @@
 #' @importFrom dplyr mutate filter
 #' @importFrom purrr map map_chr
 #' @importFrom stats relevel
+#' @importFrom idmodelr save_data
 #' @examples
 #'
 clean_munge_ets_2016 <- function(data_path = NULL,
@@ -28,6 +31,7 @@ clean_munge_ets_2016 <- function(data_path = NULL,
                                  save = TRUE,
                                  save_name = "clean_ets_2016",
                                  save_path = "~/data/tbinenglanddataclean",
+                                 save_format = "rds",
                                  verbose = TRUE) {
   if (is.null(data_path)) {
     stop("The pathway to the data to munge and clean has not been specified")
@@ -282,16 +286,13 @@ clean_munge_ets_2016 <- function(data_path = NULL,
   df <- df %>% filter(country %in% c("England"))
 
   if (save) {
-
-    if (!dir.exists(save_path)) {
-      dir.create(save_path)
-    }
-
-    file_save_path <- file.path(save_path, paste0(save_name, ".rds"))
-    if (verbose) {
-      message("Cleaned ETS data saved to: ", file_save_path)
-    }
-    saveRDS(df, file = file_save_path)
+    save_data(df,
+              name = save_name,
+              path = save_path,
+              format = save_format,
+              message = "Cleaned ETS data saved to: ",
+              verbose = verbose
+    )
   }
 
   if (return) {

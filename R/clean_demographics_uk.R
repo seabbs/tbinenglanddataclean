@@ -31,6 +31,7 @@ clean_demographics_uk <- function(data_path = "~/data/UK_demographics",
                                   save = TRUE,
                                   save_name = "E_demo_2000_2015",
                                   save_path = "~/data/tbinenglanddataclean",
+                                  save_format = "rds",
                                   verbose = TRUE,
                                   interactive = TRUE,
                                   theme_set = theme_minimal) {
@@ -116,18 +117,13 @@ if (verbose) {
 
 ## save data to repo and to data folder
 if (save) {
-
-  if (!dir.exists(save_path)) {
-    dir.create(save_path)
-  }
-
-  file_save_to <- file.path(save_path, paste0(save_name, ".rds"))
-
-  if (verbose) {
-    message("Demographic data saved to: ", file_save_to)
-  }
-
-  saveRDS(demo, file = file_save_to)
+  save_data(demo,
+            name = save_name,
+            path = save_path,
+            format = save_format,
+            message = "Demographic data saved to: ",
+            verbose = verbose
+  )
 }
 
 if (return) {

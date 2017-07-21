@@ -9,8 +9,8 @@ combine_ons_with_lfs(data_path = "~/data/tbinenglanddataclean",
   ons_name = "E_demo_2000_2015.rds",
   lfs_name = "formatted_LFS_2000_2016.rds", countries = "England",
   return = TRUE, save = TRUE, save_name = "E_ons_lfs_2000_2016",
-  save_path = "~/data/tbinenglanddataclean", verbose = TRUE,
-  interactive = TRUE, theme_set = theme_minimal)
+  save_path = "~/data/tbinenglanddataclean", save_format = "rds",
+  verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
 }
 \arguments{
 \item{data_path}{A charater string containing the file path to the demographic data.}
@@ -30,6 +30,9 @@ demographic datasets.}
 \item{save_name}{A character string contaning the file name for the data to be saved under.}
 
 \item{save_path}{The filepath for the data to be saved in}
+
+\item{save_format}{A character vector specifying the format/formats to save the data into, defaults to rds. Currently
+csv is also supported. See \code{\link[idmodelr]{save_data}} for details.}
 
 \item{verbose}{A logical indicating whether summary information should be provided.}
 

@@ -25,7 +25,6 @@ A Utility Function that Controls if a Plot is Returned/Printed and if it
 is Interactive.
 }
 \examples{
-library(ggplot2)
 
 
 }

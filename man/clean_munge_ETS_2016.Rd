@@ -6,7 +6,7 @@
 \usage{
 clean_munge_ets_2016(data_path = NULL, return = TRUE, save = TRUE,
   save_name = "clean_ets_2016", save_path = "~/data/tbinenglanddataclean",
-  verbose = TRUE)
+  save_format = "rds", verbose = TRUE)
 }
 \arguments{
 \item{data_path}{A character string containing the file pathway for the 2016 ETS data.}
@@ -19,6 +19,9 @@ clean_munge_ets_2016(data_path = NULL, return = TRUE, save = TRUE,
 
 \item{save_path}{A character string containing the file pathway to the folder into
 which to save the tidy ETS data for the 2016 ETS data.}
+
+\item{save_format}{A character vector specifying the format/formats to save the data into, defaults to rds. Currently
+csv is also supported. See \code{\link[idmodelr]{save_data}} for details.}
 
 \item{verbose}{A logical indicating whether summary information should be provided.}
 }

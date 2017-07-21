@@ -15,6 +15,7 @@
 #' @importFrom purrr pmap
 #' @import ggplot2
 #' @importFrom plotly ggplotly
+#' @importFrom idmodelr save_data
 #' @examples
 #'
 clean_labour_force_survey <- function(data_path = "~/data/LFS",
@@ -40,6 +41,7 @@ clean_labour_force_survey <- function(data_path = "~/data/LFS",
                           save = TRUE,
                           save_name = "formatted_LFS_2000_2016",
                           save_path = "~/data/tbinenglanddataclean",
+                          save_format = "rds",
                           verbose = TRUE,
                           interactive = TRUE,
                           theme_set = theme_minimal) {
@@ -355,17 +357,13 @@ if (verbose) {
 
   ## save formatted LFS data
   if (save) {
-
-    if (!dir.exists(save_path)) {
-      dir.create(save_path)
-    }
-
-    save_file_path <- file.path(save_path, paste0(save_name, ".rds"))
-
-    if (verbose) {
-      message("Cleaded LFS data has been saved to: ", save_file_path)
-    }
-    saveRDS(form_LFS_data, file = save_file_path)
+    save_data(form_LFS_data,
+              name = save_name,
+              path = save_path,
+              format = save_format,
+              message = "Cleaded LFS data has been saved to: ",
+              verbose = verbose
+              )
   }
 
 }

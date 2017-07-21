@@ -29,6 +29,7 @@ if (!file.exists("~/data/tbinenglanddataclean/clean_ets_2016.rds") || rebuild) {
                      save = TRUE,
                      save_name = "clean_ets_2016",
                      save_path = "~/data/tbinenglanddataclean",
+                     save_format = c("rds", "csv"),
                      verbose = TRUE)
 
 }
@@ -47,6 +48,7 @@ if (!file.exists("~/data/tbinenglanddataclean/E_demo_2000_2015.rds") || rebuild)
                       save = TRUE,
                       save_name = "E_demo_2000_2015",
                       save_path = "~/data/tbinenglanddataclean",
+                      save_format = c("rds", "csv"),
                       verbose = TRUE,
                       interactive = interactive)
 }
@@ -79,6 +81,7 @@ clean_labour_force_survey(data_path = "~/data/LFS",
                           save = TRUE,
                           save_name = "formatted_LFS_2000_2016",
                           save_path = "~/data/tbinenglanddataclean",
+                          save_format = c("rds", "csv"),
                           verbose = TRUE,
                           interactive = interactive)
 }
@@ -96,6 +99,7 @@ combine_ons_with_lfs(data_path = "~/data/tbinenglanddataclean",
                      save = TRUE,
                      save_name = "E_ons_lfs_2000_2016",
                      save_path = "~/data/tbinenglanddataclean",
+                     save_format = c("rds", "csv"),
                      verbose = TRUE,
                      interactive = interactive) 
 }
@@ -114,6 +118,7 @@ calculate_incidence_ets_lfs_ons(data_path = "~/data/tbinenglanddataclean",
                                 condensed_grouped_incidence_name = "condensed_age_group_incidence",
                                 cases_demo_incidence_name = "cases_demo_incidence",
                                 save_path = "~/data/tbinenglanddataclean",
+                                save_format = c("rds", "csv"),
                                 verbose = FALSE,
                                 interactive = interactive)
 ```

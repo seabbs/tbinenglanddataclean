@@ -30,6 +30,7 @@ calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tbinenglanddatac
                                  condensed_grouped_incidence_name = "condensed_age_group_incidence",
                                  cases_demo_incidence_name = "cases_demo_incidence",
                                  save_path = "~/data/tbinenglanddataclean",
+                                 save_format = "rds",
                                  verbose = TRUE,
                                  interactive = TRUE,
                                  theme_set = theme_minimal) {
@@ -219,27 +220,37 @@ calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tbinenglanddatac
   }
 
   if (save) {
-    if (!dir.exists(save_path)) {
-      dir.create(save_path)
-    }
+    save_data(incidence,
+              name = incidence_name,
+              path = save_path,
+              format = save_format,
+              message = "Incidence data saved to: ",
+              verbose = verbose
+    )
 
-    inc_save_to <- file.path(save_path, paste0(incidence_name, ".rds"))
-    group_inc_save_to <- file.path(save_path, paste0(grouped_incidence_name, ".rds"))
-    con_group_inc_save_to <- file.path(save_path, paste0(condensed_grouped_incidence_name, ".rds"))
-    cases_demo_save_to <- file.path(save_path, paste0(cases_demo_incidence_name, ".rds"))
+    save_data(grouped_incidence,
+              name = grouped_incidence_name,
+              path = save_path,
+              format = save_format,
+              message = "Grouped incidence data saved to: ",
+              verbose = verbose
+    )
 
-    if (verbose) {
-      message("Incidence data saved to: ")
-      message(inc_save_to)
-      message(group_inc_save_to)
-      message(con_group_inc_save_to)
-      message(cases_demo_save_to)
-    }
+    save_data(condensed_grouped_incidence,
+              name = condensed_grouped_incidence_name,
+              path = save_path,
+              format = save_format,
+              message = "Condensed grouped incidence data saved to: ",
+              verbose = verbose
+    )
 
-    saveRDS(incidence, file = inc_save_to)
-    saveRDS(age_grouped_incidence, file = group_inc_save_to)
-    saveRDS(age_grouped_condensed_incidence, file = con_group_inc_save_to)
-    saveRDS(cases_demo_incidence, file = cases_demo_save_to)
+    save_data(cases_demo_incidence,
+              name = cases_demo_incidence_name,
+              path = save_path,
+              format = save_format,
+              message = "Incidence and demographic data saved to: ",
+              verbose = verbose
+    )
   }
 
   if (return) {
