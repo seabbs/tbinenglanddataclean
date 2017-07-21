@@ -72,7 +72,7 @@
       <h1>Using package functions and local data to calculate TB incidence rates in England</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2017-06-28</h4>
+            <h4 class="date">2017-07-21</h4>
           </div>
 
     
@@ -81,9 +81,10 @@
 <div id="clean-and-create-variables-from-the-enhanced-tuberculosis-surveillance-data-set" class="section level1">
 <h1 class="hasAnchor">
 <a href="#clean-and-create-variables-from-the-enhanced-tuberculosis-surveillance-data-set" class="anchor"></a>Clean and Create Variables from the Enhanced Tuberculosis Surveillance Data Set</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tbinenglanddataclean)
-
-## turn on/off interactive graphs
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tbinenglanddataclean)</code></pre></div>
+<pre><code>## Warning: Installed Rcpp (0.12.12) different from Rcpp used to build dplyr (0.12.11).
+## Please reinstall dplyr to avoid random crashes or undefined behavior.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## turn on/off interactive graphs
 interactive &lt;-<span class="st"> </span><span class="ot">FALSE</span>
 
 ## rebuild existing data sets
@@ -94,6 +95,7 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
                      <span class="dt">save =</span> <span class="ot">TRUE</span>,
                      <span class="dt">save_name =</span> <span class="st">"clean_ets_2016"</span>,
                      <span class="dt">save_path =</span> <span class="st">"~/data/tbinenglanddataclean"</span>,
+                     <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
                      <span class="dt">verbose =</span> <span class="ot">TRUE</span>)
 
 }</code></pre></div>
@@ -110,6 +112,7 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
                       <span class="dt">save =</span> <span class="ot">TRUE</span>,
                       <span class="dt">save_name =</span> <span class="st">"E_demo_2000_2015"</span>,
                       <span class="dt">save_path =</span> <span class="st">"~/data/tbinenglanddataclean"</span>,
+                      <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
                       <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
                       <span class="dt">interactive =</span> interactive)
 }</code></pre></div>
@@ -141,6 +144,7 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
                           <span class="dt">save =</span> <span class="ot">TRUE</span>,
                           <span class="dt">save_name =</span> <span class="st">"formatted_LFS_2000_2016"</span>,
                           <span class="dt">save_path =</span> <span class="st">"~/data/tbinenglanddataclean"</span>,
+                          <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
                           <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
                           <span class="dt">interactive =</span> interactive)
 }</code></pre></div>
@@ -157,6 +161,7 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
                      <span class="dt">save =</span> <span class="ot">TRUE</span>,
                      <span class="dt">save_name =</span> <span class="st">"E_ons_lfs_2000_2016"</span>,
                      <span class="dt">save_path =</span> <span class="st">"~/data/tbinenglanddataclean"</span>,
+                     <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
                      <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
                      <span class="dt">interactive =</span> interactive) 
 }</code></pre></div>
@@ -174,58 +179,120 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
                                 <span class="dt">condensed_grouped_incidence_name =</span> <span class="st">"condensed_age_group_incidence"</span>,
                                 <span class="dt">cases_demo_incidence_name =</span> <span class="st">"cases_demo_incidence"</span>,
                                 <span class="dt">save_path =</span> <span class="st">"~/data/tbinenglanddataclean"</span>,
+                                <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
                                 <span class="dt">verbose =</span> <span class="ot">FALSE</span>,
                                 <span class="dt">interactive =</span> interactive)</code></pre></div>
-<pre><code>## Warning in full_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
-## factors with different levels, coercing to character vector</code></pre>
+<pre><code>## Warning: Column `Year` has different attributes on LHS and RHS of join</code></pre>
+<pre><code>## Warning: Column `CoB` joining factors with different levels, coercing to
+## character vector</code></pre>
 <pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
 ## coercing into character vector</code></pre>
 <pre><code>## Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector
+
+## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector
+
+## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector
+
+## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector
+
+## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
 <pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
 ## coercing into character vector</code></pre>
 <pre><code>## Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector
+
+## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector
+
+## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector
+
+## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector
+
+## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
 <pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
+## coercing into character vector</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
 ## coercing into character vector</code></pre>
 <pre><code>## Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character</code></pre>
+<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector
+
+## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector
+
+## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector
+
+## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector
+
+## Warning in bind_rows_(x, .id): binding character and factor vector,
+## coercing into character vector</code></pre>
 <pre><code>## Joining, by = c("Age", "Year", "CoB")</code></pre>
-<pre><code>## Warning in full_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
-## factors with different levels, coercing to character vector</code></pre>
+<pre><code>## Warning: Column `Age` joining factors with different levels, coercing to
+## character vector</code></pre>
 </div>
 </div>
   </div>

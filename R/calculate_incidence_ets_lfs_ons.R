@@ -228,7 +228,7 @@ calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tbinenglanddatac
               verbose = verbose
     )
 
-    save_data(grouped_incidence,
+    save_data(age_grouped_incidence,
               name = grouped_incidence_name,
               path = save_path,
               format = save_format,
@@ -236,7 +236,7 @@ calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tbinenglanddatac
               verbose = verbose
     )
 
-    save_data(condensed_grouped_incidence,
+    save_data(age_grouped_condensed_incidence,
               name = condensed_grouped_incidence_name,
               path = save_path,
               format = save_format,

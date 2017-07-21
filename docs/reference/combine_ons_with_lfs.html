@@ -107,8 +107,8 @@ Summary statistics and plots can be returned to check both datasets.</p>
   <span class='kw'>ons_name</span> <span class='kw'>=</span> <span class='st'>"E_demo_2000_2015.rds"</span>,
   <span class='kw'>lfs_name</span> <span class='kw'>=</span> <span class='st'>"formatted_LFS_2000_2016.rds"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"England"</span>,
   <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"E_ons_lfs_2000_2016"</span>,
-  <span class='kw'>save_path</span> <span class='kw'>=</span> <span class='st'>"~/data/tbinenglanddataclean"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>theme_set</span> <span class='kw'>=</span> <span class='no'>theme_minimal</span>)</pre>
+  <span class='kw'>save_path</span> <span class='kw'>=</span> <span class='st'>"~/data/tbinenglanddataclean"</span>, <span class='kw'>save_format</span> <span class='kw'>=</span> <span class='st'>"rds"</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>theme_set</span> <span class='kw'>=</span> <span class='no'>theme_minimal</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -146,6 +146,11 @@ demographic datasets.</p></td>
     <tr>
       <th>save_path</th>
       <td><p>The filepath for the data to be saved in</p></td>
+    </tr>
+    <tr>
+      <th>save_format</th>
+      <td><p>A character vector specifying the format/formats to save the data into, defaults to rds. Currently
+csv is also supported. See <code><a href='http://www.rdocumentation.org/packages/idmodelr/topics/save_data'>save_data</a></code> for details.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
