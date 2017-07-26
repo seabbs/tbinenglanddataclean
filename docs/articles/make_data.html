@@ -29,25 +29,10 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="..//index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/make_data.html">Using package functions and local data to calculate TB incidence rates in England</a>
-    </li>
-  </ul>
+  <a href="../articles/index.html">Articles</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -72,7 +57,7 @@
       <h1>Using package functions and local data to calculate TB incidence rates in England</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2017-07-21</h4>
+            <h4 class="date">2017-07-26</h4>
           </div>
 
     
@@ -81,15 +66,14 @@
 <div id="clean-and-create-variables-from-the-enhanced-tuberculosis-surveillance-data-set" class="section level1">
 <h1 class="hasAnchor">
 <a href="#clean-and-create-variables-from-the-enhanced-tuberculosis-surveillance-data-set" class="anchor"></a>Clean and Create Variables from the Enhanced Tuberculosis Surveillance Data Set</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tbinenglanddataclean)</code></pre></div>
-<pre><code>## Warning: Installed Rcpp (0.12.12) different from Rcpp used to build dplyr (0.12.11).
-## Please reinstall dplyr to avoid random crashes or undefined behavior.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## turn on/off interactive graphs
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tbinenglanddataclean)
+
+## turn on/off interactive graphs
 interactive &lt;-<span class="st"> </span><span class="ot">FALSE</span>
 
 ## rebuild existing data sets
 rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">"~/data/tbinenglanddataclean/clean_ets_2016.rds"</span>) <span class="op">||</span><span class="st"> </span>rebuild) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (!<span class="kw">file.exists</span>(<span class="st">"~/data/tbinenglanddataclean/clean_ets_2016.rds"</span>) ||<span class="st"> </span>rebuild) {
   <span class="kw"><a href="../reference/clean_munge_ets_2016.html">clean_munge_ets_2016</a></span>(<span class="dt">data_path =</span> <span class="st">"~/data/ETS/ETS_2016_extract/SAbbott_BCG dataset_version2_final140217.dta"</span>,
                      <span class="dt">return =</span> <span class="ot">FALSE</span>,
                      <span class="dt">save =</span> <span class="ot">TRUE</span>,
@@ -103,7 +87,7 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
 <div id="clean-the-office-of-national-statistics-demographic-data-to-be-used-as-a-reference-data-set" class="section level1">
 <h1 class="hasAnchor">
 <a href="#clean-the-office-of-national-statistics-demographic-data-to-be-used-as-a-reference-data-set" class="anchor"></a>Clean the Office of National Statistics Demographic Data to be used as a Reference Data set</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">"~/data/tbinenglanddataclean/E_demo_2000_2015.rds"</span>) <span class="op">||</span><span class="st"> </span>rebuild) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (!<span class="kw">file.exists</span>(<span class="st">"~/data/tbinenglanddataclean/E_demo_2000_2015.rds"</span>) ||<span class="st"> </span>rebuild) {
   <span class="kw"><a href="../reference/clean_demographics_uk.html">clean_demographics_uk</a></span>(<span class="dt">data_path =</span> <span class="st">"~/data/UK_demographics"</span>,
                       <span class="dt">demo_2000 =</span> <span class="st">"UK_2000_age.csv"</span>,
                       <span class="dt">demo_2001_2015 =</span> <span class="st">"UK_2001_2015_age.csv"</span>,
@@ -120,9 +104,9 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
 <div id="clean-and-combine-the-labour-force-survey-data-set" class="section level1">
 <h1 class="hasAnchor">
 <a href="#clean-and-combine-the-labour-force-survey-data-set" class="anchor"></a>Clean and Combine the Labour Force Survey Data set</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">"~/data/tbinenglanddataclean/formatted_LFS_2000_2016.rds"</span>) <span class="op">||</span><span class="st"> </span>rebuild) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (!<span class="kw">file.exists</span>(<span class="st">"~/data/tbinenglanddataclean/formatted_LFS_2000_2016.rds"</span>) ||<span class="st"> </span>rebuild) {
 <span class="kw"><a href="../reference/clean_labour_force_survey.html">clean_labour_force_survey</a></span>(<span class="dt">data_path =</span> <span class="st">"~/data/LFS"</span>,
-                          <span class="dt">years =</span> <span class="dv">2000</span><span class="op">:</span><span class="dv">2016</span>,
+                          <span class="dt">years =</span> <span class="dv">2000</span>:<span class="dv">2016</span>,
                           <span class="dt">years_var =</span> <span class="kw">list</span>( <span class="st">'2000'</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">'age'</span>, <span class="st">'sex'</span>, <span class="st">'cry'</span>, <span class="st">'govtof'</span>, <span class="st">'pwt07'</span>),
                                             <span class="st">'2001'</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">'age'</span>, <span class="st">'sex'</span>, <span class="st">'cry01'</span>, <span class="st">'country'</span>, <span class="st">'pwt07'</span>),
                                             <span class="st">'2002'</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">'AGE'</span>, <span class="st">'SEX'</span>, <span class="st">'CRY01'</span>, <span class="st">'COUNTRY'</span>, <span class="st">'PWT14'</span>),
@@ -152,7 +136,7 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
 <div id="combine-the-lfs-and-ons-datasets-check-for-issues" class="section level1">
 <h1 class="hasAnchor">
 <a href="#combine-the-lfs-and-ons-datasets-check-for-issues" class="anchor"></a>Combine the LFS and ONS datasets; check for issues</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">"~/data/tbinenglanddataclean/E_ons_lfs_2000_2016.rds"</span>) <span class="op">||</span><span class="st"> </span>rebuild) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (!<span class="kw">file.exists</span>(<span class="st">"~/data/tbinenglanddataclean/E_ons_lfs_2000_2016.rds"</span>) ||<span class="st"> </span>rebuild) {
 <span class="kw"><a href="../reference/combine_ons_with_lfs.html">combine_ons_with_lfs</a></span>(<span class="dt">data_path =</span> <span class="st">"~/data/tbinenglanddataclean"</span>,
                      <span class="dt">ons_name =</span> <span class="st">"E_demo_2000_2015.rds"</span>,
                      <span class="dt">lfs_name =</span> <span class="st">"formatted_LFS_2000_2016.rds"</span>,
@@ -164,6 +148,22 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
                      <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
                      <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
                      <span class="dt">interactive =</span> interactive) 
+}</code></pre></div>
+</div>
+<div id="clean-and-munge-changes-in-english-population" class="section level1">
+<h1 class="hasAnchor">
+<a href="#clean-and-munge-changes-in-english-population" class="anchor"></a>Clean and Munge Changes in English Population</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (!<span class="kw">file.exists</span>(<span class="st">"~/data/tbinenglanddataclean/england_births.rds"</span>) ||<span class="st"> </span>rebuild) {
+  <span class="kw"><a href="../reference/clean_and_munge_england_birth.html">clean_and_munge_england_birth</a></span>(<span class="dt">birth_path =</span> <span class="st">"~/data/UK_demographics/annual_reference_table.xls"</span>,
+                               <span class="dt">projected_birth_path =</span> <span class="st">"~/data/UK_demographics/england_population_projections.xls"</span>,
+                               <span class="dt">return =</span> <span class="ot">TRUE</span>,
+                               <span class="dt">save =</span> <span class="ot">TRUE</span>,
+                               <span class="dt">save_name =</span> <span class="st">"england_births"</span>,
+                               <span class="dt">save_path =</span> <span class="st">"~/data/tbinenglanddataclean"</span>,
+                               <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
+                               <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
+                               <span class="dt">interactive =</span> interactive,
+                               <span class="dt">theme_set =</span> theme_minimal)
 }</code></pre></div>
 </div>
 <div id="calculate-tb-incidence-rates-for-england" class="section level1">
@@ -182,130 +182,20 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
                                 <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
                                 <span class="dt">verbose =</span> <span class="ot">FALSE</span>,
                                 <span class="dt">interactive =</span> interactive)</code></pre></div>
-<pre><code>## Warning: Column `Year` has different attributes on LHS and RHS of join</code></pre>
-<pre><code>## Warning: Column `CoB` joining factors with different levels, coercing to
-## character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding factor and character vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character</code></pre>
-<pre><code>## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector
-
-## Warning in bind_rows_(x, .id): binding character and factor vector,
-## coercing into character vector</code></pre>
 <pre><code>## Joining, by = c("Age", "Year", "CoB")</code></pre>
-<pre><code>## Warning: Column `Age` joining factors with different levels, coercing to
-## character vector</code></pre>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
         <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#clean-and-create-variables-from-the-enhanced-tuberculosis-surveillance-data-set">Clean and Create Variables from the Enhanced Tuberculosis Surveillance Data Set</a></li>
       <li><a href="#clean-the-office-of-national-statistics-demographic-data-to-be-used-as-a-reference-data-set">Clean the Office of National Statistics Demographic Data to be used as a Reference Data set</a></li>
       <li><a href="#clean-and-combine-the-labour-force-survey-data-set">Clean and Combine the Labour Force Survey Data set</a></li>
       <li><a href="#combine-the-lfs-and-ons-datasets-check-for-issues">Combine the LFS and ONS datasets; check for issues</a></li>
+      <li><a href="#clean-and-munge-changes-in-english-population">Clean and Munge Changes in English Population</a></li>
       <li><a href="#calculate-tb-incidence-rates-for-england">Calculate TB Incidence Rates for England</a></li>
       </ul>
 </div>

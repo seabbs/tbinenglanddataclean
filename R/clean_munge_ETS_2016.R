@@ -23,7 +23,7 @@
 #' @importFrom dplyr mutate filter
 #' @importFrom purrr map map_chr
 #' @importFrom stats relevel
-#' @importFrom idmodelr save_data
+#' @importFrom idmodelr save_data interactive_plot
 #' @examples
 #'
 clean_munge_ets_2016 <- function(data_path = NULL,

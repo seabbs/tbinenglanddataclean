@@ -15,7 +15,7 @@
 #' @importFrom purrr pmap
 #' @import ggplot2
 #' @importFrom plotly ggplotly
-#' @importFrom idmodelr save_data
+#' @importFrom idmodelr save_data interactive_plot
 #' @examples
 #'
 clean_labour_force_survey <- function(data_path = "~/data/LFS",

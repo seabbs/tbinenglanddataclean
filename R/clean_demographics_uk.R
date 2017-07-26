@@ -20,6 +20,7 @@
 #' @importFrom readr read_csv
 #' @import dplyr
 #' @importFrom tidyr gather
+#' @importFrom idmodelr interactive_plot
 #' @import ggplot2
 #' @examples
 #'

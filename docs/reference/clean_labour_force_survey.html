@@ -23,8 +23,7 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -52,25 +51,10 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/make_data.html">Using package functions and local data to calculate TB incidence rates in England</a>
-    </li>
-  </ul>
+<li>
+  <a href="../articles/index.html">Articles</a>
 </li>
       </ul>
       
@@ -98,7 +82,7 @@
     
     <p>This functions automatically detects Labour Force Survey data in the specified
 directory and reads it into R. It then extracts the age, sex, UK birth status, and country.
-From this it creates a tidy dataset. The data can be downloaded <a href='https://discover.ukdataservice.ac.uk/catalogue/?sn=5461'>here</a>.</p>
+From this it creates a tidy dataset. The data can be downloaded <a href = 'https://discover.ukdataservice.ac.uk/catalogue/?sn=5461'>here</a>.</p>
     
 
     <pre class="usage"><span class='fu'>clean_labour_force_survey</span>(<span class='kw'>data_path</span> <span class='kw'>=</span> <span class='st'>"~/data/LFS"</span>, <span class='kw'>years</span> <span class='kw'>=</span> <span class='fl'>2000</span>:<span class='fl'>2016</span>,

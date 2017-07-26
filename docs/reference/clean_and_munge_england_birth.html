@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extract Case Counts from the ETS Data — extract_case_counts • tbinenglanddataclean</title>
+<title>A Function to Clean and Merge Observed and Projected Births in England — clean_and_munge_england_birth • tbinenglanddataclean</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -76,36 +76,76 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Extract Case Counts from the ETS Data</h1>
+    <h1>A Function to Clean and Merge Observed and Projected Births in England</h1>
     </div>
 
     
-    <p>Case counts stratified by the required variables. In addition this function adds additional grouping
-variables for age so that the ETS data is inline with other demographic datasets.</p>
+    <p>This functions loads in observed and projected birth data produced by the Office
+of National Statistics and combines both datasets into a single tidy dataframe. Observed births can be
+downloaded <a href = 'https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/vitalstatisticspopulationandhealthreferencetables'>here</a>,
+and projected births can be downloaded <a href = 'https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/tablea14principalprojectionenglandsummary'>here</a>.</p>
     
 
-    <pre class="usage"><span class='fu'>extract_case_counts</span>(<span class='no'>df</span>, <span class='kw'>strat_var</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"age"</span>, <span class='st'>"year"</span>, <span class='st'>"ukborn"</span>))</pre>
+    <pre class="usage"><span class='fu'>clean_and_munge_england_birth</span>(<span class='kw'>birth_path</span> <span class='kw'>=</span> <span class='st'>"~/data/UK_demographics/annual_reference_table.xls"</span>,
+  <span class='kw'>projected_birth_path</span> <span class='kw'>=</span> <span class='st'>"~/data/UK_demographics/england_population_projections.xls"</span>,
+  <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"england_births"</span>,
+  <span class='kw'>save_path</span> <span class='kw'>=</span> <span class='st'>"~/data/tbinenglanddataclean"</span>, <span class='kw'>save_format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"rds"</span>, <span class='st'>"csv"</span>),
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>theme_set</span> <span class='kw'>=</span> <span class='no'>theme_minimal</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>A dataframe in the current ETS format .</p></td>
+      <th>birth_path</th>
+      <td><p>The file path to the unformated observed births data, see the description for details.</p></td>
     </tr>
     <tr>
-      <th>strat_var</th>
-      <td><p>Vaiables to stratify case counts by.</p></td>
+      <th>projected_birth_path</th>
+      <td><p>The file path to the unformated projected births data, see the description for details.</p></td>
+    </tr>
+    <tr>
+      <th>return</th>
+      <td><p>Logical, defaults to <code>TRUE</code>. Specifies whether to return cleanded data.</p></td>
+    </tr>
+    <tr>
+      <th>save</th>
+      <td><p>Logical, defaults to <code>FALSE</code>. Specifies whether to save data</p></td>
+    </tr>
+    <tr>
+      <th>save_name</th>
+      <td><p>A character string contaning the file name for the data to be saved under.</p></td>
+    </tr>
+    <tr>
+      <th>save_path</th>
+      <td><p>The filepath for the data to be saved in</p></td>
+    </tr>
+    <tr>
+      <th>save_format</th>
+      <td><p>A character vector specifying the format/formats to save the data into, defaults to rds. Currently
+csv is also supported. See <code><a href='http://www.rdocumentation.org/packages/idmodelr/topics/save_data'>save_data</a></code> for details.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>A logical indicating whether summary information should be provided.</p></td>
+    </tr>
+    <tr>
+      <th>interactive</th>
+      <td><p>Logical, defaults to <code>TRUE</code>. Should the summary graphs be returned as interactive objects.</p></td>
+    </tr>
+    <tr>
+      <th>theme_set</th>
+      <td><p>The ggplot theme to apply to the summary graphs, defaults to theme_minimal</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Case counts stratified by the required variables</p>
+    <p>A tidy data frame containing observed and projected births for England.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

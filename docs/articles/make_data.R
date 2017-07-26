@@ -1,22 +1,7 @@
----
-title: "Using package functions and local data to calculate TB incidence rates in England"
-author: "Sam Abbott"
-date: "`r Sys.Date()`"
-output: html_document
-
-vignette: >
-  %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-# Clean and Create Variables from the Enhanced Tuberculosis Surveillance Data Set
-
-```{r knitr-opts, include = FALSE}
+## ----knitr-opts, include = FALSE-----------------------------------------
 knitr::opts_chunk$set(warning = FALSE)
-```
 
-```{r setup}
+## ----setup---------------------------------------------------------------
 library(tbinenglanddataclean)
 
 ## turn on/off interactive graphs
@@ -24,9 +9,8 @@ interactive <- FALSE
 
 ## rebuild existing data sets
 rebuild <- FALSE
-```
 
-```{r clean-ets}
+## ----clean-ets-----------------------------------------------------------
 if (!file.exists("~/data/tbinenglanddataclean/clean_ets_2016.rds") || rebuild) {
   clean_munge_ets_2016(data_path = "~/data/ETS/ETS_2016_extract/SAbbott_BCG dataset_version2_final140217.dta",
                      return = FALSE,
@@ -37,12 +21,8 @@ if (!file.exists("~/data/tbinenglanddataclean/clean_ets_2016.rds") || rebuild) {
                      verbose = TRUE)
 
 }
-```
 
-
-# Clean the Office of National Statistics Demographic Data to be used as a Reference Data set
-
-```{r clean-ons-demographics}
+## ----clean-ons-demographics----------------------------------------------
 if (!file.exists("~/data/tbinenglanddataclean/E_demo_2000_2015.rds") || rebuild) {
   clean_demographics_uk(data_path = "~/data/UK_demographics",
                       demo_2000 = "UK_2000_age.csv",
@@ -56,11 +36,8 @@ if (!file.exists("~/data/tbinenglanddataclean/E_demo_2000_2015.rds") || rebuild)
                       verbose = TRUE,
                       interactive = interactive)
 }
-```
 
-# Clean and Combine the Labour Force Survey Data set
-
-```{r clean-lfs-demographics}
+## ----clean-lfs-demographics----------------------------------------------
 if (!file.exists("~/data/tbinenglanddataclean/formatted_LFS_2000_2016.rds") || rebuild) {
 clean_labour_force_survey(data_path = "~/data/LFS",
                           years = 2000:2016,
@@ -89,11 +66,8 @@ clean_labour_force_survey(data_path = "~/data/LFS",
                           verbose = TRUE,
                           interactive = interactive)
 }
-```
 
-# Combine the LFS and ONS datasets; check for issues
-
-```{r combine-lfs-ons}
+## ----combine-lfs-ons-----------------------------------------------------
 if (!file.exists("~/data/tbinenglanddataclean/E_ons_lfs_2000_2016.rds") || rebuild) {
 combine_ons_with_lfs(data_path = "~/data/tbinenglanddataclean",
                      ons_name = "E_demo_2000_2015.rds",
@@ -107,41 +81,4 @@ combine_ons_with_lfs(data_path = "~/data/tbinenglanddataclean",
                      verbose = TRUE,
                      interactive = interactive) 
 }
-```
 
-# Clean and Munge Changes in English Population
-
-```{r clean-munge-births}
-if (!file.exists("~/data/tbinenglanddataclean/england_births.rds") || rebuild) {
-  clean_and_munge_england_birth(birth_path = "~/data/UK_demographics/annual_reference_table.xls",
-                               projected_birth_path = "~/data/UK_demographics/england_population_projections.xls",
-                               return = TRUE,
-                               save = TRUE,
-                               save_name = "england_births",
-                               save_path = "~/data/tbinenglanddataclean",
-                               save_format = c("rds", "csv"),
-                               verbose = TRUE,
-                               interactive = interactive,
-                               theme_set = theme_minimal)
-}
-
-
-```
-
-# Calculate TB Incidence Rates for England
-
-```{r cacl-inc-ets-lfs-ons}
-calculate_incidence_ets_lfs_ons(data_path = "~/data/tbinenglanddataclean",
-                                ets_name = "clean_ets_2016.rds",
-                                demo_name = "E_ons_lfs_2000_2016.rds",
-                                return = FALSE,
-                                save = TRUE,
-                                incidence_name = "incidence" ,
-                                grouped_incidence_name = "age_grouped_incidence",
-                                condensed_grouped_incidence_name = "condensed_age_group_incidence",
-                                cases_demo_incidence_name = "cases_demo_incidence",
-                                save_path = "~/data/tbinenglanddataclean",
-                                save_format = c("rds", "csv"),
-                                verbose = FALSE,
-                                interactive = interactive)
-```

@@ -8,13 +8,13 @@ Imports: magrittr,
     haven,
     dplyr,
     purrr,
-    plotly,
     readr,
     ggplot2,
     tidyr,
     epiR,
     tibble,
-    idmodelr
+    idmodelr,
+    readxl
 Suggests: testthat,
     knitr,
     rmarkdown
