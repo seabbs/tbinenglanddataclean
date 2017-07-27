@@ -82,3 +82,34 @@ combine_ons_with_lfs(data_path = "~/data/tbinenglanddataclean",
                      interactive = interactive) 
 }
 
+## ----clean-munge-births--------------------------------------------------
+if (!file.exists("~/data/tbinenglanddataclean/england_births.rds") || rebuild) {
+  clean_and_munge_england_birth(birth_path = "~/data/UK_demographics/annual_reference_table.xls",
+                               projected_birth_path = "~/data/UK_demographics/england_population_projections.xls",
+                               return = TRUE,
+                               save = TRUE,
+                               save_name = "england_births",
+                               save_path = "~/data/tbinenglanddataclean",
+                               save_format = c("rds", "csv"),
+                               verbose = TRUE,
+                               interactive = interactive,
+                               theme_set = theme_minimal)
+}
+
+
+
+## ----cacl-inc-ets-lfs-ons------------------------------------------------
+calculate_incidence_ets_lfs_ons(data_path = "~/data/tbinenglanddataclean",
+                                ets_name = "clean_ets_2016.rds",
+                                demo_name = "E_ons_lfs_2000_2016.rds",
+                                return = FALSE,
+                                save = TRUE,
+                                incidence_name = "incidence" ,
+                                grouped_incidence_name = "age_grouped_incidence",
+                                condensed_grouped_incidence_name = "condensed_age_group_incidence",
+                                cases_demo_incidence_name = "cases_demo_incidence",
+                                save_path = "~/data/tbinenglanddataclean",
+                                save_format = c("rds", "csv"),
+                                verbose = FALSE,
+                                interactive = interactive)
+

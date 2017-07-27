@@ -16,12 +16,13 @@ plot_pop_age_compare_ons_lfs = function(df, theme_set = theme_minimal)
     group_by(CoB, Year, `Age group`) %>%
     summarise(Population = sum(Population)) %>%
     spread(key = CoB, value = Population) %>%
-    mutate(`Percentage difference between ONS and LFS population estimates` = 100*(Total - `Total (LFS)`)/Total) %>%
+    mutate(`Percentage difference` = 100*(Total - `Total (LFS)`)/Total) %>%
     mutate(`Age group` = factor(`Age group`, levels = rev(levels(`Age group`)))) %>%
-    ggplot(aes(x = `Age group` , y = `Percentage difference between ONS and LFS population estimates`, fill = Year, colour = Year)) +
+    ggplot(aes(x = `Age group` , y = `Percentage difference`, fill = Year, colour = Year)) +
     geom_bar(position = 'dodge', stat = 'identity') +
     theme_set() +
     theme(axis.text.x = element_text(angle = 45)) +
-    coord_flip() -> p
+    coord_flip() +
+    labs(caption = "Comparision of ONS and LFS population estimates ") -> p
   return(p)
 }

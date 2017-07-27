@@ -11,7 +11,7 @@
 
 <meta name="author" content="Sam Abbott" />
 
-<meta name="date" content="2017-07-26" />
+<meta name="date" content="2017-07-27" />
 
 <title>Using package functions and local data to calculate TB incidence rates in England</title>
 
@@ -119,7 +119,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Using package functions and local data to calculate TB incidence rates in England</h1>
 <h4 class="author"><em>Sam Abbott</em></h4>
-<h4 class="date"><em>2017-07-26</em></h4>
+<h4 class="date"><em>2017-07-27</em></h4>
 
 </div>
 
@@ -205,6 +205,21 @@ combine_ons_with_lfs(data_path = &quot;~/data/tbinenglanddataclean&quot;,
                      save_format = c(&quot;rds&quot;, &quot;csv&quot;),
                      verbose = TRUE,
                      interactive = interactive) 
+}</code></pre>
+</div>
+<div id="clean-and-munge-changes-in-english-population" class="section level1">
+<h1>Clean and Munge Changes in English Population</h1>
+<pre class="r"><code>if (!file.exists(&quot;~/data/tbinenglanddataclean/england_births.rds&quot;) || rebuild) {
+  clean_and_munge_england_birth(birth_path = &quot;~/data/UK_demographics/annual_reference_table.xls&quot;,
+                               projected_birth_path = &quot;~/data/UK_demographics/england_population_projections.xls&quot;,
+                               return = TRUE,
+                               save = TRUE,
+                               save_name = &quot;england_births&quot;,
+                               save_path = &quot;~/data/tbinenglanddataclean&quot;,
+                               save_format = c(&quot;rds&quot;, &quot;csv&quot;),
+                               verbose = TRUE,
+                               interactive = interactive,
+                               theme_set = theme_minimal)
 }</code></pre>
 </div>
 <div id="calculate-tb-incidence-rates-for-england" class="section level1">

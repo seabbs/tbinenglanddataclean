@@ -48,7 +48,8 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
   lfs_data %>%
     filter(Country %in% countries) %>%
     group_by(Year, Age, CoB) %>%
-    summarise(Population = sum(Weight)) -> demo_2000_2016_strat_est
+    summarise(Population = sum(Weight)) %>%
+    mutate(CoB = as.character(CoB)) -> demo_2000_2016_strat_est
 
 
 
@@ -72,7 +73,8 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
     group_by(Age, Year) %>%
     summarise(Population = sum(Population)) %>%
     mutate(CoB = 'Total (LFS)') %>%
-    bind_rows(demo_2000_2016_strat_est) %>%
+    bind_rows(demo_2000_2016_strat_est %>%
+                mutate(CoB = as.character(CoB))) %>%
     mutate(CoB = factor(CoB, levels = c('Total', 'Total (LFS)', 'UK born', 'Non-UK born')))
 
 
@@ -98,10 +100,11 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
    demo_2000_2016_strat_est %>%
      filter(Year %% 5 == 0, CoB %in% 'Non-UK born') %>%
      ggplot(aes(x = Age, y = Population)) +
-     geom_density(alpha = 0.4) +
+     geom_density(stat = "identity", alpha = 0.4) +
      facet_wrap(~Year) +
      theme_set() +
-     theme(axis.text.x = element_text(angle = 90)) -> p
+     theme(axis.text.x = element_text(angle = 90)) +
+     labs(caption = "Non-UK born population by age, every 5 years") -> p
 
    interactive_plot(p, interactive)
 
@@ -109,10 +112,11 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
    demo_2000_2016_strat_est %>%
      filter(Year %% 5 == 0, CoB %in% 'UK born') %>%
      ggplot(aes(x = Age, y = Population)) +
-     geom_density(alpha = 0.4) +
+     geom_density(stat = "identity", alpha = 0.4) +
      facet_wrap(~Year) +
      theme_set() +
-     theme(axis.text.x = element_text(angle = 90)) -> p1
+     theme(axis.text.x = element_text(angle = 90)) +
+     labs(caption = "UK born population by age, every 5 years") -> p1
 
    interactive_plot(p1, interactive)
 
@@ -121,10 +125,12 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
    demo_2000_2016_strat_est %>%
      filter(Year %in% 2000, !is.na(CoB)) %>%
      ggplot(aes(x = Age, y = Population)) +
-     geom_density(alpha = 0.4) +
+     geom_density(stat = "identity", alpha = 0.4) +
      facet_wrap(~CoB) +
      theme_set() +
-     theme(axis.text.x = element_text(angle = 90)) -> p2
+     theme(axis.text.x = element_text(angle = 90)) +
+     labs(caption = "Comparision of ONS, LFS, UK born,
+          and non-UK born population estimates for 2000") -> p2
 
  interactive_plot(p2, interactive)
 
@@ -133,10 +139,12 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
    demo_2000_2016_strat_est %>%
      filter(Year %in% 2005, !is.na(CoB)) %>%
      ggplot(aes(x = Age, y = Population)) +
-     geom_density(alpha = 0.4) +
+     geom_density(stat = "identity", alpha = 0.4) +
      facet_wrap(~CoB) +
      theme_set() +
-     theme(axis.text.x = element_text(angle = 90)) -> p3
+     theme(axis.text.x = element_text(angle = 90)) +
+     labs(caption = "Comparision of ONS, LFS, UK born,
+          and non-UK born population estimates for 2005") -> p3
 
    interactive_plot(p3, interactive)
 
@@ -145,10 +153,12 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
    demo_2000_2016_strat_est %>%
      filter(Year %in% 2010, !is.na(CoB)) %>%
      ggplot(aes(x = Age, y = Population)) +
-     geom_density(alpha = 0.4) +
+     geom_density(stat = "identity", alpha = 0.4) +
      facet_wrap(~CoB) +
      theme_set() +
-     theme(axis.text.x = element_text(angle = 90)) -> p4
+     theme(axis.text.x = element_text(angle = 90)) +
+     labs(caption = "Comparision of ONS, LFS, UK born,
+          and non-UK born population estimates for 2010") -> p4
 
    interactive_plot(p4, interactive)
 
@@ -157,10 +167,12 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
    demo_2000_2016_strat_est %>%
      filter(Year %in% 2015, !is.na(CoB)) %>%
      ggplot(aes(x = Age, y = Population)) +
-     geom_density(alpha = 0.4) +
+     geom_density(stat = "identity", alpha = 0.4) +
      facet_wrap(~CoB) +
      theme_set() +
-     theme(axis.text.x = element_text(angle = 90)) -> p5
+     theme(axis.text.x = element_text(angle = 90)) +
+     labs(caption = "Comparision of ONS, LFS, UK born,
+          and non-UK born population estimates for 2015") -> p5
 
    interactive_plot(p5, interactive)
 
@@ -175,7 +187,8 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
      ggplot(aes(x = Year, y = Population, fill = CoB, colour = CoB)) +
      geom_point() +
      geom_line() +
-     theme_set() -> p6
+     theme_set() +
+     labs(caption = "Population estimates over time for both the ONS abd KFS") -> p6
 
    interactive_plot(p6, interactive)
  }
@@ -183,11 +196,15 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
   if (verbose) {
     #current bug in plotly for negative values in box plots means this will not present the correct results so use static table
     demo_2000_2016_strat_est %>%
+      na.omit %>%
+      filter(Year < 2016) %>%
       plot_pop_age_compare_ons_lfs(theme_set = theme_set) -> p7
     interactive_plot(p7, interactive = FALSE)
 
     ## plot removing 85+ due to distortion
     demo_2000_2016_strat_est %>%
+      filter (Year < 2016) %>%
+      na.omit %>%
       filter(!(`Age group` %in% c('85-89', '90+'))) %>%
       plot_pop_age_compare_ons_lfs(theme_set = theme_set) -> p8
     interactive_plot(p8, interactive = FALSE)

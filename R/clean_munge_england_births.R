@@ -11,7 +11,7 @@
 #' @export
 #' @import magrittr
 #' @import ggplot2
-#' @importFrom readxl read_excel
+#' @importFrom readxl read_excel cell_cols
 #' @importFrom dplyr rename select mutate bind_rows
 #' @examples
 #'
