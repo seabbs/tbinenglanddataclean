@@ -14,7 +14,6 @@
 #' @importFrom haven read_stata
 #' @importFrom purrr pmap
 #' @import ggplot2
-#' @importFrom plotly ggplotly
 #' @importFrom idmodelr save_data interactive_plot
 #' @examples
 #'

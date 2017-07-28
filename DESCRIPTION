@@ -17,7 +17,8 @@ Imports: magrittr,
     readxl
 Suggests: testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    tidyverse
 Remotes: seabbs/idmodelr
 Encoding: UTF-8
 LazyData: true

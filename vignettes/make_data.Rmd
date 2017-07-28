@@ -115,14 +115,13 @@ combine_ons_with_lfs(data_path = "~/data/tbinenglanddataclean",
 if (!file.exists("~/data/tbinenglanddataclean/england_births.rds") || rebuild) {
   clean_and_munge_england_birth(birth_path = "~/data/UK_demographics/annual_reference_table.xls",
                                projected_birth_path = "~/data/UK_demographics/england_population_projections.xls",
-                               return = TRUE,
+                               return = FALSE,
                                save = TRUE,
                                save_name = "england_births",
                                save_path = "~/data/tbinenglanddataclean",
                                save_format = c("rds", "csv"),
                                verbose = TRUE,
-                               interactive = interactive,
-                               theme_set = theme_minimal)
+                               interactive = interactive)
 }
 
 

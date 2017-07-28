@@ -11,13 +11,15 @@
 #' @export
 #' @import magrittr
 #' @import ggplot2
-#' @importFrom readxl read_excel cell_cols
+#' @importFrom readxl read_excel cell_cols cell_rows
 #' @importFrom dplyr rename select mutate bind_rows
 #' @examples
 #'
 #'
-clean_and_munge_england_birth <- function(birth_path = "~/data/UK_demographics/annual_reference_table.xls",
-                                          projected_birth_path = "~/data/UK_demographics/england_population_projections.xls",
+clean_and_munge_england_birth <- function(birth_path = "~/data/UK_demographics/
+                                          annual_reference_table.xls",
+                                          projected_birth_path = "~/data/UK_demographics/
+                                          england_population_projections.xls",
                                           return = TRUE,
                                           save = TRUE,
                                           save_name = "england_births",
