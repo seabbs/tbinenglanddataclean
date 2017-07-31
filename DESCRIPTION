@@ -15,7 +15,8 @@ Imports: magrittr,
     tibble,
     idmodelr,
     readxl,
-    ggjoy
+    ggjoy,
+    stringr
 Suggests: testthat,
     knitr,
     rmarkdown,
