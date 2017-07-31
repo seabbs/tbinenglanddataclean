@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Function to Clean and Merge Observed and Projected Births in England — clean_and_munge_england_birth • tbinenglanddataclean</title>
+<title>A Function to Clean and Munge Life Expectancy Estimates from England — clean_and_munge_england_life_expectancy • tbinenglanddataclean</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -95,19 +95,17 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A Function to Clean and Merge Observed and Projected Births in England</h1>
+    <h1>A Function to Clean and Munge Life Expectancy Estimates from England</h1>
     </div>
 
     
-    <p>This functions loads in observed and projected birth data produced by the Office
-of National Statistics and combines both datasets into a single tidy dataframe. Observed births can be
-downloaded <a href='https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/vitalstatisticspopulationandhealthreferencetables'>here</a>,
-and projected births can be downloaded <a href='https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/tablea14principalprojectionenglandsummary'>here</a>.</p>
+    <p>This functions loads in, cleans, and munges published mortality rates by age from the
+Office of National Statistics. The data required can be downloaded <a href='"https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/lifeexpectancies/datasets/nationallifetablesenglandreferencetables"'>here</a></p>
     
 
-    <pre class="usage"><span class='fu'>clean_and_munge_england_birth</span>(<span class='kw'>birth_path</span> <span class='kw'>=</span> <span class='st'>"~/data/UK_demographics/annual_reference_table.xls"</span>,
-  <span class='kw'>projected_birth_path</span> <span class='kw'>=</span> <span class='st'>"~/data/UK_demographics/england_population_projections.xls"</span>,
-  <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"england_births"</span>,
+    <pre class="usage"><span class='fu'>clean_and_munge_england_life_expectancy</span>(<span class='kw'>life_tables_path</span> <span class='kw'>=</span> <span class='st'>"~/data/UK_demographics/england_life_tables.xls"</span>,
+  <span class='kw'>sheets</span> <span class='kw'>=</span> <span class='fu'>paste0</span>(<span class='fu'>seq</span>(<span class='fl'>2013</span>, <span class='fl'>1998</span>, -<span class='fl'>1</span>), <span class='st'>"-"</span>, <span class='fu'>seq</span>(<span class='fl'>2015</span>, <span class='fl'>2000</span>, -<span class='fl'>1</span>)),
+  <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"england_mortality_rates"</span>,
   <span class='kw'>save_path</span> <span class='kw'>=</span> <span class='st'>"~/data/tbinenglanddataclean"</span>, <span class='kw'>save_format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"rds"</span>, <span class='st'>"csv"</span>),
   <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>theme_set</span> <span class='kw'>=</span> <span class='no'>theme_minimal</span>)</pre>
     
@@ -115,12 +113,12 @@ and projected births can be downloaded <a href='https://www.ons.gov.uk/peoplepop
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>birth_path</th>
-      <td><p>The file path to the unformated observed births data, see the description for details.</p></td>
+      <th>life_tables_path</th>
+      <td><p>The file path to the unformated life tables data as a single xls sheet.</p></td>
     </tr>
     <tr>
-      <th>projected_birth_path</th>
-      <td><p>The file path to the unformated projected births data, see the description for details.</p></td>
+      <th>sheets</th>
+      <td><p>A character vector of the names of the sheets to import, by default this will import all data 1999-2015.</p></td>
     </tr>
     <tr>
       <th>return</th>
@@ -159,12 +157,11 @@ csv is also supported. See <code><a href='http://www.rdocumentation.org/packages
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tidy data frame containing observed and projected births for England.</p>
+    <p>A Tidy data frame containing age specific mortality rates for england between 1999 and 2015.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -16,7 +16,7 @@
 #' @examples
 #'
 #'
-clean_and_munge_england_birth <- function(birth_path = "~/data/UK_demographics/annual_reference_table.xls",
+clean_and_munge_england_births <- function(birth_path = "~/data/UK_demographics/annual_reference_table.xls",
                                           projected_birth_path = "~/data/UK_demographics/england_population_projections.xls",
                                           return = TRUE,
                                           save = TRUE,

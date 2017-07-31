@@ -75,7 +75,7 @@
       <h1>Using package functions and local data to calculate TB incidence rates in England</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2017-07-28</h4>
+            <h4 class="date">2017-07-31</h4>
           </div>
 
     
@@ -172,7 +172,7 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
 <h1 class="hasAnchor">
 <a href="#clean-and-munge-changes-in-english-population" class="anchor"></a>Clean and Munge Changes in English Population</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">"~/data/tbinenglanddataclean/england_births.rds"</span>) <span class="op">||</span><span class="st"> </span>rebuild) {
-  <span class="kw"><a href="../reference/clean_and_munge_england_birth.html">clean_and_munge_england_birth</a></span>(<span class="dt">birth_path =</span> <span class="st">"~/data/UK_demographics/annual_reference_table.xls"</span>,
+  <span class="kw"><a href="../reference/clean_and_munge_england_births.html">clean_and_munge_england_births</a></span>(<span class="dt">birth_path =</span> <span class="st">"~/data/UK_demographics/annual_reference_table.xls"</span>,
                                <span class="dt">projected_birth_path =</span> <span class="st">"~/data/UK_demographics/england_population_projections.xls"</span>,
                                <span class="dt">return =</span> <span class="ot">FALSE</span>,
                                <span class="dt">save =</span> <span class="ot">TRUE</span>,
@@ -182,6 +182,22 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
                                <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
                                <span class="dt">interactive =</span> interactive)
 }</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">"~/data/tbinenglanddataclean/england_mortality_rate.rds"</span>) <span class="op">||</span><span class="st"> </span>rebuild) {
+<span class="kw"><a href="../reference/clean_and_munge_england_life_expectancy.html">clean_and_munge_england_life_expectancy</a></span>(<span class="dt">life_tables_path =</span> <span class="st">"~/data/UK_demographics/england_life_tables.xls"</span>,
+                                                <span class="dt">sheets =</span> <span class="kw">paste0</span>(<span class="kw">seq</span>(<span class="dv">2013</span>,<span class="dv">1998</span>, <span class="op">-</span><span class="dv">1</span>), <span class="st">"-"</span>, <span class="kw">seq</span>(<span class="dv">2015</span>,<span class="dv">2000</span>, <span class="op">-</span><span class="dv">1</span>)),
+                                                <span class="dt">return =</span> <span class="ot">FALSE</span>,
+                                                <span class="dt">save =</span> <span class="ot">TRUE</span>,
+                                                <span class="dt">save_name =</span> <span class="st">"england_mortality_rates"</span>,
+                                                <span class="dt">save_path =</span> <span class="st">"~/data/tbinenglanddataclean"</span>,
+                                                <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
+                                                <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
+                                                <span class="dt">interactive =</span> interactive,
+                                                <span class="dt">theme_set =</span> theme_minimal)
+}</code></pre></div>
+<p><img src="make_data_files/figure-html/clean-munge-mortality-rates-1.png" width="672"><img src="make_data_files/figure-html/clean-munge-mortality-rates-2.png" width="672"></p>
+<pre><code>## Mortality rates saved to: ~/data/tbinenglanddataclean/england_mortality_rates</code></pre>
+<pre><code>## Formated as, rds, csv</code></pre>
+<p><img src="make_data_files/figure-html/clean-munge-mortality-rates-3.png" width="672"></p>
 </div>
 <div id="calculate-tb-incidence-rates-for-england" class="section level1">
 <h1 class="hasAnchor">
