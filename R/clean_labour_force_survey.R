@@ -365,4 +365,7 @@ if (verbose) {
               )
   }
 
+  if(return) {
+    return(form_LFS_data)
+  }
 }
