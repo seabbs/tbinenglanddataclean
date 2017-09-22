@@ -94,6 +94,10 @@ combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
              cut(breaks = c(0, 15, 65, 91), right = FALSE,
                  ordered_result = TRUE, labels = c('0-14', '15-64', '65+'))) -> demo_2000_2016_strat_est
 
+  ## ungroup
+  demo_2000_2016_strat_est <- demo_2000_2016_strat_est %>%
+    ungroup
+
   # Plots to visualise ------------------------------------------------------
  if (verbose) {
    ## Plots of Non-UK born over time
