@@ -5,3 +5,4 @@ inst/doc
 rstudio/
 .rstudio/
 data/tb_data/
+.bash_history

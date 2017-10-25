@@ -18,7 +18,7 @@ of historic TB notifications}
 
 \item{plot_theme}{The ggplot2 theme to use, defaults to \code{\link[ggplot2]{theme_minimal}}.}
 
-\item{colour_scale}{The colour scale to plot with, defaults to \code{\link[ggplot2]{scale_color_viridis_d}}}
+\item{colour_scale}{The colour scale to plot with, defaults to \code{\link[ggplot2]{scale_colour_viridis_d}}}
 
 \item{return}{A logical indiciting if the plot should be printed or returned (defaults to \code{FALSE})}
 }

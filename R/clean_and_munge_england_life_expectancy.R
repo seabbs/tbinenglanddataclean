@@ -17,7 +17,8 @@
 #' @importFrom ggjoy geom_joy
 #' @examples
 #'
-clean_and_munge_england_life_expectancy <- function(life_tables_path = "~/data/tb_data/UK_demographics/england_life_tables.xls",
+clean_and_munge_england_life_expectancy <- function(life_tables_path =
+                                                      "~/data/tb_data/UK_demographics/england_life_tables.xls",
                                                 sheets = paste0(seq(2013,1998, -1), "-", seq(2015,2000, -1)),
                                                 return = TRUE,
                                                 save = TRUE,
@@ -60,7 +61,7 @@ clean_and_munge_england_life_expectancy <- function(life_tables_path = "~/data/t
     mutate(mid_year = year %>% str_split("-") %>% transpose %>% nth(1) %>% unlist) %>%
     mutate(mid_year = as.numeric(mid_year) + 1) %>%
     select(year, mid_year, gender, age, mortality_rate) %>%
-    mutate(gender = gender %>% factor(level = c("male", "female")))
+    mutate(gender = gender %>% factor(levels = c("male", "female")))
 
   if (verbose) {
     p1 <- mortality_rates %>%

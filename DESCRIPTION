@@ -1,9 +1,10 @@
 Package: tbinenglanddataclean
 Title: Cleans and Munges Tuberculosis and Demographic Data for England
-Version: 0.0.0.9000
+Version: 0.0.1.1000
 Authors@R: person("Sam", "Abbott", email = "contact@samabbott.co.uk", role = c("aut", "cre"))
 Description: Cleans and munges available tuberculisis and incidence data into an R compatible format for use in further analysis.
 License: GPL-3 | file LICENSE
+Depends: R (>= 2.10)
 Imports: magrittr,
     haven,
     dplyr,

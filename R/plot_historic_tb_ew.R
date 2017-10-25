@@ -5,7 +5,7 @@
 #' @param zoom_date Numeric, the year to filter notifications from for the second zoomed plot.
 #' @param zoom_nots Numeric, the number of notifications to zoom the y axis on.
 #' @param plot_theme The ggplot2 theme to use, defaults to \code{\link[ggplot2]{theme_minimal}}.
-#' @param colour_scale The colour scale to plot with, defaults to \code{\link[ggplot2]{scale_color_viridis_d}}
+#' @param colour_scale The colour scale to plot with, defaults to \code{\link[ggplot2]{scale_colour_viridis_d}}
 #' @param return A logical indiciting if the plot should be printed or returned (defaults to \code{FALSE})
 #' @return A ggplot2 plot of TB notifications over time, with a secondary zoomed plot from a specified date.
 #' @export
@@ -31,7 +31,7 @@ plot_historic_tb_ew <- function(df = tb_not_ew,
     geom_point() +
     geom_line() +
     plot_theme() +
-    facet_zoom(x = Year > zoom_date, y = Notifications <= zoom_nots, zoom.size = 1, horizontal = FALSE) +
+    ggforce::facet_zoom(x = Year > zoom_date, y = Notifications <= zoom_nots, zoom.size = 1, horizontal = FALSE) +
     theme(legend.position = "bottom") +
     colour_scale()
 

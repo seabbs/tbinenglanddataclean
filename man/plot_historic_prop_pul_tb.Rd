@@ -4,8 +4,9 @@
 \alias{plot_historic_prop_pul_tb}
 \title{Plot Historic Proportions of Pulmonary/Extra-Pulmonary TB}
 \usage{
-plot_historic_prop_pul_tb(df = tb_not_ew, plot_theme = theme_minimal,
-  colour_scale = scale_fill_viridis_d, return = FALSE)
+plot_historic_prop_pul_tb(df = tb_not_ew,
+  plot_theme = ggplot2::theme_minimal,
+  colour_scale = ggplot2::scale_fill_viridis_d, return = FALSE)
 }
 \arguments{
 \item{df}{A dataframe, (defaults to using \code{\link[tbinenglanddataclean]{tb_not_ew}})
@@ -13,7 +14,7 @@ of historic TB notifications}
 
 \item{plot_theme}{The ggplot2 theme to use, defaults to \code{\link[ggplot2]{theme_minimal}}.}
 
-\item{colour_scale}{The colour scale to plot with, defaults to \code{\link[ggplot2]{scale_color_viridis_d}}}
+\item{colour_scale}{The colour scale to plot with, defaults to \code{\link[ggplot2]{scale_colour_viridis_d}}}
 
 \item{return}{A logical indiciting if the plot should be printed or returned (defaults to \code{FALSE})}
 }

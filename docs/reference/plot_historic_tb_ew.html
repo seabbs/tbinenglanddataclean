@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • tbinenglanddataclean</title>
+<title>Plot Historic TB Notifications in England and Wales — plot_historic_tb_ew • tbinenglanddataclean</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
   </head>
 
   <body>
-    <div class="container template-vignette-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -92,21 +92,69 @@
       
       </header>
 
-      <div class="page-header">
-  <h1>Articles <small>version&nbsp;0.0.1.1000</small></h1>
-</div>
-
-<div class="row">
-  <div class="col-md-9">
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <ul>
-        <li><a href="make_data.html">Using package functions and local data to calculate TB incidence rates in England</a></li>
-        <li><a href="pop_changes_life_expect.html">Estimating UK born mortality and emmigration rates</a></li>
-      </ul>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>Plot Historic TB Notifications in England and Wales</h1>
     </div>
+
+    
+    <p>Plot Historic TB Notifications in England and Wales</p>
+    
+
+    <pre class="usage"><span class='fu'>plot_historic_tb_ew</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb_not_ew</span>, <span class='kw'>zoom_date</span> <span class='kw'>=</span> <span class='fl'>1975</span>, <span class='kw'>zoom_nots</span> <span class='kw'>=</span> <span class='fl'>10000</span>,
+  <span class='kw'>plot_theme</span> <span class='kw'>=</span> <span class='no'>theme_minimal</span>, <span class='kw'>colour_scale</span> <span class='kw'>=</span> <span class='no'>scale_color_viridis_d</span>,
+  <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>df</th>
+      <td><p>A dataframe, (defaults to using <code><a href='tb_not_ew.html'>tb_not_ew</a></code>)
+of historic TB notifications</p></td>
+    </tr>
+    <tr>
+      <th>zoom_date</th>
+      <td><p>Numeric, the year to filter notifications from for the second zoomed plot.</p></td>
+    </tr>
+    <tr>
+      <th>zoom_nots</th>
+      <td><p>Numeric, the number of notifications to zoom the y axis on.</p></td>
+    </tr>
+    <tr>
+      <th>plot_theme</th>
+      <td><p>The ggplot2 theme to use, defaults to <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme'>theme_minimal</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>colour_scale</th>
+      <td><p>The colour scale to plot with, defaults to <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_viridis'>scale_colour_viridis_d</a></code></p></td>
+    </tr>
+    <tr>
+      <th>return</th>
+      <td><p>A logical indiciting if the plot should be printed or returned (defaults to <code>FALSE</code>)</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A ggplot2 plot of TB notifications over time, with a secondary zoomed plot from a specified date.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='fu'>plot_historic_tb_ew</span>()</div><div class='output co'>#&gt; <span class='error'>Error in eval(`_inherit`, env, NULL): object 'Facet' not found</span></div><img src='plot_historic_tb_ew-3.png' alt='' width='540' height='400' /></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
   </div>
 </div>
 
