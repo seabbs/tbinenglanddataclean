@@ -3,7 +3,7 @@ FROM rocker/tidyverse:latest
 
 MAINTAINER "Sam Abbott" contact@samabbott.co.uk
 
-## Install required non linux packages
+## Install required linux libs
 RUN apt-get update && \
     apt-get install -y \
     libudunits2-dev \
