@@ -8,3 +8,4 @@
 ^data-raw$
 ^\.travis\.yml$
 ^\.bash_history$
+^Dockerfile$

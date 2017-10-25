@@ -4,17 +4,15 @@
 \alias{plot_historic_tb_ew}
 \title{Plot Historic TB Notifications in England and Wales}
 \usage{
-plot_historic_tb_ew(df = tb_not_ew, zoom_date = 1975, zoom_nots = 10000,
-  plot_theme = theme_minimal, colour_scale = scale_color_viridis_d,
-  return = FALSE)
+plot_historic_tb_ew(df = tb_not_ew, zoom_date = 1975,
+  plot_theme = ggplot2::theme_minimal,
+  colour_scale = ggplot2::scale_colour_viridis_d, return = FALSE)
 }
 \arguments{
 \item{df}{A dataframe, (defaults to using \code{\link[tbinenglanddataclean]{tb_not_ew}})
 of historic TB notifications}
 
 \item{zoom_date}{Numeric, the year to filter notifications from for the second zoomed plot.}
-
-\item{zoom_nots}{Numeric, the number of notifications to zoom the y axis on.}
 
 \item{plot_theme}{The ggplot2 theme to use, defaults to \code{\link[ggplot2]{theme_minimal}}.}
 
@@ -29,6 +27,5 @@ A ggplot2 plot of TB notifications over time, with a secondary zoomed plot from 
 Plot Historic TB Notifications in England and Wales
 }
 \examples{
-
 plot_historic_tb_ew()
 }

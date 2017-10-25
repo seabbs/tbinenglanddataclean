@@ -102,9 +102,9 @@
     <p>Plot Historic TB Notifications in England and Wales</p>
     
 
-    <pre class="usage"><span class='fu'>plot_historic_tb_ew</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb_not_ew</span>, <span class='kw'>zoom_date</span> <span class='kw'>=</span> <span class='fl'>1975</span>, <span class='kw'>zoom_nots</span> <span class='kw'>=</span> <span class='fl'>10000</span>,
-  <span class='kw'>plot_theme</span> <span class='kw'>=</span> <span class='no'>theme_minimal</span>, <span class='kw'>colour_scale</span> <span class='kw'>=</span> <span class='no'>scale_color_viridis_d</span>,
-  <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>plot_historic_tb_ew</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb_not_ew</span>, <span class='kw'>zoom_date</span> <span class='kw'>=</span> <span class='fl'>1975</span>,
+  <span class='kw'>plot_theme</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme'>theme_minimal</a></span>,
+  <span class='kw'>colour_scale</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_viridis'>scale_colour_viridis_d</a></span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -117,10 +117,6 @@ of historic TB notifications</p></td>
     <tr>
       <th>zoom_date</th>
       <td><p>Numeric, the year to filter notifications from for the second zoomed plot.</p></td>
-    </tr>
-    <tr>
-      <th>zoom_nots</th>
-      <td><p>Numeric, the number of notifications to zoom the y axis on.</p></td>
     </tr>
     <tr>
       <th>plot_theme</th>
@@ -142,8 +138,7 @@ of historic TB notifications</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>plot_historic_tb_ew</span>()</div><div class='output co'>#&gt; <span class='error'>Error in eval(`_inherit`, env, NULL): object 'Facet' not found</span></div><img src='plot_historic_tb_ew-3.png' alt='' width='540' height='400' /></pre>
+    <pre class="examples"><div class='input'><span class='fu'>plot_historic_tb_ew</span>()</div><img src='plot_historic_tb_ew-2.png' alt='' width='540' height='400' /></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

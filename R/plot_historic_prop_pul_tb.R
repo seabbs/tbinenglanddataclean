@@ -6,6 +6,7 @@
 #' @return A ggplot2 plot of TB notifications over time, with a secondary zoomed plot from a specified date.
 #' @export
 #' @inheritParams plot_historic_tb_ew
+#' @import magrittr
 #' @import ggplot2
 #' @importFrom dplyr mutate
 #' @importFrom tidyr gather

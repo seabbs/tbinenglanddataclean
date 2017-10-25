@@ -18,12 +18,10 @@ Imports: magrittr,
     readxl,
     ggjoy,
     stringr,
-    tidyverse,
-    ggforce
+    tidyverse
 Suggests: testthat,
     knitr,
-    rmarkdown,
-    tidyverse
+    rmarkdown
 Remotes: seabbs/idmodelr
 Encoding: UTF-8
 LazyData: true
