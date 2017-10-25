@@ -5,11 +5,11 @@
 \title{A Function to Clean and Merge Observed and Projected Births in England}
 \usage{
 
-  clean_and_munge_england_births(birth_path = "~/data/UK_demographics/annual_reference_table.xls",
-  projected_birth_path = "~/data/UK_demographics/england_population_projections.xls",
+  clean_and_munge_england_births(birth_path = "~/data/tb_data/UK_demographics/annual_reference_table.xls",
+  projected_birth_path = "~/data/tb_data/UK_demographics/england_population_projections.xls",
   return = TRUE, save = TRUE, save_name = "england_births",
-  save_path = "~/data/tbinenglanddataclean", save_format = c("rds", "csv"),
-  verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
+  save_path = "~/data/tb_data/tbinenglanddataclean", save_format = c("rds",
+  "csv"), verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
 }
 \arguments{
 \item{birth_path}{The file path to the unformated observed births data, see the description for details.}

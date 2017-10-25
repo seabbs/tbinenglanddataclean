@@ -17,12 +17,12 @@
 #' @importFrom ggjoy geom_joy
 #' @examples
 #'
-clean_and_munge_england_life_expectancy <- function(life_tables_path = "~/data/UK_demographics/england_life_tables.xls",
+clean_and_munge_england_life_expectancy <- function(life_tables_path = "~/data/tb_data/UK_demographics/england_life_tables.xls",
                                                 sheets = paste0(seq(2013,1998, -1), "-", seq(2015,2000, -1)),
                                                 return = TRUE,
                                                 save = TRUE,
                                                 save_name = "england_mortality_rates",
-                                                save_path = "~/data/tbinenglanddataclean",
+                                                save_path = "~/data/tb_data/tbinenglanddataclean",
                                                 save_format = c("rds", "csv"),
                                                 verbose = TRUE,
                                                 interactive = TRUE,

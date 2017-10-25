@@ -4,12 +4,12 @@
 \alias{clean_demographics_uk}
 \title{Clean and Munge UK Demographic Data}
 \usage{
-clean_demographics_uk(data_path = "~/data/UK_demographics",
+clean_demographics_uk(data_path = "~/data/tb_data/UK_demographics",
   demo_2000 = "UK_2000_age.csv", demo_2001_2015 = "UK_2001_2015_age.csv",
   countries = c("E"), return = TRUE, save = TRUE,
-  save_name = "E_demo_2000_2015", save_path = "~/data/tbinenglanddataclean",
-  save_format = "rds", verbose = TRUE, interactive = TRUE,
-  theme_set = theme_minimal)
+  save_name = "E_demo_2000_2015",
+  save_path = "~/data/tb_data/tbinenglanddataclean", save_format = "rds",
+  verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
 }
 \arguments{
 \item{data_path}{A charater string containing the file path to the demographic data.}

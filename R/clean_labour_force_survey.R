@@ -17,7 +17,7 @@
 #' @importFrom idmodelr save_data interactive_plot
 #' @examples
 #'
-clean_labour_force_survey <- function(data_path = "~/data/LFS",
+clean_labour_force_survey <- function(data_path = "~/data/tb_data/LFS",
                           years = 2000:2016,
                           years_var = list( '2000' = c('age', 'sex', 'cry', 'govtof', 'pwt07'),
                                             '2001' = c('age', 'sex', 'cry01', 'country', 'pwt07'),
@@ -39,7 +39,7 @@ clean_labour_force_survey <- function(data_path = "~/data/LFS",
                           return = TRUE,
                           save = TRUE,
                           save_name = "formatted_LFS_2000_2016",
-                          save_path = "~/data/tbinenglanddataclean",
+                          save_path = "~/data/tb_data/tbinenglanddataclean",
                           save_format = "rds",
                           verbose = TRUE,
                           interactive = TRUE,

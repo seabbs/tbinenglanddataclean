@@ -17,14 +17,14 @@
 #'
 #' @examples
 #'
-combine_ons_with_lfs <- function(data_path = "~/data/tbinenglanddataclean",
+combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclean",
                                  ons_name = "E_demo_2000_2015.rds",
                                  lfs_name = "formatted_LFS_2000_2016.rds",
                                  countries = "England",
                                       return = TRUE,
                                       save = TRUE,
                                       save_name = "E_ons_lfs_2000_2016",
-                                      save_path = "~/data/tbinenglanddataclean",
+                                      save_path = "~/data/tb_data/tbinenglanddataclean",
                                       save_format = "rds",
                                       verbose = TRUE,
                                       interactive = TRUE,

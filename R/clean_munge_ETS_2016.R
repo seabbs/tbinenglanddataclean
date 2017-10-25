@@ -30,7 +30,7 @@ clean_munge_ets_2016 <- function(data_path = NULL,
                                  return = TRUE,
                                  save = TRUE,
                                  save_name = "clean_ets_2016",
-                                 save_path = "~/data/tbinenglanddataclean",
+                                 save_path = "~/data/tb_data/tbinenglanddataclean",
                                  save_format = "rds",
                                  verbose = TRUE) {
   if (is.null(data_path)) {

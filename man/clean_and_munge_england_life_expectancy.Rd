@@ -5,11 +5,11 @@
 \title{A Function to Clean and Munge Life Expectancy Estimates from England}
 \usage{
 
-  clean_and_munge_england_life_expectancy(life_tables_path = "~/data/UK_demographics/england_life_tables.xls",
+  clean_and_munge_england_life_expectancy(life_tables_path = "~/data/tb_data/UK_demographics/england_life_tables.xls",
   sheets = paste0(seq(2013, 1998, -1), "-", seq(2015, 2000, -1)),
   return = TRUE, save = TRUE, save_name = "england_mortality_rates",
-  save_path = "~/data/tbinenglanddataclean", save_format = c("rds", "csv"),
-  verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
+  save_path = "~/data/tb_data/tbinenglanddataclean", save_format = c("rds",
+  "csv"), verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
 }
 \arguments{
 \item{life_tables_path}{The file path to the unformated life tables data as a single xls sheet.}

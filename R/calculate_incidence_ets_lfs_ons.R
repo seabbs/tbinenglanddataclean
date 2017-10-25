@@ -20,7 +20,7 @@
 #' @importFrom tidyr gather spread
 #' @examples
 #'
-calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tbinenglanddataclean",
+calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tb_data/tbinenglanddataclean",
                                  ets_name = "clean_ets_2016.rds",
                                  demo_name = "E_ons_lfs_2000_2016.rds",
                                  return = TRUE,
@@ -29,7 +29,7 @@ calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tbinenglanddatac
                                  grouped_incidence_name = "age_grouped_incidence",
                                  condensed_grouped_incidence_name = "condensed_age_group_incidence",
                                  cases_demo_incidence_name = "cases_demo_incidence",
-                                 save_path = "~/data/tbinenglanddataclean",
+                                 save_path = "~/data/tb_data/tbinenglanddataclean",
                                  save_format = "rds",
                                  verbose = TRUE,
                                  interactive = TRUE,

@@ -4,22 +4,23 @@
 \alias{clean_labour_force_survey}
 \title{Load and Clean Labour Force Survey Data}
 \usage{
-clean_labour_force_survey(data_path = "~/data/LFS", years = 2000:2016,
-  years_var = list(`2000` = c("age", "sex", "cry", "govtof", "pwt07"), `2001`
-  = c("age", "sex", "cry01", "country", "pwt07"), `2002` = c("AGE", "SEX",
-  "CRY01", "COUNTRY", "PWT14"), `2003` = c("AGE", "SEX", "CRY01", "COUNTRY",
-  "PWT14"), `2004` = c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2005` =
-  c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2006` = c("AGE", "SEX",
-  "CRY01", "COUNTRY", "PWT14"), `2007` = c("AGE", "SEX", "CRY01", "COUNTRY",
-  "PWT14"), `2008` = c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2009` =
-  c("AGE",      "SEX", "CRY01", "COUNTRY", "PWT14"), `2010` = c("AGE", "SEX",
-  "CRY01", "COUNTRY", "PWT14"), `2011` = c("AGE", "SEX", "CRY01", "COUNTRY",
-  "PWT14"), `2012` = c("AGE", "SEX", "CRY12", "COUNTRY", "PWT14"), `2013` =
-  c("AGE", "SEX", "CRY12", "COUNTRY", "PWT16"), `2014` = c("AGE", "SEX",
-  "CRY12", "COUNTRY", "PWT16"), `2015` = c("AGE", "SEX", "CRY12", "COUNTRY",
-  "PWT16"), `2016` = c("AGE", "SEX", "CRY12", "COUNTRY", "PWT16")),
-  return = TRUE, save = TRUE, save_name = "formatted_LFS_2000_2016",
-  save_path = "~/data/tbinenglanddataclean", save_format = "rds",
+clean_labour_force_survey(data_path = "~/data/tb_data/LFS",
+  years = 2000:2016, years_var = list(`2000` = c("age", "sex", "cry",
+  "govtof", "pwt07"), `2001` = c("age", "sex", "cry01", "country", "pwt07"),
+  `2002` = c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2003` = c("AGE",
+  "SEX", "CRY01", "COUNTRY", "PWT14"), `2004` = c("AGE", "SEX", "CRY01",
+  "COUNTRY", "PWT14"), `2005` = c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"),
+  `2006` = c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2007` = c("AGE",
+  "SEX", "CRY01", "COUNTRY", "PWT14"), `2008` = c("AGE", "SEX", "CRY01",
+  "COUNTRY", "PWT14"), `2009` = c("AGE",      "SEX", "CRY01", "COUNTRY",
+  "PWT14"), `2010` = c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2011` =
+  c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2012` = c("AGE", "SEX",
+  "CRY12", "COUNTRY", "PWT14"), `2013` = c("AGE", "SEX", "CRY12", "COUNTRY",
+  "PWT16"), `2014` = c("AGE", "SEX", "CRY12", "COUNTRY", "PWT16"), `2015` =
+  c("AGE", "SEX", "CRY12", "COUNTRY", "PWT16"), `2016` = c("AGE", "SEX",
+  "CRY12", "COUNTRY", "PWT16")), return = TRUE, save = TRUE,
+  save_name = "formatted_LFS_2000_2016",
+  save_path = "~/data/tb_data/tbinenglanddataclean", save_format = "rds",
   verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
 }
 \arguments{
