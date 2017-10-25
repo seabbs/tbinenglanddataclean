@@ -3,10 +3,16 @@ FROM rocker/tidyverse:latest
 
 MAINTAINER "Sam Abbott" contact@samabbott.co.uk
 
-RUN installGithub.r hadley/pkgdown \
-&& rm -rf /tmp/downloaded_packages/
+## Install required non linux packages
+RUN apt-get update && \
+    apt-get install -y \
+    libudunits2-dev \
+    libv8-3.14-dev \
+    libgdal-dev \
+    && apt-get clean
 
 ADD . /home/seabbs
 
 RUN Rscript -e 'devtools::install_dev_deps("/home/seabbs")'
 
+RUN Rscript -e 'devtools::install_github("hadley/pkgdown")'

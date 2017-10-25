@@ -17,7 +17,8 @@ Imports: magrittr,
     readxl,
     ggjoy,
     stringr,
-    tidyverse
+    tidyverse,
+    ggforce
 Suggests: testthat,
     knitr,
     rmarkdown,

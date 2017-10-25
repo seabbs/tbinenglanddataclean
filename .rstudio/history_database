@@ -1,0 +1,21 @@
+1508926264688:install.packages("ggforce)")
+1508926267388:install.packages("ggforce")
+1508926304783:install.packages("ggforce", dependencies = TRUE)
+1508926330785:devtools::install_github('thomasp85/ggforce')
+1508926429604:install.packages("units")
+1508926846920:install.packages("concaveman")
+1508926893889:install.packages("concaveman")
+1508926929440:install.packages("sf")
+1508927247247:install.packages("sf")
+1508927314095:install.packages("ggforce)")
+1508927316874:install.packages("ggforce")
+1508927342975:devtools::use_package("ggforce")
+1508927488609:tb_not_ew
+1508927560515:library(tbinenglanddataclean)
+1508927600982:tb_not_ew
+1508927879587:library(tbinenglanddataclean)
+1508927913914:pkgdown::build_site()
+1508927931845:?pkgdown
+1508927942038:library(pkgdown)
+1508927986951:devtools::install_github("hadley/pkgdown")
+1508928040939:pkgdown:::build_site_rstudio()

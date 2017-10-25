@@ -1,0 +1,34 @@
+{
+    "clipr::clipr_output" : {
+        "binding" : "clipr_output",
+        "description" : "Copies the console output of a selected expression to the system clipboard",
+        "interactive" : false,
+        "name" : "Output to clipboard",
+        "package" : "clipr",
+        "title" : ""
+    },
+    "clipr::clipr_result" : {
+        "binding" : "clipr_result",
+        "description" : "Copies the results of a selected expression to the system clipboard",
+        "interactive" : false,
+        "name" : "Value to clipboard",
+        "package" : "clipr",
+        "title" : ""
+    },
+    "pkgdown::build_site_rstudio" : {
+        "binding" : "build_site_rstudio",
+        "description" : "Runs pkgdown on the current package",
+        "interactive" : true,
+        "name" : "Build pkgdown",
+        "package" : "pkgdown",
+        "title" : ""
+    },
+    "testit::insert_identical" : {
+        "binding" : "insert_identical",
+        "description" : "Insert the infix operator %==% from testit.",
+        "interactive" : false,
+        "name" : "Insert %==%",
+        "package" : "testit",
+        "title" : ""
+    }
+}

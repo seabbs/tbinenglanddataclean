@@ -55,3 +55,9 @@ To run a plain bash session:
 ``` bash
 docker run --rm -it --user seabbs tbinenglanddataclean /bin/bash
 ```
+
+To connect as root:
+
+``` bash
+docker exec -ti -u root tbinenglanddataclean bash
+```

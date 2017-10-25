@@ -29,7 +29,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="/index.html">
+  <a href="index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -76,7 +76,6 @@
     
     
 <div class="contents">
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 <div id="tbinenglanddataclean" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#tbinenglanddataclean" class="anchor"></a>tbinenglanddataclean</h1></div>
@@ -97,6 +96,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <li>An extract of from the <a href="https://www.gov.uk/government/publications/tuberculosis-tb-in-england-surveillance-data">Enhanced Tuberculosis Surveillance System</a>. Access to this data requires an application to Public Health England.</li>
 <li>Demographic data from 2000, and from 2001 to 2015 from the <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland">Office of National Statistics</a> (ONS) this data can be downloaded freely.</li>
 <li>Data on births in the UK both observed and projected from the ONS, available <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/vitalstatisticspopulationandhealthreferencetables">here</a> and <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/vitalstatisticspopulationandhealthreferencetables">here</a>.</li>
+<li>Data on age specific mortality rates from the ONS, available <a href="%22https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/lifeexpectancies/datasets/nationallifetablesenglandreferencetables%22">here</a>.</li>
 <li>Survey information from the Labour Force Survey, as yearly extracts from 2000-2016 for the <a href="https://discover.ukdataservice.ac.uk/catalogue/?sn=5461">April to June survey</a>. Only registered users can download this data. Registration is possible for those at UK institutions. Other access arrangements can be made at request.</li>
 </ol>
 </div>
@@ -105,6 +105,19 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <a href="#cleaning-and-building-the-datasets" class="anchor"></a>Cleaning and building the datasets</h2>
 <p>The included vignette contains the code necessary to build all datasets associated with this package. Each function needs to be pointed at the correct raw data. If the default file names/locations are changed then this will also require updating. Contact <a href="https://www.samabbott.co.uk">me</a> if you have any problems.</p>
 <p>Other vignettes explore approaches for estimating demographic parameters from the clean and munged datasets.</p>
+<div id="docker" class="section level3">
+<h3 class="hasAnchor">
+<a href="#docker" class="anchor"></a>Docker</h3>
+<p>This packge was developed in a docker container based on the <a href="https://hub.docker.com/r/rocker/tidyverse/">tidyverse</a> docker image. To run the docker image run:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run -d -p 8787:8787 --name tbinenglanddataclean -e USER=seabbs -e PASSWORD=seabbs seabbs/tbinenglanddataclean</code></pre></div>
+<p>The rstudio client can be found on port <code>:8787</code> at your local machines ip. The default username:password is seabbs:seabbs, set the user with <code>-e USER=username</code>, and the password with <code>- e PASSWORD=newpasswordhere</code>. The default is to save the analysis files into the user directory.</p>
+<p>To run a plain R terminal use:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run --rm -it --user seabbs tbinenglanddataclean /usr/bin/R</code></pre></div>
+<p>To run a plain bash session:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run --rm -it --user seabbs tbinenglanddataclean /bin/bash</code></pre></div>
+<p>To connect as root:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> exec -ti -u root tbinenglanddataclean bash</code></pre></div>
+</div>
 </div>
 </div>
 </div>

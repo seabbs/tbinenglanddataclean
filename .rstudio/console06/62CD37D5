@@ -1,0 +1,44 @@
+]0;/home/seabbsseabbs@75b85f29ee34:~$ [Kseabbs@75b85f29ee34:~$ git pull [K
+remote: Counting objects: 8, done.[K
+remote: Compressing objects:  20% (1/5)   [Kremote: Compressing objects:  40% (2/5)   [Kremote: Compressing objects:  60% (3/5)   [Kremote: Compressing objects:  80% (4/5)   [Kremote: Compressing objects: 100% (5/5)   [Kremote: Compressing objects: 100% (5/5), done.[K
+remote: Total 8 (delta 2), reused 8 (delta 2), pack-reused 0[K
+Unpacking objects:  12% (1/8)   Unpacking objects:  25% (2/8)   Unpacking objects:  37% (3/8)   Unpacking objects:  50% (4/8)   Unpacking objects:  62% (5/8)   Unpacking objects:  75% (6/8)   Unpacking objects:  87% (7/8)   Unpacking objects: 100% (8/8)   Unpacking objects: 100% (8/8), done.
+From https://github.com/seabbs/tbinenglanddataclean
+   e1c615b..fac9f64  master     -> origin/master
+Updating e1c615b..fac9f64
+Fast-forward
+ DESCRIPTION            |   3 [32m+[m[31m-[m
+ data-raw/Untitled.R    |  77 [31m----------------------------------------------[m
+ data-raw/tb_not_ew.R   |  73 [32m++++++++++++++++++++++++++++++++++++++++++++[m
+ data-raw/tb_not_ew.csv | 103 [32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ data/tb_not_ew.rda     | Bin [31m0[m -> [32m1426[m bytes
+ 5 files changed, 178 insertions(+), 78 deletions(-)
+ delete mode 100644 data-raw/Untitled.R
+ create mode 100644 data-raw/tb_not_ew.R
+ create mode 100644 data-raw/tb_not_ew.csv
+ create mode 100644 data/tb_not_ew.rda
+]0;/home/seabbsseabbs@75b85f29ee34:~$ [Kseabbs@75b85f29ee34:~$ [Kseabbs@75b85f29ee34:~$ ddevtoo[K[K[K[K[K[Kevtools [K::use_package[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kiinstall[K[K[K[K[K[K[Knstall.packages [K("f[Kggforce [K" [K) [K
+bash: syntax error near unexpected token `"ggforce"'
+]0;/home/seabbsseabbs@75b85f29ee34:~$ insrl[K[K[Kta[K[Ksta[K[Kseabbs@75b85f29ee34:~$ inst[K[K[K[Kapt-get update && \
+>     apt-get install -y \
+>     libudunits2-dev \
+>     && apt-get clean
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 1%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 99%Reading package lists... 99%Reading package lists... Done
+W: chmod 0700 of directory /var/lib/apt/lists/partial failed - SetupAPTPartialDirectory (1: Operation not permitted)
+E: Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)
+E: Unable to lock directory /var/lib/apt/lists/
+]0;/home/seabbsseabbs@75b85f29ee34:~$ sud [Ko apt-get update && \
+>     apt-get install -y \
+>     libudunits2-dev \
+>     && apt-get clean
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+[sudo] password for seabbs: 
+seabbs is not in the sudoers file.  This incident will be reported.
+]0;/home/seabbsseabbs@75b85f29ee34:~$ 
