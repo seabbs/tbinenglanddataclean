@@ -39,10 +39,10 @@ Other vignettes explore approaches for estimating demographic parameters from th
 This packge was developed in a docker container based on the [tidyverse](https://hub.docker.com/r/rocker/tidyverse/) docker image. To run the docker image run:
 
 ``` bash
-docker run -d -p 8787:8787 --name tbinenglanddataclean -e USER=seabbs -e PASSWORD=seabbs seabbs/tbinenglanddataclean
+docker run -d -p 8787:8787 --name tbinenglanddataclean --mount type=bind,source=$(pwd)/data,target=/home/seabbs/data -e USER=seabbs -e PASSWORD=seabbs seabbs/tbinenglanddataclean
 ```
 
-The rstudio client can be found on port `:8787` at your local machines ip. The default username:password is seabbs:seabbs, set the user with `-e USER=username`, and the password with `- e PASSWORD=newpasswordhere`. The default is to save the analysis files into the user directory.
+The rstudio client can be found on port `:8787` at your local machines ip. The default username:password is seabbs:seabbs, set the user with `-e USER=username`, and the password with `- e PASSWORD=newpasswordhere`. The default is to save the analysis files into the user directory. If running without the accomanying data then remove `--mount type=bind,source=$(pwd)/data,target=/home/seabbs/data`.
 
 To run a plain R terminal use:
 
