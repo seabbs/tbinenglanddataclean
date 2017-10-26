@@ -68,5 +68,5 @@ tb_interventions_timeline <- data_frame(year = c(1921, 1944, 1944, 1952, 1952, 1
 devtools::use_data(tb_interventions_timeline, overwrite = TRUE)
 
 #' Add as raw csv
-write_csv(tb_interventions_timeline, "./data-raw/tb_intervetions_uk.csv")
+write_csv(tb_interventions_timeline, "./data-raw/tb_intervetions_timeline.csv")
 

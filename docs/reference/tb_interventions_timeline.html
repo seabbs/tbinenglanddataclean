@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Utility Function that Controls if a Plot is Returned/Printed and if it
-is Interactive. — interactive_plot • tbinenglanddataclean</title>
+<title>Tuberculosis Interventions Timeline — tb_interventions_timeline • tbinenglanddataclean</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -53,7 +52,7 @@ is Interactive. — interactive_plot • tbinenglanddataclean</title>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -70,6 +69,9 @@ is Interactive. — interactive_plot • tbinenglanddataclean</title>
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/make_data.html">Using package functions and local data to calculate TB incidence rates in England</a>
+    </li>
+    <li>
+      <a href="../articles/pop_changes_life_expect.html">Estimating UK born mortality and emmigration rates</a>
     </li>
   </ul>
 </li>
@@ -93,58 +95,34 @@ is Interactive. — interactive_plot • tbinenglanddataclean</title>
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A Utility Function that Controls if a Plot is Returned/Printed and if it
-is Interactive.</h1>
+    <h1>Tuberculosis Interventions Timeline</h1>
     </div>
 
     
-    <p>A Utility Function that Controls if a Plot is Returned/Printed and if it
-is Interactive.</p>
+    <p>A dataset containing a time of Tuberculosis interventions. Aggregated from multiple sources
+but based in part <a href='https://en.wikipedia.org/wiki/Timeline_of_tuberculosis'>this timeline</a>.</p>
     
 
-    <pre class="usage"><span class='fu'>interactive_plot</span>(<span class='no'>plot</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>plot</th>
-      <td><p>A ggplot object</p></td>
-    </tr>
-    <tr>
-      <th>interactive</th>
-      <td><p>A logicial indicating whether a interactive plot should be returned.
-Defaults to <code>TRUE</code></p></td>
-    </tr>
-    <tr>
-      <th>print</th>
-      <td><p>A logical (defaults to <code>TRUE</code>) indicating if the plot should be printed.</p></td>
-    </tr>
-    <tr>
-      <th>return</th>
-      <td><p>A logical (defaults to <code>FALSE</code>) indicating if the plot should be returned.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <pre class="usage"><span class='no'>tb_interventions_timeline</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A ggplot or ggplotly object.</p>
+    <p>A data frame with 11 rows and 5 variables.</p><dl class='dl-horizontal'>
+<dt>year</dt><dd><p>Calendar year</p></dd>
+<dt>intervention</dt><dd><p>The name of the intervention</p></dd>
+<dt>type</dt><dd><p>Type of intervetion, such as antibitoic, vaccine or strategy</p></dd>
+<dt>line</dt><dd><p>For antibiotics the order of precedance in which it is used</p></dd>
+<dt>detail</dt><dd><p>Detail on the interventio</p></dd>
+</dl>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#format">Format</a></li>
+          </ul>
 
   </div>
 </div>

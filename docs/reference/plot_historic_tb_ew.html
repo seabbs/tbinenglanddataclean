@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -102,9 +102,9 @@
     <p>Plot Historic TB Notifications in England and Wales</p>
     
 
-    <pre class="usage"><span class='fu'>plot_historic_tb_ew</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb_not_ew</span>, <span class='kw'>zoom_date</span> <span class='kw'>=</span> <span class='fl'>1975</span>,
-  <span class='kw'>plot_theme</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme'>theme_minimal</a></span>,
-  <span class='kw'>colour_scale</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_viridis'>scale_colour_viridis_d</a></span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>plot_historic_tb_ew</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='no'>tb_not_ew</span>,
+  <span class='kw'>df_interventions</span> <span class='kw'>=</span> <span class='no'>tb_interventions_timeline</span>, <span class='kw'>zoom_date</span> <span class='kw'>=</span> <span class='fl'>1982</span>,
+  <span class='kw'>plot_theme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>colour_scale</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -113,6 +113,11 @@
       <th>df</th>
       <td><p>A dataframe, (defaults to using <code><a href='tb_not_ew.html'>tb_not_ew</a></code>)
 of historic TB notifications</p></td>
+    </tr>
+    <tr>
+      <th>df_interventions</th>
+      <td><p>A dataframe, (defaults to using <code><a href='tb_interventions_timeline.html'>tb_interventions_timeline</a></code>)
+of TB interventions, focussing on there history in the UK. If passed as <code>NULL</code> no interventions will be plotted.</p></td>
     </tr>
     <tr>
       <th>zoom_date</th>
@@ -138,7 +143,7 @@ of historic TB notifications</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>plot_historic_tb_ew</span>()</div><img src='plot_historic_tb_ew-2.png' alt='' width='540' height='400' /></pre>
+    <pre class="examples"><div class='input'><span class='fu'>plot_historic_tb_ew</span>()</div><div class='img'><img src='plot_historic_tb_ew-2.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

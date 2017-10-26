@@ -2,6 +2,8 @@
 #'
 #' @param df A dataframe, (defaults to using \code{\link[tbinenglanddataclean]{tb_not_ew}})
 #' of historic TB notifications
+#' @param df_interventions A dataframe, (defaults to using \code{\link[tbinenglanddataclean]{tb_interventions_timeline}})
+#' of TB interventions, focussing on there history in the UK. If passed as \code{NULL} no interventions will be plotted.
 #' @param zoom_date Numeric, the year to filter notifications from for the second zoomed plot.
 #' @param plot_theme The ggplot2 theme to use, defaults to \code{\link[ggplot2]{theme_minimal}}.
 #' @param colour_scale The colour scale to plot with, defaults to \code{\link[ggplot2]{scale_colour_viridis_d}}
@@ -10,15 +12,24 @@
 #' @export
 #' @import ggplot2
 #' @import magrittr
-#' @importFrom dplyr mutate bind_rows
+#' @importFrom dplyr mutate bind_rows data_frame full_join rename
 #' @importFrom tidyr gather
+#' @improtFrom scales extended_breaks
 #' @examples
 #' plot_historic_tb_ew()
 plot_historic_tb_ew <- function(df = tb_not_ew,
-                                zoom_date = 1975,
+                                df_interventions = tb_interventions_timeline,
+                                zoom_date = 1982,
                                 plot_theme = NULL,
                                 colour_scale = NULL,
                                 return = FALSE) {
+  
+  if (!is.null(df_interventions)) {
+   df <- df %>% 
+     full_join(df_interventions, by = "year") %>% 
+     rename(`Intervention type` = type)
+  }
+  
   if (!is.null(zoom_date)) {
     df_zoom <- df %>%
       filter(year >= zoom_date) %>%
@@ -39,21 +50,73 @@ plot_historic_tb_ew <- function(df = tb_not_ew,
     plot_theme <- ggplot2::theme_minimal
   }
   
-  p <- df %>%
-    mutate(Pulmonary = pulmonary,
-           `Extra-Pulmonary` = extra_pulmonary,
+  df_plot <- df %>%
+    rename(Respiratory = respiratory,
+           `Non-respiratory` = non_respiratory,
+           Pulmonary = pulmonary,
+           `Extra-pulmonary` = extra_pulmonary,
            Year = year) %>%
-    gather(key = "TB Type", value = "Notifications", Pulmonary, `Extra-Pulmonary`) %>%
-    ggplot(aes(x = Year, y = Notifications, col = `TB Type`)) +
-    geom_point() +
-    geom_line() +
+    gather(key = "TB type", value = "Notifications", 
+           Respiratory,`Non-respiratory`, Pulmonary, `Extra-pulmonary`) %>% 
+    mutate(`TB type` = factor(`TB type`,
+                                  levels = c("Respiratory",
+                                             "Non-respiratory",
+                                             "Pulmonary",
+                                             "Extra-pulmonary"))
+           )
+  
+  if (!is.null(df_interventions)) {
+    df_interventions_plot <- df_plot %>% 
+      select(Year, `Intervention type`, zoom) %>% 
+      na.omit
+    
+    df_plot <- df_plot %>% 
+      select(-`Intervention type`, -intervention, -detail, -line) %>% 
+      na.omit
+  }
+
+  
+  if (!is.null(zoom_date)) {
+    max_not_facet <- df_plot %>% 
+    group_by(zoom) %>% 
+      summarise(Notifications = max(Notifications, na.rm = TRUE))
+    
+    zoom_dim <- data_frame(y_min = 0, x_min = zoom_date - 0.5, 
+                           y_max = pull(max_not_facet, Notifications),
+                           x_max = max(df_plot$Year) + 0.5, 
+                           zoom = pull(max_not_facet, zoom))
+  }
+
+  p <- df_plot %>%
+    ggplot(aes(x = Year, y = Notifications))
+  
+  if (!is.null(zoom_date)) {
+    p <- p + geom_rect(data = zoom_dim, aes(y = NULL, x = NULL, ymax = y_max, xmax = x_max, ymin = y_min, xmin = x_min), alpha = 0.05, fill = "blue")
+  }
+  if (!is.null(df_interventions)) {
+    p <- p + 
+      geom_vline(data = df_interventions_plot,
+                 aes(xintercept = Year, linetype = `Intervention type`), alpha = 0.6)
+  }
+  
+  p <- p +
+    geom_line(aes(col = `TB type`), size = 1.2) +
     plot_theme() +
     colour_scale() +
-    theme(legend.position = "bottom")
+    scale_x_continuous(breaks = scales::extended_breaks(n = 10)) +
+    theme(legend.position = "bottom", 
+          legend.justification = "center",
+          legend.box = "horizontal") +
+    guides(col = guide_legend(nrow = 2)) 
 
   if (!is.null(zoom_date)) {
     p <- p + facet_wrap(~zoom, scales = "free", ncol = 1)
   }
+  
+  if (!is.null(df_interventions)) {
+    p <- p + guides(linetype = guide_legend(nrow = 2))
+  }
+  
   if (return) {
     return(p)
   }else{

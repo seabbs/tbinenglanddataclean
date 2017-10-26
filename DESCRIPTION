@@ -17,7 +17,8 @@ Imports: magrittr,
     idmodelr,
     readxl,
     ggjoy,
-    stringr
+    stringr,
+    scales
 Suggests: testthat,
     knitr,
     rmarkdown,

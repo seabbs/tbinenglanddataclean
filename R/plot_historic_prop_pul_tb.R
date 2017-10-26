@@ -8,7 +8,7 @@
 #' @inheritParams plot_historic_tb_ew
 #' @import magrittr
 #' @import ggplot2
-#' @importFrom dplyr mutate
+#' @importFrom dplyr mutate group_by
 #' @importFrom tidyr gather
 #' @examples
 #'
@@ -18,12 +18,16 @@ plot_historic_prop_pul_tb <- function(df = tb_not_ew,
                                 colour_scale = ggplot2::scale_fill_viridis_d,
                                 return = FALSE) {
   p <- df %>%
-    mutate(Pulmonary = pulmonary,
+    mutate(Respiratory = respiratory,
+           `Non-respiratory` = non_respiratory,
+           Pulmonary = pulmonary,
            `Extra-Pulmonary` = extra_pulmonary,
            Year = year) %>%
-    gather(key = "TB Type", value = "Notifications", Pulmonary, `Extra-Pulmonary`) %>%
+    gather(key = "TB type", value = "Notifications", Respiratory,`Non-respiratory`, Pulmonary, `Extra-Pulmonary`) %>%
+    group_by(year) %>% 
+    mutate(total = sum(Notifications, na.rm = TRUE)) %>% 
     mutate(Proportion = Notifications/total) %>%
-    ggplot(aes(x = Year, y = Proportion, fill = `TB Type`)) +
+    ggplot(aes(x = Year, y = Proportion, fill = `TB type`)) +
     geom_bar(stat = "identity") +
     plot_theme() +
     theme(legend.position = "bottom") +

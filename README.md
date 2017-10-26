@@ -22,10 +22,11 @@ Raw data
 This package relies on raw data from several sources, these are;
 
 1.  An extract of from the [Enhanced Tuberculosis Surveillance System](https://www.gov.uk/government/publications/tuberculosis-tb-in-england-surveillance-data). Access to this data requires an application to Public Health England.
-2.  Demographic data from 2000, and from 2001 to 2015 from the [Office of National Statistics](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland) (ONS) this data can be downloaded freely.
-3.  Data on births in the UK both observed and projected from the ONS, available [here](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/vitalstatisticspopulationandhealthreferencetables) and [here](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/vitalstatisticspopulationandhealthreferencetables).
-4.  Data on age specific mortality rates from the ONS, available [here](%22https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/lifeexpectancies/datasets/nationallifetablesenglandreferencetables%22).
-5.  Survey information from the Labour Force Survey, as yearly extracts from 2000-2016 for the [April to June survey](https://discover.ukdataservice.ac.uk/catalogue/?sn=5461). Only registered users can download this data. Registration is possible for those at UK institutions. Other access arrangements can be made at request.
+2.  Data on historic TB notifications from [Public Health England](https://www.gov.uk/government/publications/tuberculosis-tb-annual-notifications-1913-onwards).
+3.  Demographic data from 2000, and from 2001 to 2015 from the [Office of National Statistics](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland) (ONS) this data can be downloaded freely.
+4.  Data on births in the UK both observed and projected from the ONS, available [here](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/vitalstatisticspopulationandhealthreferencetables) and [here](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/vitalstatisticspopulationandhealthreferencetables).
+5.  Data on age specific mortality rates from the ONS, available [here](%22https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/lifeexpectancies/datasets/nationallifetablesenglandreferencetables%22).
+6.  Survey information from the Labour Force Survey, as yearly extracts from 2000-2016 for the [April to June survey](https://discover.ukdataservice.ac.uk/catalogue/?sn=5461). Only registered users can download this data. Registration is possible for those at UK institutions. Other access arrangements can be made at request.
 
 Cleaning and building the datasets
 ----------------------------------
