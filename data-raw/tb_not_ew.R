@@ -64,7 +64,7 @@ tb_not_ew %>%
   theme_minimal()
 
 
-#' Add demographics to the package
+#' Add to package
 devtools::use_data(tb_not_ew, overwrite = TRUE)
 
 #' Add as raw csv

@@ -8,3 +8,5 @@ ADD . /home/seabbs
 RUN Rscript -e 'devtools::install_dev_deps("/home/seabbs")'
 
 RUN Rscript -e 'devtools::install_github("hadley/pkgdown")'
+
+RUN Rscript -e 'devtools::install_github("tidyverse/ggplot2")'

@@ -16,8 +16,8 @@
 #' plot_historic_tb_ew()
 plot_historic_tb_ew <- function(df = tb_not_ew,
                                 zoom_date = 1975,
-                                plot_theme = ggplot2::theme_minimal,
-                                colour_scale = ggplot2::scale_colour_viridis_d,
+                                plot_theme = NULL,
+                                colour_scale = NULL,
                                 return = FALSE) {
   if (!is.null(zoom_date)) {
     df_zoom <- df %>%
@@ -30,6 +30,15 @@ plot_historic_tb_ew <- function(df = tb_not_ew,
       bind_rows(df_zoom) %>%
       mutate(zoom = factor(zoom, levels = c(" ", "")))
   }
+  
+  if (is.null(colour_scale)) {
+    colour_scale <- ggplot2::scale_colour_viridis_d
+  }
+  
+  if (is.null(plot_theme)) {
+    plot_theme <- ggplot2::theme_minimal
+  }
+  
   p <- df %>%
     mutate(Pulmonary = pulmonary,
            `Extra-Pulmonary` = extra_pulmonary,
