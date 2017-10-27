@@ -1,12 +1,13 @@
 ## Key datas for UK TB vaccines, treatments etc
 library(tidyverse)
 
-tb_interventions_timeline <- data_frame(year = c(1921, 1944, 1944, 1952, 1952, 1953, 1962, 1971, 1995, 2005, 2012),
+tb_interventions_timeline <- data_frame(year = c(1921, 1944, 1944, 1952, 1952, 1952, 1953, 1962, 1971, 1995, 2005, 2012),
                                   intervention = c("BCG",
                                                    "Streptomycin",
                                                    "4-Aminosalicylic acid",
                                                    "Isoniazid",
                                                    "Cycloserine",
+                                                   "Pyrazinamide",
                                                    "School age BCG",
                                                    "Ethambutol",
                                                    "Rifampicin",
@@ -15,6 +16,7 @@ tb_interventions_timeline <- data_frame(year = c(1921, 1944, 1944, 1952, 1952, 1
                                                    "Bedaquiline"),
                                   type = c("Vaccination",
                                            "Antibiotic", 
+                                           "Antibiotic",
                                            "Antibiotic",
                                            "Antibiotic",
                                            "Antibiotic",
@@ -29,6 +31,7 @@ tb_interventions_timeline <- data_frame(year = c(1921, 1944, 1944, 1952, 1952, 1
                                            "Second",
                                            "First",
                                            "Second",
+                                           "First",
                                            "",
                                            "First",
                                            "First",
@@ -45,6 +48,8 @@ tb_interventions_timeline <- data_frame(year = c(1921, 1944, 1944, 1952, 1952, 1
                                              prophylatic therapy.",
                                              "An antibiotic with severe side effects such as kidney failure and neurological conditions, which is therefore restricted for use against multiple
                                              drug resistant Tuberculosis.",
+                                             "First discovered in 1936, it was first used against TB in 1952. Although showing no effect in-vitro it was shown to be effective in treating TB in mice.
+                                             Used only for treating TB and never on it's own.",
                                              "After a successful trial, which showed high effectiveness
                                              for the vaccine, BCG was introduced in the UK for those at school leaving age
                                              as peak incidence was then in young, working-adults.",
