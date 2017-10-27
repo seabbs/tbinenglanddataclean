@@ -3,7 +3,7 @@ FROM rocker/tidyverse:latest
 
 MAINTAINER "Sam Abbott" contact@samabbott.co.uk
 
-ADD . /home/seabbs
+ADD . /home/seabbs/tbinenglanddataclean
 
 RUN Rscript -e 'devtools::install_dev_deps("/home/seabbs")'
 
