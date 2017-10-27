@@ -1,5 +1,5 @@
 year,intervention,type,line,detail
-1921,BCG,Vaccination,,"The first use of the Bacillus Calmette–Guérin (BCG) vaccine in humans, it remains the only vaccine against Tuberculosis (tb). 
+1921,BCG,Vaccination,,"The first use of the Bacillus Calmette–Guérin (BCG) vaccine in humans, it remains the only vaccine against Tuberculosis (TB). 
                                               Efficacy has been shown to vary depending on latitude (0-80%) and there is only strong evidence of protection for 
                                              10-15 years after vaccination."
 1944,Streptomycin,Antibiotic,Second,The first antibiotic and the first bacterial agent against TB.
@@ -10,7 +10,7 @@ year,intervention,type,line,detail
 1952,Cycloserine,Antibiotic,Second,"An antibiotic with severe side effects such as kidney failure and neurological conditions, which is therefore restricted for use against multiple
                                              drug resistant Tuberculosis."
 1953,School age BCG,Vaccination,,"After a successful trial, which showed high effectiveness
-                                             for the vaccine, BCG was introduced for those at school leaving age
+                                             for the vaccine, BCG was introduced in the UK for those at school leaving age
                                              as peak incidence was then in young, working-adults."
 1962,Ethambutol,Antibiotic,First,"Believed to work by interfering with TB bacteria's metabolism. There are some concerns that it may not be safe to give during pregancy,
                                              as it may lead to vision loss in the baby."
@@ -21,5 +21,5 @@ year,intervention,type,line,detail
 2005,Neonatal high risk BCG,Vaccination,,"Due to a continued decline in TB incidence rates in the indigenous UK population, the BCG 
                                              programme was refocused as risk-based. This meant vaccinating high risk neonates rather than those 
                                              most likely to transmit TB."
-2012,Bedaquiline,Antibiotic,Second,"The first new antiobiotic for use against TB in 40 years, reserved for use against multiple drug resistant TB. Approved via a fast track process there
-                                             is still significant concern due to higher mortality in those that recieve the antibiotic."
+2012,Bedaquiline,Antibiotic,Second,"The first new antiobiotic for use against TB in 40 years, reserved for use against multiple drug resistant TB. Approved via a fast track process, higher mortality in those that recieve the antibiotic has caused
+                                             significant concern."
