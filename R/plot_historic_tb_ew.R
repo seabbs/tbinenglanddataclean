@@ -14,7 +14,7 @@
 #' @import magrittr
 #' @importFrom dplyr mutate bind_rows data_frame full_join rename
 #' @importFrom tidyr gather
-#' @improtFrom scales extended_breaks
+#' @importFrom scales extended_breaks
 #' @examples
 #' plot_historic_tb_ew()
 plot_historic_tb_ew <- function(df = tb_not_ew,
@@ -43,11 +43,11 @@ plot_historic_tb_ew <- function(df = tb_not_ew,
   }
   
   if (is.null(colour_scale)) {
-    colour_scale <- ggplot2::scale_colour_viridis_d
+    colour_scale <- ggplot2::scale_colour_viridis_d()
   }
   
   if (is.null(plot_theme)) {
-    plot_theme <- ggplot2::theme_minimal
+    plot_theme <- ggplot2::theme_minimal()
   }
   
   df_plot <- df %>%
@@ -101,8 +101,8 @@ plot_historic_tb_ew <- function(df = tb_not_ew,
   
   p <- p +
     geom_line(aes(col = `TB type`), size = 1.2) +
-    plot_theme() +
-    colour_scale() +
+    plot_theme +
+    colour_scale +
     scale_x_continuous(breaks = scales::extended_breaks(n = 10)) +
     theme(legend.position = "bottom", 
           legend.justification = "center",
