@@ -5,8 +5,9 @@
 \title{Plot Historic TB Notifications in England and Wales}
 \usage{
 plot_historic_tb_ew(df = tb_not_ew,
-  df_interventions = tb_interventions_timeline, zoom_date = 1982,
-  plot_theme = NULL, colour_scale = NULL, return = FALSE)
+  df_interventions = tb_interventions_timeline, zoom_date_start = 1982,
+  zoom_date_end = NULL, plot_theme = NULL, colour_scale = NULL,
+  return = FALSE)
 }
 \arguments{
 \item{df}{A dataframe, (defaults to using \code{\link[tbinenglanddataclean]{tb_not_ew}})
@@ -15,7 +16,9 @@ of historic TB notifications}
 \item{df_interventions}{A dataframe, (defaults to using \code{\link[tbinenglanddataclean]{tb_interventions_timeline}})
 of TB interventions, focussing on there history in the UK. If passed as \code{NULL} no interventions will be plotted.}
 
-\item{zoom_date}{Numeric, the year to filter notifications from for the second zoomed plot.}
+\item{zoom_date_start}{Numeric, the year to filter notifications from for the second zoomed plot.}
+
+\item{zoom_date_end}{Numeric, the year to end the zoom window, defaults to the final year of the data.}
 
 \item{plot_theme}{The ggplot2 theme to use, defaults to \code{\link[ggplot2]{theme_minimal}}.}
 

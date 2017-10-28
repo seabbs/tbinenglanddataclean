@@ -1,0 +1,32 @@
+]0;/home/seabbs/tbinenglanddatacleanseabbs@30a1002f2709:~/tbinenglanddataclean$ [Kseabbs@30a1002f2709:~/tbinenglanddataclean$ ls -a
+.	     docs	 NAMESPACE	.Rproj.user
+..	     .git	 packrat	tbinenglanddataclean.Rproj
+data	     .gitconfig  R		tests
+data-raw     .gitignore  .Rbuildignore	.travis.yml
+DESCRIPTION  LICENSE	 README.md	vignettes
+Dockerfile   man	 README.Rmd
+]0;/home/seabbs/tbinenglanddatacleanseabbs@30a1002f2709:~/tbinenglanddataclean$ less .Rproj.user
+bash: less: command not found
+]0;/home/seabbs/tbinenglanddatacleanseabbs@30a1002f2709:~/tbinenglanddataclean$ nano[Ko .Rproj.user
+bash: nano: command not found
+]0;/home/seabbs/tbinenglanddatacleanseabbs@30a1002f2709:~/tbinenglanddataclean$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .gitignore[m
+	[31mmodified:   R/plot_historic_tb_ew.R[m
+	[31mmodified:   docs/reference/plot_historic_tb_ew.html[m
+	[31mmodified:   man/plot_historic_tb_ew.Rd[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31m.Rproj.user/[m
+	[31mdocs/articles/make_data.Rmd[m
+	[31mdocs/articles/pop_changes_life_expect.Rmd[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;/home/seabbs/tbinenglanddatacleanseabbs@30a1002f2709:~/tbinenglanddataclean$ i[Kgit add --all

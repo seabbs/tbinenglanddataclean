@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1509225840261.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "4A9900B1",
+    "lastKnownWriteTime" : 1509226412,
+    "last_content_update" : 1509226412249,
+    "path" : "~/tbinenglanddataclean/R/plot_historic_tb_ew.R",
+    "project_path" : "R/plot_historic_tb_ew.R",
+    "properties" : {
+        "cursorPosition" : "67,59",
+        "scrollLine" : "54"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
