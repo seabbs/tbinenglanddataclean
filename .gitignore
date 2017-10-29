@@ -6,3 +6,4 @@ rstudio/
 data/tb_data/
 .bash_history
 .active-rstudio-document
+.Rproj.user

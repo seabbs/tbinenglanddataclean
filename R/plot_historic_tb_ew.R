@@ -18,8 +18,8 @@
 #' @importFrom scales extended_breaks
 #' @examples
 #' plot_historic_tb_ew()
-plot_historic_tb_ew <- function(df = tb_not_ew,
-                                df_interventions = tb_interventions_timeline,
+plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
+                                df_interventions = tbinenglanddataclean::tb_interventions_timeline,
                                 zoom_date_start = 1982,
                                 zoom_date_end = NULL,
                                 plot_theme = NULL,
@@ -33,7 +33,10 @@ plot_historic_tb_ew <- function(df = tb_not_ew,
   if (!is.null(df_interventions)) {
    df <- df %>% 
      full_join(df_interventions, by = "year") %>% 
-     rename(`Intervention type` = type)
+     rename(`Intervention type` = type) %>% 
+     rename(Intervention = intervention)
+  }else{
+    df$Intervention <- NA
   }
   
   if (!is.null(zoom_date_start)) {
@@ -73,11 +76,11 @@ plot_historic_tb_ew <- function(df = tb_not_ew,
   
   if (!is.null(df_interventions)) {
     df_interventions_plot <- df_plot %>% 
-      select(Year, `Intervention type`, zoom) %>% 
+      select(Year, `Intervention type`, Intervention, zoom) %>% 
       na.omit
     
     df_plot <- df_plot %>% 
-      select(-`Intervention type`, -intervention, -detail, -line) %>% 
+      select(-`Intervention type`, -Intervention, -detail, -line) %>% 
       na.omit
   }
 

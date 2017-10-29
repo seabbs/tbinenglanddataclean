@@ -10,3 +10,5 @@ RUN Rscript -e 'devtools::install_dev_deps("/home/seabbs/tbinenglanddataclean")'
 RUN Rscript -e 'devtools::install_github("hadley/pkgdown")'
 
 RUN Rscript -e 'devtools::install_github("tidyverse/ggplot2")'
+
+RUN Rscript -e 'devtools::install_github("seabbs/tbinenglanddataclean")'
