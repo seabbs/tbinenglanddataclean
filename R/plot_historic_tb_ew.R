@@ -49,6 +49,8 @@ plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
     df <- df %>%
       bind_rows(df_zoom) %>%
       mutate(zoom = factor(zoom, levels = c(" ", "")))
+  }else{
+    df$zoom <- " "
   }
   
   if (is.null(colour_scale)) {
