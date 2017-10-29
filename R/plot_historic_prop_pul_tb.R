@@ -10,6 +10,7 @@
 #' @import ggplot2
 #' @importFrom dplyr mutate group_by
 #' @importFrom tidyr gather
+#' @importFrom scales percent
 #' @examples
 #'
 #' plot_historic_prop_pul_tb(plot_theme = ggplot2::theme_minimal, colour_scale = ggplot2::scale_fill_viridis_d)
@@ -31,6 +32,7 @@ plot_historic_prop_pul_tb <- function(df = tb_not_ew,
     geom_bar(stat = "identity") +
     plot_theme() +
     theme(legend.position = "bottom") +
+    scale_y_continuous(labels = scales::percent) +
     colour_scale()
 
   if (return) {

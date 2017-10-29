@@ -33,6 +33,7 @@ plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
   if (!is.null(df_interventions)) {
    df <- df %>% 
      full_join(df_interventions, by = "year") %>% 
+     mutate(type = as.factor(type)) %>% 
      rename(`Intervention type` = type) %>% 
      rename(Intervention = intervention)
   }else{
@@ -76,17 +77,7 @@ plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
                                              "Extra-pulmonary"))
            )
   
-  if (!is.null(df_interventions)) {
-    df_interventions_plot <- df_plot %>% 
-      select(Year, `Intervention type`, Intervention, zoom) %>% 
-      na.omit
-    
-    df_plot <- df_plot %>% 
-      select(-`Intervention type`, -Intervention, -detail, -line) %>% 
-      na.omit
-  }
 
-  
   if (!is.null(zoom_date_start)) {
     max_not_facet <- df_plot %>% 
     group_by(zoom) %>% 
@@ -98,20 +89,27 @@ plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
                            zoom = pull(max_not_facet, zoom))
   }
 
-  p <- df_plot %>%
-    ggplot(aes(x = Year, y = Notifications))
+  if (!is.null(df_interventions)) {
+    p <- df_plot %>%
+      ggplot(aes(x = Year, y = Notifications, label = Intervention, linetype = `Intervention type`))
+  }else{
+    p <- df_plot %>%
+      ggplot(aes(x = Year, y = Notifications))
+  }
   
   if (!is.null(zoom_date_start)) {
-    p <- p + geom_rect(data = zoom_dim, aes(y = NULL, x = NULL, ymax = y_max, xmax = x_max, ymin = y_min, xmin = x_min), alpha = 0.05, fill = "blue")
+    p <- p + geom_rect(data = zoom_dim, aes(ymax = y_max, xmax = x_max, ymin = y_min, xmin = x_min,
+                                            xintercept = NULL, linetype = NULL, label = NULL,
+                                            x = NULL, y = NULL), alpha = 0.05, fill = "blue")
   }
+  
   if (!is.null(df_interventions)) {
     p <- p + 
-      geom_vline(data = df_interventions_plot,
-                 aes(xintercept = Year, linetype = `Intervention type`), alpha = 0.6)
+      geom_vline(data = filter(df_plot, !is.na(`Intervention type`)), aes(xintercept = Year, linetype = `Intervention type`, x = NULL, y = NULL), alpha = 0.6)
   }
   
   p <- p +
-    geom_line(aes(col = `TB type`), size = 1.2) +
+    geom_line(aes(col = `TB type`, linetype = NULL), size = 1.2) +
     plot_theme +
     colour_scale +
     scale_x_continuous(breaks = scales::extended_breaks(n = 10)) +
