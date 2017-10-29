@@ -32,8 +32,8 @@ plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
   
   if (!is.null(df_interventions)) {
    df <- df %>% 
-     full_join(df_interventions, by = "year") %>% 
-     mutate(type = as.factor(type)) %>% 
+     full_join(df_interventions %>% 
+                 mutate(type = factor(type)), by = "year") %>% 
      rename(`Intervention type` = type) %>% 
      rename(Intervention = intervention)
   }else{
@@ -91,7 +91,7 @@ plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
 
   if (!is.null(df_interventions)) {
     p <- df_plot %>%
-      ggplot(aes(x = Year, y = Notifications, label = Intervention, linetype = `Intervention type`))
+      ggplot(aes(x = Year, y = Notifications, label = Intervention))
   }else{
     p <- df_plot %>%
       ggplot(aes(x = Year, y = Notifications))
@@ -105,18 +105,18 @@ plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
   
   if (!is.null(df_interventions)) {
     p <- p + 
-      geom_vline(data = filter(df_plot, !is.na(`Intervention type`)), aes(xintercept = Year, linetype = `Intervention type`, x = NULL, y = NULL), alpha = 0.6)
+      geom_vline(data = filter(df_plot, !is.na(`Intervention type`)), aes(xintercept = Year, linetype = `Intervention type`), alpha = 0.6)
   }
   
   p <- p +
-    geom_line(aes(col = `TB type`, linetype = NULL), size = 1.2) +
+    geom_line(aes(col = `TB type`, linetype = NULL), size = 1.2, show.legend = c(linetype = FALSE)) +
     plot_theme +
     colour_scale +
     scale_x_continuous(breaks = scales::extended_breaks(n = 10)) +
     theme(legend.position = "bottom", 
           legend.justification = "center",
           legend.box = "horizontal") +
-    guides(col = guide_legend(nrow = 2)) 
+    guides(col = guide_legend(nrow = 2))
 
   if (!is.null(zoom_date_start)) {
     p <- p + facet_wrap(~zoom, scales = "free", ncol = 1)
