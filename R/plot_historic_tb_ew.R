@@ -55,7 +55,7 @@ plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
   }
   
   if (is.null(colour_scale)) {
-    colour_scale <- ggplot2::scale_colour_viridis_d()
+    colour_scale <- ggplot2::scale_colour_viridis_d(end = 0.9)
   }
   
   if (is.null(plot_theme)) {
