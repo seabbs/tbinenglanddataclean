@@ -33,7 +33,7 @@ plot_historic_prop_pul_tb <- function(df = tb_not_ew,
     plot_theme() +
     theme(legend.position = "bottom") +
     scale_y_continuous(labels = scales::percent) +
-    colour_scale(end = 0.9)
+    colour_scale()
 
   if (return) {
     return(p)
