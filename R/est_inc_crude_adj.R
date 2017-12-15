@@ -12,7 +12,7 @@
 #' @importFrom tibble as_data_frame
 #' @examples
 #'
-est_inc_crude_adj = function(filter, tar = pop_age, cases = cases_age, rate_pop = 100000){
+est_inc_crude_adj = function(filter, pop = pop_age, cases = cases_age, rate_pop = 100000){
   ## format cases
   cases_mat <- cases %>% form_df_epiR_inc_rate(filter)
 
