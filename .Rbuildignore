@@ -9,3 +9,4 @@
 ^\.travis\.yml$
 ^\.bash_history$
 ^Dockerfile$
+^data/tb_data/$

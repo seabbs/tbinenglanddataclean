@@ -4,10 +4,10 @@
 \alias{plot_historic_tb_ew}
 \title{Plot Historic TB Notifications in England and Wales}
 \usage{
-plot_historic_tb_ew(df = tb_not_ew,
-  df_interventions = tb_interventions_timeline, zoom_date_start = 1982,
-  zoom_date_end = NULL, plot_theme = NULL, colour_scale = NULL,
-  return = FALSE)
+plot_historic_tb_ew(df = tbinenglanddataclean::tb_not_ew,
+  df_interventions = tbinenglanddataclean::tb_interventions_timeline,
+  zoom_date_start = 1982, zoom_date_end = NULL, plot_theme = NULL,
+  colour_scale = NULL, return = FALSE)
 }
 \arguments{
 \item{df}{A dataframe, (defaults to using \code{\link[tbinenglanddataclean]{tb_not_ew}})

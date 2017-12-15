@@ -164,6 +164,4 @@ if (!file.exists(paste0(run_envir, "/data/tb_data/tbinenglanddataclean/cases_dem
                                 verbose = FALSE,
                                 interactive = interactive)
 }
-
-
 ```

@@ -18,7 +18,8 @@ case_year_age <-  df %>%
     mutate(age = replace(age, age >= 90, 90) %>% as.character) %>%
     mutate(age = replace(age, age %in% '90', '90+')) %>%
     mutate(age = factor(age, levels = c(as.character(0:89), '90+'))) %>%
-    count_(vars = strat_var) %>%
+    group_by(.dots = strat_var) %>%
+    tally() %>% 
     ungroup() %>%
     rename(Year = year, Cases = n, CoB = ukborn) %>%
     rename(Age = age) %>%
