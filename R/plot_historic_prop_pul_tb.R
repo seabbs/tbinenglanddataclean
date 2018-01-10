@@ -8,16 +8,26 @@
 #' @inheritParams plot_historic_tb_ew
 #' @import magrittr
 #' @import ggplot2
+#' @import viridis
 #' @importFrom dplyr mutate group_by
 #' @importFrom tidyr gather
 #' @importFrom scales percent
 #' @examples
 #'
-#' plot_historic_prop_pul_tb(plot_theme = ggplot2::theme_minimal, colour_scale = ggplot2::scale_fill_viridis_d)
+#' plot_historic_prop_pul_tb(plot_theme = ggplot2::theme_minimal)
 plot_historic_prop_pul_tb <- function(df = tb_not_ew,
-                                plot_theme = ggplot2::theme_minimal,
-                                colour_scale = ggplot2::scale_fill_viridis_d,
+                                plot_theme = NULL,
+                                colour_scale = NULL,
                                 return = FALSE) {
+  
+  if (is.null(colour_scale)) {
+    colour_scale <- scale_fill_viridis(discrete = TRUE)
+  }
+  
+  if (is.null(plot_theme)) {
+    plot_theme <- theme_minimal()
+  }
+  
   p <- df %>%
     mutate(Respiratory = respiratory,
            `Non-respiratory` = non_respiratory,
@@ -30,10 +40,10 @@ plot_historic_prop_pul_tb <- function(df = tb_not_ew,
     mutate(Proportion = Notifications/total) %>%
     ggplot(aes(x = Year, y = Proportion, fill = `TB type`)) +
     geom_bar(stat = "identity") +
-    plot_theme() +
+    plot_theme +
     theme(legend.position = "bottom") +
     scale_y_continuous(labels = scales::percent) +
-    colour_scale()
+    colour_scale
 
   if (return) {
     return(p)

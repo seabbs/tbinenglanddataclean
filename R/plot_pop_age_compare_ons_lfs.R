@@ -8,8 +8,11 @@
 #' @import ggplot2
 #' @examples
 #'
-plot_pop_age_compare_ons_lfs = function(df, theme_set = theme_minimal)
+plot_pop_age_compare_ons_lfs = function(df, theme_set = NULL)
 {
+  if (is.null(theme_set)) {
+    theme_set <- theme_minimal()
+  }
   df %>%
     filter(Year %% 2 ==0) %>%
     mutate(Year = Year %>% factor(levels=c(2000:2016))) %>%
@@ -20,7 +23,7 @@ plot_pop_age_compare_ons_lfs = function(df, theme_set = theme_minimal)
     mutate(`Age group` = factor(`Age group`, levels = rev(levels(`Age group`)))) %>%
     ggplot(aes(x = `Age group` , y = `Percentage difference`, fill = Year, colour = Year)) +
     geom_bar(position = 'dodge', stat = 'identity') +
-    theme_set() +
+    theme_set +
     theme(axis.text.x = element_text(angle = 45)) +
     coord_flip() +
     labs(caption = "Comparision of ONS and LFS population estimates ") -> p

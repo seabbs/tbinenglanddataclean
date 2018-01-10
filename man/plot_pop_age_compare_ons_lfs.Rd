@@ -4,7 +4,7 @@
 \alias{plot_pop_age_compare_ons_lfs}
 \title{A Function to Plot Differences Between LFS and ONS Data}
 \usage{
-plot_pop_age_compare_ons_lfs(df, theme_set = theme_minimal)
+plot_pop_age_compare_ons_lfs(df, theme_set = NULL)
 }
 \arguments{
 \item{df}{A Dataframe as produced by \code{\link[tbinenglanddataclean]{combine_ons_with_lfs}} of

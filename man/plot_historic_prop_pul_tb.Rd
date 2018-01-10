@@ -4,9 +4,8 @@
 \alias{plot_historic_prop_pul_tb}
 \title{Plot Historic Proportions of Pulmonary/Extra-Pulmonary TB}
 \usage{
-plot_historic_prop_pul_tb(df = tb_not_ew,
-  plot_theme = ggplot2::theme_minimal,
-  colour_scale = ggplot2::scale_fill_viridis_d, return = FALSE)
+plot_historic_prop_pul_tb(df = tb_not_ew, plot_theme = NULL,
+  colour_scale = NULL, return = FALSE)
 }
 \arguments{
 \item{df}{A dataframe, (defaults to using \code{\link[tbinenglanddataclean]{tb_not_ew}})
@@ -26,5 +25,5 @@ Plot Historic Proportions of Pulmonary/Extra-Pulmonary TB
 }
 \examples{
 
-plot_historic_prop_pul_tb(plot_theme = ggplot2::theme_minimal, colour_scale = ggplot2::scale_fill_viridis_d)
+plot_historic_prop_pul_tb(plot_theme = ggplot2::theme_minimal)
 }

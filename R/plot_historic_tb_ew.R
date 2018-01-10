@@ -12,6 +12,7 @@
 #' @return A ggplot2 plot of TB notifications over time, with a secondary zoomed plot from a specified date.
 #' @export
 #' @import ggplot2
+#' @import viridis
 #' @import magrittr
 #' @importFrom dplyr mutate bind_rows data_frame full_join rename
 #' @importFrom tidyr gather
@@ -55,7 +56,7 @@ plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
   }
   
   if (is.null(colour_scale)) {
-    colour_scale <- ggplot2::scale_colour_viridis_d()
+    colour_scale <- scale_colour_viridis(discrete = TRUE)
   }
   
   if (is.null(plot_theme)) {
