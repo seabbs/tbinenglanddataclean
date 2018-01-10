@@ -18,12 +18,13 @@ Imports: magrittr,
     readxl,
     ggjoy,
     stringr,
-    scales
+    scales,
+    viridis
 Suggests: testthat,
     knitr,
     rmarkdown,
     tidyverse
-Remotes: tidyverse/ggplot2, 
+Remotes: ggplot2, 
          seabbs/idmodelr,
          tidyverse/dplyr
 Encoding: UTF-8
