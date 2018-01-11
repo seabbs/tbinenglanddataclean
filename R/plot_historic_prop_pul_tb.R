@@ -14,7 +14,7 @@
 #' @importFrom scales percent
 #' @examples
 #'
-#' plot_historic_prop_pul_tb(plot_theme = ggplot2::theme_minimal)
+#' plot_historic_prop_pul_tb()
 plot_historic_prop_pul_tb <- function(df = tb_not_ew,
                                 plot_theme = NULL,
                                 colour_scale = NULL,

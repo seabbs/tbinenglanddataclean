@@ -25,5 +25,5 @@ Plot Historic Proportions of Pulmonary/Extra-Pulmonary TB
 }
 \examples{
 
-plot_historic_prop_pul_tb(plot_theme = ggplot2::theme_minimal)
+plot_historic_prop_pul_tb()
 }
