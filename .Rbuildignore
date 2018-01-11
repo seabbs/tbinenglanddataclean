@@ -10,3 +10,4 @@
 ^\.bash_history$
 ^Dockerfile$
 ^data/tb_data/$
+^_pkgdown\.yaml$

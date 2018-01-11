@@ -10,7 +10,7 @@ combine_ons_with_lfs(data_path = "~/data/tb_data/tbinenglanddataclean",
   lfs_name = "formatted_LFS_2000_2016.rds", countries = "England",
   return = TRUE, save = TRUE, save_name = "E_ons_lfs_2000_2016",
   save_path = "~/data/tb_data/tbinenglanddataclean", save_format = "rds",
-  verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
+  verbose = TRUE, interactive = TRUE, theme_set = NULL)
 }
 \arguments{
 \item{data_path}{A charater string containing the file path to the demographic data.}

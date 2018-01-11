@@ -1,0 +1,47 @@
+title: TB in England Data Clean
+url: https://www.samabbott.co.uk/tbinenglanddataclean/
+template:
+  params:
+    bootswatch: flatly
+
+navbar:
+  type: inverse
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Vignettes"
+      menu: 
+      -  text: Use the package to construct the data
+         href: articles/make_data.html
+      -  text: Estimating UK born mortality and emmigration rates
+         href: articles/pop_changes_life_expect.html
+  right:
+    - icon: fa-file-code-o 
+      text: "Functions"
+      href: reference/index.html
+    - icon: fa-github fa-lg
+      text: "Github"
+      href: https://github.com/seabbs/tbinenglanddataclean/
+      
+reference:
+    - title: Data
+      desc:  Data supplied with the package.
+      contents:
+      - starts_with("tb_")
+    - title: Cleaning and munging functions
+      desc: Clean and munge the various raw data sources
+      contents:
+      - starts_with("clean_")
+      - starts_with("calculate_incidence_ets_lfs_ons")
+      - starts_with("combine_ons_with_lfs")
+    - title: Helper functions
+      desc: Functions used to help clean and munge data.
+      contents:
+      - starts_with("est_inc_crude_adj")
+      - starts_with("extract_case_counts")
+      - starts_with("form_df_epiR_inc_rate")
+      - starts_with("case_rate")
+    - title: Plot
+      desc: Plotting functions for the included data and for the newly generated data.
+      contents:
+      - starts_with("plot_")

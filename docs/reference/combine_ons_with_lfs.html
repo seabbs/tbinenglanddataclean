@@ -7,13 +7,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>A Function that Combines the ONS Demographic Data, with the LFS
-Demographic Data — combine_ons_with_lfs • tbinenglanddataclean</title>
+Demographic Data — combine_ons_with_lfs • TB in England Data Clean</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -40,7 +40,7 @@ Demographic Data — combine_ons_with_lfs • tbinenglanddataclean</title>
   <body>
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -53,23 +53,17 @@ Demographic Data — combine_ons_with_lfs • tbinenglanddataclean</title>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../index.html">Home</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Vignettes
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/make_data.html">Using package functions and local data to calculate TB incidence rates in England</a>
+      <a href="../articles/make_data.html">Use the package to construct the data</a>
     </li>
     <li>
       <a href="../articles/pop_changes_life_expect.html">Estimating UK born mortality and emmigration rates</a>
@@ -80,9 +74,17 @@ Demographic Data — combine_ons_with_lfs • tbinenglanddataclean</title>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/seabbs/tbinenglanddataclean">
+  <a href="../reference/index.html">
+    <span class="fa fa-file-code-o"></span>
+     
+    Functions
+  </a>
+</li>
+<li>
+  <a href="https://github.com/seabbs/tbinenglanddataclean/">
     <span class="fa fa-github fa-lg"></span>
      
+    Github
   </a>
 </li>
       </ul>
@@ -111,7 +113,7 @@ Summary statistics and plots can be returned to check both datasets.</p>
   <span class='kw'>lfs_name</span> <span class='kw'>=</span> <span class='st'>"formatted_LFS_2000_2016.rds"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='st'>"England"</span>,
   <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"E_ons_lfs_2000_2016"</span>,
   <span class='kw'>save_path</span> <span class='kw'>=</span> <span class='st'>"~/data/tb_data/tbinenglanddataclean"</span>, <span class='kw'>save_format</span> <span class='kw'>=</span> <span class='st'>"rds"</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>theme_set</span> <span class='kw'>=</span> <span class='no'>theme_minimal</span>)</pre>
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>theme_set</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -198,7 +200,7 @@ for both ONS and LFS data.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

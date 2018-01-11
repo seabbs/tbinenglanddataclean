@@ -1,0 +1,7 @@
+urls:
+  reference: https://www.samabbott.co.uk/tbinenglanddataclean//reference
+  article: https://www.samabbott.co.uk/tbinenglanddataclean//articles
+articles:
+  make_data: make_data.html
+  pop_changes_life_expect: pop_changes_life_expect.html
+

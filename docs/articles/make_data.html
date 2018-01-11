@@ -5,8 +5,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Using package functions and local data to calculate TB incidence rates in England • tbinenglanddataclean</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<title>Using package functions and local data to calculate TB incidence rates in England • TB in England Data Clean</title>
+<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="container template-vignette">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -29,23 +29,17 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../index.html">Home</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Vignettes
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/make_data.html">Using package functions and local data to calculate TB incidence rates in England</a>
+      <a href="../articles/make_data.html">Use the package to construct the data</a>
     </li>
     <li>
       <a href="../articles/pop_changes_life_expect.html">Estimating UK born mortality and emmigration rates</a>
@@ -55,9 +49,17 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/seabbs/tbinenglanddataclean">
+  <a href="../reference/index.html">
+    <span class="fa fa-file-code-o"></span>
+     
+    Functions
+  </a>
+</li>
+<li>
+  <a href="https://github.com/seabbs/tbinenglanddataclean/">
     <span class="fa fa-github fa-lg"></span>
      
+    Github
   </a>
 </li>
       </ul>
@@ -75,7 +77,7 @@
       <h1>Using package functions and local data to calculate TB incidence rates in England</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2017-10-27</h4>
+            <h4 class="date">2018-01-11</h4>
           </div>
 
     
@@ -90,13 +92,16 @@
 interactive &lt;-<span class="st"> </span><span class="ot">FALSE</span>
 
 ## rebuild existing data sets
-rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">"~/data/tb_data/tbinenglanddataclean/clean_ets_2016.rds"</span>) <span class="op">||</span><span class="st"> </span>rebuild) {
-  <span class="kw"><a href="../reference/clean_munge_ets_2016.html">clean_munge_ets_2016</a></span>(<span class="dt">data_path =</span> <span class="st">"~/data/tb_data/ETS/ETS_2016_extract/SAbbott_BCG dataset_version2_final140217.dta"</span>,
+rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span> 
+
+## Analysis running in docker or locally? if local set ~ if in docker set ..
+run_envir &lt;-<span class="st"> "../../"</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean/clean_ets_2016.rds"</span>)) <span class="op">||</span><span class="st"> </span>rebuild) {
+  <span class="kw"><a href="../reference/clean_munge_ets_2016.html">clean_munge_ets_2016</a></span>(<span class="dt">data_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/ETS/ETS_2016_extract/SAbbott_BCG dataset_version2_final140217.dta"</span>),
                      <span class="dt">return =</span> <span class="ot">FALSE</span>,
                      <span class="dt">save =</span> <span class="ot">TRUE</span>,
                      <span class="dt">save_name =</span> <span class="st">"clean_ets_2016"</span>,
-                     <span class="dt">save_path =</span> <span class="st">"~/data/tb_data/tbinenglanddataclean"</span>,
+                     <span class="dt">save_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean"</span>),
                      <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
                      <span class="dt">verbose =</span> <span class="ot">TRUE</span>)
 
@@ -105,15 +110,15 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
 <div id="clean-the-office-of-national-statistics-demographic-data-to-be-used-as-a-reference-data-set" class="section level1">
 <h1 class="hasAnchor">
 <a href="#clean-the-office-of-national-statistics-demographic-data-to-be-used-as-a-reference-data-set" class="anchor"></a>Clean the Office of National Statistics Demographic Data to be used as a Reference Data set</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">"~/data/tb_data/tbinenglanddataclean/E_demo_2000_2015.rds"</span>) <span class="op">||</span><span class="st"> </span>rebuild) {
-  <span class="kw"><a href="../reference/clean_demographics_uk.html">clean_demographics_uk</a></span>(<span class="dt">data_path =</span> <span class="st">"~/data/tb_data/UK_demographics"</span>,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="kw">paste0</span>(run_envir,<span class="st">"/data/tb_data/tbinenglanddataclean/E_demo_2000_2015.rds"</span>)) <span class="op">||</span><span class="st"> </span>rebuild) {
+  <span class="kw"><a href="../reference/clean_demographics_uk.html">clean_demographics_uk</a></span>(<span class="dt">data_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/UK_demographics"</span>),
                       <span class="dt">demo_2000 =</span> <span class="st">"UK_2000_age.csv"</span>,
                       <span class="dt">demo_2001_2015 =</span> <span class="st">"UK_2001_2015_age.csv"</span>,
                       <span class="dt">countries =</span> <span class="kw">c</span>(<span class="st">"E"</span>),
                       <span class="dt">return =</span> <span class="ot">FALSE</span>,
                       <span class="dt">save =</span> <span class="ot">TRUE</span>,
                       <span class="dt">save_name =</span> <span class="st">"E_demo_2000_2015"</span>,
-                      <span class="dt">save_path =</span> <span class="st">"~/data/tb_data/tbinenglanddataclean"</span>,
+                      <span class="dt">save_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean"</span>),
                       <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
                       <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
                       <span class="dt">interactive =</span> interactive)
@@ -122,8 +127,8 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
 <div id="clean-and-combine-the-labour-force-survey-data-set" class="section level1">
 <h1 class="hasAnchor">
 <a href="#clean-and-combine-the-labour-force-survey-data-set" class="anchor"></a>Clean and Combine the Labour Force Survey Data set</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">"~/data/tb_data/tbinenglanddataclean/formatted_LFS_2000_2016.rds"</span>) <span class="op">||</span><span class="st"> </span>rebuild) {
-<span class="kw"><a href="../reference/clean_labour_force_survey.html">clean_labour_force_survey</a></span>(<span class="dt">data_path =</span> <span class="st">"~/data/LFS"</span>,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean/formatted_LFS_2000_2016.rds"</span>)) <span class="op">||</span><span class="st"> </span>rebuild) {
+<span class="kw"><a href="../reference/clean_labour_force_survey.html">clean_labour_force_survey</a></span>(<span class="dt">data_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/LFS"</span>),
                           <span class="dt">years =</span> <span class="dv">2000</span><span class="op">:</span><span class="dv">2016</span>,
                           <span class="dt">years_var =</span> <span class="kw">list</span>( <span class="st">'2000'</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">'age'</span>, <span class="st">'sex'</span>, <span class="st">'cry'</span>, <span class="st">'govtof'</span>, <span class="st">'pwt07'</span>),
                                             <span class="st">'2001'</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">'age'</span>, <span class="st">'sex'</span>, <span class="st">'cry01'</span>, <span class="st">'country'</span>, <span class="st">'pwt07'</span>),
@@ -145,7 +150,7 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
                           <span class="dt">return =</span> <span class="ot">FALSE</span>,
                           <span class="dt">save =</span> <span class="ot">TRUE</span>,
                           <span class="dt">save_name =</span> <span class="st">"formatted_LFS_2000_2016"</span>,
-                          <span class="dt">save_path =</span> <span class="st">"~/data/tb_data/tbinenglanddataclean"</span>,
+                          <span class="dt">save_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean"</span>),
                           <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
                           <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
                           <span class="dt">interactive =</span> interactive)
@@ -154,61 +159,61 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
 <div id="combine-the-lfs-and-ons-datasets-check-for-issues" class="section level1">
 <h1 class="hasAnchor">
 <a href="#combine-the-lfs-and-ons-datasets-check-for-issues" class="anchor"></a>Combine the LFS and ONS datasets; check for issues</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">"~/data/tbinenglanddataclean/E_ons_lfs_2000_2016.rds"</span>) <span class="op">||</span><span class="st"> </span>rebuild) {
-<span class="kw"><a href="../reference/combine_ons_with_lfs.html">combine_ons_with_lfs</a></span>(<span class="dt">data_path =</span> <span class="st">"~/data/tb_data/tbinenglanddataclean"</span>,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="kw">paste0</span>(run_envir, <span class="st">"/data/tbinenglanddataclean/E_ons_lfs_2000_2016.rds"</span>)) <span class="op">||</span><span class="st"> </span>rebuild) {
+<span class="kw"><a href="../reference/combine_ons_with_lfs.html">combine_ons_with_lfs</a></span>(<span class="dt">data_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean"</span>),
                      <span class="dt">ons_name =</span> <span class="st">"E_demo_2000_2015.rds"</span>,
                      <span class="dt">lfs_name =</span> <span class="st">"formatted_LFS_2000_2016.rds"</span>,
                      <span class="dt">countries =</span> <span class="st">"England"</span>,
                      <span class="dt">return =</span> <span class="ot">FALSE</span>,
                      <span class="dt">save =</span> <span class="ot">TRUE</span>,
                      <span class="dt">save_name =</span> <span class="st">"E_ons_lfs_2000_2016"</span>,
-                     <span class="dt">save_path =</span> <span class="st">"~/data/tb_data/tbinenglanddataclean"</span>,
+                     <span class="dt">save_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean"</span>),
                      <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
                      <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
                      <span class="dt">interactive =</span> interactive) 
 }</code></pre></div>
-<pre><code>## Loading demographic data from: ~/data/tb_data/tbinenglanddataclean/E_demo_2000_2015.rds</code></pre>
-<pre><code>## Loading labour force survey data from: ~/data/tb_data/tbinenglanddataclean/formatted_LFS_2000_2016.rds</code></pre>
+<pre><code>## Loading demographic data from: ../..//data/tb_data/tbinenglanddataclean/E_demo_2000_2015.rds</code></pre>
+<pre><code>## Loading labour force survey data from: ../..//data/tb_data/tbinenglanddataclean/formatted_LFS_2000_2016.rds</code></pre>
 <p><img src="make_data_files/figure-html/combine-lfs-ons-1.png" width="672"><img src="make_data_files/figure-html/combine-lfs-ons-2.png" width="672"><img src="make_data_files/figure-html/combine-lfs-ons-3.png" width="672"><img src="make_data_files/figure-html/combine-lfs-ons-4.png" width="672"><img src="make_data_files/figure-html/combine-lfs-ons-5.png" width="672"><img src="make_data_files/figure-html/combine-lfs-ons-6.png" width="672"><img src="make_data_files/figure-html/combine-lfs-ons-7.png" width="672"><img src="make_data_files/figure-html/combine-lfs-ons-8.png" width="672"></p>
-<pre><code>## ONS combined with LFS data saved to: ~/data/tb_data/tbinenglanddataclean/E_ons_lfs_2000_2016</code></pre>
+<pre><code>## ONS combined with LFS data saved to: ../..//data/tb_data/tbinenglanddataclean/E_ons_lfs_2000_2016</code></pre>
 <pre><code>## Formated as, rds, csv</code></pre>
 <p><img src="make_data_files/figure-html/combine-lfs-ons-9.png" width="672"></p>
 </div>
 <div id="clean-and-munge-changes-in-english-population" class="section level1">
 <h1 class="hasAnchor">
 <a href="#clean-and-munge-changes-in-english-population" class="anchor"></a>Clean and Munge Changes in English Population</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">"~/data/tb_data/tbinenglanddataclean/england_births.rds"</span>) <span class="op">||</span><span class="st"> </span>rebuild) {
-  <span class="kw"><a href="../reference/clean_and_munge_england_births.html">clean_and_munge_england_births</a></span>(<span class="dt">birth_path =</span> <span class="st">"~/data/tb_data/UK_demographics/annual_reference_table.xls"</span>,
-                               <span class="dt">projected_birth_path =</span> <span class="st">"~/data/tb_data/UK_demographics/england_population_projections.xls"</span>,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean/england_births.rds"</span>)) <span class="op">||</span><span class="st"> </span>rebuild) {
+  <span class="kw"><a href="../reference/clean_and_munge_england_births.html">clean_and_munge_england_births</a></span>(<span class="dt">birth_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/UK_demographics/annual_reference_table.xls"</span>),
+                               <span class="dt">projected_birth_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/UK_demographics/england_population_projections.xls"</span>),
                                <span class="dt">return =</span> <span class="ot">FALSE</span>,
                                <span class="dt">save =</span> <span class="ot">TRUE</span>,
                                <span class="dt">save_name =</span> <span class="st">"england_births"</span>,
-                               <span class="dt">save_path =</span> <span class="st">"~/data/tb_data/tbinenglanddataclean"</span>,
+                               <span class="dt">save_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean"</span>),
                                <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
                                <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
                                <span class="dt">interactive =</span> interactive)
 }</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">"~/data/tb_data/tbinenglanddataclean/england_mortality_rate.rds"</span>) <span class="op">||</span><span class="st"> </span>rebuild) {
-<span class="kw"><a href="../reference/clean_and_munge_england_life_expectancy.html">clean_and_munge_england_life_expectancy</a></span>(<span class="dt">life_tables_path =</span> <span class="st">"~/data/tb_data/UK_demographics/england_life_tables.xls"</span>,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean/england_mortality_rate.rds"</span>)) <span class="op">||</span><span class="st"> </span>rebuild) {
+<span class="kw"><a href="../reference/clean_and_munge_england_life_expectancy.html">clean_and_munge_england_life_expectancy</a></span>(<span class="dt">life_tables_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/UK_demographics/england_life_tables.xls"</span>),
                                                 <span class="dt">sheets =</span> <span class="kw">paste0</span>(<span class="kw">seq</span>(<span class="dv">2013</span>,<span class="dv">1998</span>, <span class="op">-</span><span class="dv">1</span>), <span class="st">"-"</span>, <span class="kw">seq</span>(<span class="dv">2015</span>,<span class="dv">2000</span>, <span class="op">-</span><span class="dv">1</span>)),
                                                 <span class="dt">return =</span> <span class="ot">FALSE</span>,
                                                 <span class="dt">save =</span> <span class="ot">TRUE</span>,
                                                 <span class="dt">save_name =</span> <span class="st">"england_mortality_rates"</span>,
-                                                <span class="dt">save_path =</span> <span class="st">"~/data/tb_data/tbinenglanddataclean"</span>,
+                                                <span class="dt">save_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean"</span>),
                                                 <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
                                                 <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
-                                                <span class="dt">interactive =</span> interactive,
-                                                <span class="dt">theme_set =</span> theme_minimal)
+                                                <span class="dt">interactive =</span> interactive)
 }</code></pre></div>
 <p><img src="make_data_files/figure-html/clean-munge-mortality-rates-1.png" width="672"><img src="make_data_files/figure-html/clean-munge-mortality-rates-2.png" width="672"></p>
-<pre><code>## Mortality rates saved to: ~/data/tb_data/tbinenglanddataclean/england_mortality_rates</code></pre>
+<pre><code>## Mortality rates saved to: ../..//data/tb_data/tbinenglanddataclean/england_mortality_rates</code></pre>
 <pre><code>## Formated as, rds, csv</code></pre>
 <p><img src="make_data_files/figure-html/clean-munge-mortality-rates-3.png" width="672"></p>
 </div>
 <div id="calculate-tb-incidence-rates-for-england" class="section level1">
 <h1 class="hasAnchor">
 <a href="#calculate-tb-incidence-rates-for-england" class="anchor"></a>Calculate TB Incidence Rates for England</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/calculate_incidence_ets_lfs_ons.html">calculate_incidence_ets_lfs_ons</a></span>(<span class="dt">data_path =</span> <span class="st">"~/data/tb_data/tbinenglanddataclean"</span>,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean/cases_demo_incidence.rds"</span>)) <span class="op">||</span><span class="st"> </span>rebuild) {
+  <span class="kw"><a href="../reference/calculate_incidence_ets_lfs_ons.html">calculate_incidence_ets_lfs_ons</a></span>(<span class="dt">data_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean"</span>),
                                 <span class="dt">ets_name =</span> <span class="st">"clean_ets_2016.rds"</span>,
                                 <span class="dt">demo_name =</span> <span class="st">"E_ons_lfs_2000_2016.rds"</span>,
                                 <span class="dt">return =</span> <span class="ot">FALSE</span>,
@@ -217,11 +222,11 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
                                 <span class="dt">grouped_incidence_name =</span> <span class="st">"age_grouped_incidence"</span>,
                                 <span class="dt">condensed_grouped_incidence_name =</span> <span class="st">"condensed_age_group_incidence"</span>,
                                 <span class="dt">cases_demo_incidence_name =</span> <span class="st">"cases_demo_incidence"</span>,
-                                <span class="dt">save_path =</span> <span class="st">"~/data/tb_data/tbinenglanddataclean"</span>,
+                                <span class="dt">save_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean"</span>),
                                 <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
                                 <span class="dt">verbose =</span> <span class="ot">FALSE</span>,
-                                <span class="dt">interactive =</span> interactive)</code></pre></div>
-<pre><code>## Joining, by = c("Age", "Year", "CoB")</code></pre>
+                                <span class="dt">interactive =</span> interactive)
+}</code></pre></div>
 </div>
 </div>
   </div>
@@ -249,7 +254,7 @@ rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span></code></pre>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

@@ -28,7 +28,11 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
                                       save_format = "rds",
                                       verbose = TRUE,
                                       interactive = TRUE,
-                                      theme_set = theme_minimal) {
+                                      theme_set = NULL) {
+  
+  if (is.null(theme_set)) {
+    theme_set <- theme_minimal()
+  }
 
   demo_path <- file.path(data_path, ons_name)
   if (verbose) {
@@ -106,7 +110,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
      ggplot(aes(x = Age, y = Population)) +
      geom_density(stat = "identity", alpha = 0.4) +
      facet_wrap(~Year) +
-     theme_set() +
+     theme_set +
      theme(axis.text.x = element_text(angle = 90)) +
      labs(caption = "Non-UK born population by age, every 5 years") -> p
 
@@ -118,7 +122,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
      ggplot(aes(x = Age, y = Population)) +
      geom_density(stat = "identity", alpha = 0.4) +
      facet_wrap(~Year) +
-     theme_set() +
+     theme_set +
      theme(axis.text.x = element_text(angle = 90)) +
      labs(caption = "UK born population by age, every 5 years") -> p1
 
@@ -131,7 +135,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
      ggplot(aes(x = Age, y = Population)) +
      geom_density(stat = "identity", alpha = 0.4) +
      facet_wrap(~CoB) +
-     theme_set() +
+     theme_set +
      theme(axis.text.x = element_text(angle = 90)) +
      labs(caption = "Comparision of ONS, LFS, UK born,
           and non-UK born population estimates for 2000") -> p2
@@ -145,7 +149,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
      ggplot(aes(x = Age, y = Population)) +
      geom_density(stat = "identity", alpha = 0.4) +
      facet_wrap(~CoB) +
-     theme_set() +
+     theme_set +
      theme(axis.text.x = element_text(angle = 90)) +
      labs(caption = "Comparision of ONS, LFS, UK born,
           and non-UK born population estimates for 2005") -> p3
@@ -159,7 +163,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
      ggplot(aes(x = Age, y = Population)) +
      geom_density(stat = "identity", alpha = 0.4) +
      facet_wrap(~CoB) +
-     theme_set() +
+     theme_set +
      theme(axis.text.x = element_text(angle = 90)) +
      labs(caption = "Comparision of ONS, LFS, UK born,
           and non-UK born population estimates for 2010") -> p4
@@ -173,7 +177,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
      ggplot(aes(x = Age, y = Population)) +
      geom_density(stat = "identity", alpha = 0.4) +
      facet_wrap(~CoB) +
-     theme_set() +
+     theme_set +
      theme(axis.text.x = element_text(angle = 90)) +
      labs(caption = "Comparision of ONS, LFS, UK born,
           and non-UK born population estimates for 2015") -> p5
@@ -191,7 +195,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
      ggplot(aes(x = Year, y = Population, fill = CoB, colour = CoB)) +
      geom_point() +
      geom_line() +
-     theme_set() +
+     theme_set +
      labs(caption = "Population estimates over time for both the ONS abd KFS") -> p6
 
    interactive_plot(p6, interactive)

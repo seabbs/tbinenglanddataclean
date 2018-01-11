@@ -26,7 +26,7 @@ interactive <- FALSE
 rebuild <- FALSE 
 
 ## Analysis running in docker or locally? if local set ~ if in docker set ..
-run_envir <- ".."
+run_envir <- "../../"
 
 ```
 
@@ -140,8 +140,7 @@ clean_and_munge_england_life_expectancy(life_tables_path = paste0(run_envir, "/d
                                                 save_path = paste0(run_envir, "/data/tb_data/tbinenglanddataclean"),
                                                 save_format = c("rds", "csv"),
                                                 verbose = TRUE,
-                                                interactive = interactive,
-                                                theme_set = theme_minimal)
+                                                interactive = interactive)
 }
 ```
 

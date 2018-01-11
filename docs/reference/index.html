@@ -6,13 +6,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • tbinenglanddataclean</title>
+<title>Function reference • TB in England Data Clean</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -39,7 +39,7 @@
   <body>
     <div class="container template-reference-index">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -52,23 +52,17 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../index.html">Home</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Vignettes
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/make_data.html">Using package functions and local data to calculate TB incidence rates in England</a>
+      <a href="../articles/make_data.html">Use the package to construct the data</a>
     </li>
     <li>
       <a href="../articles/pop_changes_life_expect.html">Estimating UK born mortality and emmigration rates</a>
@@ -79,9 +73,17 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/seabbs/tbinenglanddataclean">
+  <a href="../reference/index.html">
+    <span class="fa fa-file-code-o"></span>
+     
+    Functions
+  </a>
+</li>
+<li>
+  <a href="https://github.com/seabbs/tbinenglanddataclean/">
     <span class="fa fa-github fa-lg"></span>
      
+    Github
   </a>
 </li>
       </ul>
@@ -112,23 +114,31 @@
       <tbody>
         <tr>
           <th colspan="2">
-            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-            <p class="section-desc"></p>
+            <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+            <p class="section-desc"><p>Data supplied with the package.</p></p>
           </th>
         </tr>
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="calculate_incidence_ets_lfs_ons.html">calculate_incidence_ets_lfs_ons</a></code> </p>
+            <p><code><a href="tb_interventions_timeline.html">tb_interventions_timeline</a></code> </p>
           </td>
-          <td><p>Function to Calculate Incidence Rates from ETS and Demographic Data</p></td>
+          <td><p>Tuberculosis Interventions Timeline</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="case_rate.html">case_rate</a></code> </p>
+            <p><code><a href="tb_not_ew.html">tb_not_ew</a></code> </p>
           </td>
-          <td><p>Function to Estimate the Case Rate for a Given Variable, stratified by given variables, dependant on age, year, agegrp2, and uk birth status. Missing data for the rate variable is dropped</p></td>
-        </tr><tr>
+          <td><p>Tuberculosis Notifications in England and Wales</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-cleaning-and-munging-functions" class="hasAnchor"><a href="#section-cleaning-and-munging-functions" class="anchor"></a>Cleaning and munging functions</h2>
+            <p class="section-desc"><p>Clean and munge the various raw data sources</p></p>
+          </th>
+        </tr>
+        <tr>
           <!--  -->
           <td>
             <p><code><a href="clean_and_munge_england_births.html">clean_and_munge_england_births</a></code> </p>
@@ -161,11 +171,25 @@
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="calculate_incidence_ets_lfs_ons.html">calculate_incidence_ets_lfs_ons</a></code> </p>
+          </td>
+          <td><p>Function to Calculate Incidence Rates from ETS and Demographic Data</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="combine_ons_with_lfs.html">combine_ons_with_lfs</a></code> </p>
           </td>
           <td><p>A Function that Combines the ONS Demographic Data, with the LFS
 Demographic Data</p></td>
-        </tr><tr>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-helper-functions" class="hasAnchor"><a href="#section-helper-functions" class="anchor"></a>Helper functions</h2>
+            <p class="section-desc"><p>Functions used to help clean and munge data.</p></p>
+          </th>
+        </tr>
+        <tr>
           <!--  -->
           <td>
             <p><code><a href="est_inc_crude_adj.html">est_inc_crude_adj</a></code> </p>
@@ -186,6 +210,20 @@ Demographic Data</p></td>
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="case_rate.html">case_rate</a></code> </p>
+          </td>
+          <td><p>Function to Estimate the Case Rate for a Given Variable, stratified by given variables, dependant on age, year, agegrp2, and uk birth status. Missing data for the rate variable is dropped</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-plot" class="hasAnchor"><a href="#section-plot" class="anchor"></a>Plot</h2>
+            <p class="section-desc"><p>Plotting functions for the included data and for the newly generated data.</p></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
             <p><code><a href="plot_historic_prop_pul_tb.html">plot_historic_prop_pul_tb</a></code> </p>
           </td>
           <td><p>Plot Historic Proportions of Pulmonary/Extra-Pulmonary TB</p></td>
@@ -201,18 +239,6 @@ Demographic Data</p></td>
             <p><code><a href="plot_pop_age_compare_ons_lfs.html">plot_pop_age_compare_ons_lfs</a></code> </p>
           </td>
           <td><p>A Function to Plot Differences Between LFS and ONS Data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="tb_interventions_timeline.html">tb_interventions_timeline</a></code> </p>
-          </td>
-          <td><p>Tuberculosis Interventions Timeline</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="tb_not_ew.html">tb_not_ew</a></code> </p>
-          </td>
-          <td><p>Tuberculosis Notifications in England and Wales</p></td>
         </tr>
       </tbody>
       </table>
@@ -222,7 +248,10 @@ Demographic Data</p></td>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-data">Data</a></li>
+      <li><a href="#section-cleaning-and-munging-functions">Cleaning and munging functions</a></li>
+      <li><a href="#section-helper-functions">Helper functions</a></li>
+      <li><a href="#section-plot">Plot</a></li>
     </ul>
   </div>
 </div>
@@ -233,7 +262,7 @@ Demographic Data</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
