@@ -41,7 +41,7 @@ clean_munge_ets_2016 <- function(data_path = NULL,
     stop("The pathway to save munged and cleaned data has not been specified")
   }
 
-  df <- read_stata(data_path, encoding = "windows-1252")
+  df <- read_stata(data_path, encoding = "latin1")
 
   ## change from stata format to R factors
   df <- df %>% haven::as_factor(only_labelled = TRUE, levels = "label")
