@@ -79,7 +79,7 @@ clean_labour_force_survey <- function(data_path = "~/data/tb_data/LFS",
       message("Data loaded from: ", full_path)
     }
     ## read in the data
-    df <- read_stata(file = full_path, encoding = "windows-1252")
+    df <- read_stata(file = full_path, encoding = "latin1")
 
     return(df)
   })
