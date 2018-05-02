@@ -62,8 +62,8 @@ calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tb_data/tbinengl
     spread(key = CoB, value = Cases) %>%
     full_join(total_case_year_age, by = c('Age', 'Year', 'Age group', 'Age group (condensed)')) %>%
     gather(key = CoB, value = Cases, Total, `Total (LFS)`, `UK Born`, `Non-UK Born`, `<NA>`) %>%
-    mutate(CoB = recode_factor(CoB, `UK Born` = 'UK born', `Non-UK Born` = 'Non-UK born')) %>%
-    mutate(CoB = replace(CoB, CoB %in% '<NA>', NA) %>% droplevels)
+    mutate(CoB = recode_factor(CoB, `UK Born` = 'UK born', `Non-UK Born` = 'Non-UK born') %>%
+                  droplevels)
 
   # Join data sets ----------------------------------------------------------
   cases_demo <- demo %>%
