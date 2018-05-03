@@ -10,7 +10,7 @@
 #' @return A tidy data frame of population broken down by country, age, sex and UK birth status
 #' for 2000 to 2015.
 #' @export
-#' @import dplyr
+#' @importFrom dplyr mutate select rename
 #' @importFrom haven read_stata
 #' @importFrom purrr pmap
 #' @import ggplot2

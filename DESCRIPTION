@@ -16,10 +16,10 @@ Imports: magrittr,
     tibble,
     idmodelr,
     readxl,
-    ggjoy,
     stringr,
     scales,
-    viridis
+    viridis,
+    ggridges
 Suggests: testthat,
     knitr,
     rmarkdown,

@@ -23,10 +23,10 @@ library(tbinenglanddataclean)
 interactive <- FALSE
 
 ## rebuild existing data sets
-rebuild <- FALSE 
+rebuild <- FALSE
 
 ## Analysis running in docker or locally? if local set ~ if in docker set ..
-run_envir <- "../"
+run_envir <- ".."
 
 ```
 

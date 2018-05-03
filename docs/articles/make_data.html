@@ -102,10 +102,10 @@
 interactive &lt;-<span class="st"> </span><span class="ot">FALSE</span>
 
 ## rebuild existing data sets
-rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span> 
+rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span>
 
 ## Analysis running in docker or locally? if local set ~ if in docker set ..
-run_envir &lt;-<span class="st"> "../"</span></code></pre></div>
+run_envir &lt;-<span class="st"> ".."</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean/clean_ets_2016.rds"</span>)) <span class="op">||</span><span class="st"> </span>rebuild) {
   <span class="kw"><a href="../reference/clean_munge_ets_2016.html">clean_munge_ets_2016</a></span>(<span class="dt">data_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/ETS/ETS_2016_extract/SAbbott_BCG dataset_version2_final140217.dta"</span>),
                      <span class="dt">return =</span> <span class="ot">FALSE</span>,
@@ -182,10 +182,10 @@ run_envir &lt;-<span class="st"> "../"</span></code></pre></div>
                      <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
                      <span class="dt">interactive =</span> interactive) 
 }</code></pre></div>
-<pre><code>## Loading demographic data from: ..//data/tb_data/tbinenglanddataclean/E_demo_2000_2015.rds</code></pre>
-<pre><code>## Loading labour force survey data from: ..//data/tb_data/tbinenglanddataclean/formatted_LFS_2000_2016.rds</code></pre>
+<pre><code>## Loading demographic data from: ../data/tb_data/tbinenglanddataclean/E_demo_2000_2015.rds</code></pre>
+<pre><code>## Loading labour force survey data from: ../data/tb_data/tbinenglanddataclean/formatted_LFS_2000_2016.rds</code></pre>
 <p><img src="make_data_files/figure-html/combine-lfs-ons-1.png" width="700"><img src="make_data_files/figure-html/combine-lfs-ons-2.png" width="700"><img src="make_data_files/figure-html/combine-lfs-ons-3.png" width="700"><img src="make_data_files/figure-html/combine-lfs-ons-4.png" width="700"><img src="make_data_files/figure-html/combine-lfs-ons-5.png" width="700"><img src="make_data_files/figure-html/combine-lfs-ons-6.png" width="700"><img src="make_data_files/figure-html/combine-lfs-ons-7.png" width="700"><img src="make_data_files/figure-html/combine-lfs-ons-8.png" width="700"></p>
-<pre><code>## ONS combined with LFS data saved to: ..//data/tb_data/tbinenglanddataclean/E_ons_lfs_2000_2016</code></pre>
+<pre><code>## ONS combined with LFS data saved to: ../data/tb_data/tbinenglanddataclean/E_ons_lfs_2000_2016</code></pre>
 <pre><code>## Formated as, rds, csv</code></pre>
 <p><img src="make_data_files/figure-html/combine-lfs-ons-9.png" width="700"></p>
 </div>
@@ -215,7 +215,7 @@ run_envir &lt;-<span class="st"> "../"</span></code></pre></div>
                                                 <span class="dt">interactive =</span> interactive)
 }</code></pre></div>
 <p><img src="make_data_files/figure-html/clean-munge-mortality-rates-1.png" width="700"><img src="make_data_files/figure-html/clean-munge-mortality-rates-2.png" width="700"></p>
-<pre><code>## Mortality rates saved to: ..//data/tb_data/tbinenglanddataclean/england_mortality_rates</code></pre>
+<pre><code>## Mortality rates saved to: ../data/tb_data/tbinenglanddataclean/england_mortality_rates</code></pre>
 <pre><code>## Formated as, rds, csv</code></pre>
 <p><img src="make_data_files/figure-html/clean-munge-mortality-rates-3.png" width="700"></p>
 </div>

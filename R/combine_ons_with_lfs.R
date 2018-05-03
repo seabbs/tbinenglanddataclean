@@ -14,7 +14,7 @@
 #' @return A tidy tibble of demographic data by age between 2000 and 2015 for the specified countries
 #' for both ONS and LFS data.
 #' @export
-#'
+#' @importFrom dplyr mutate summarise select group_by mutate filter full_join bind_rows
 #' @examples
 #'
 combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclean",

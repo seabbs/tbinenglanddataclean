@@ -38,7 +38,7 @@ tb_interventions_timeline <- data_frame(year = c(1921, 1944, 1944, 1952, 1952, 1
                                            "",
                                            "",
                                            "Second"),
-                                  detail = c("The first use of the Bacillus Calmette–Guérin (BCG) vaccine in humans, it remains the only vaccine against Tuberculosis (TB). 
+                                  detail = c("The first use of the Bacillus Calmette–Guerin (BCG) vaccine in humans, it remains the only vaccine against Tuberculosis (TB). 
                                               Efficacy has been shown to vary depending on latitude (0-80%) and there is only strong evidence of protection for 
                                              10-15 years after vaccination.",
                                             "The first antibiotic and the first bacterial agent against TB.",

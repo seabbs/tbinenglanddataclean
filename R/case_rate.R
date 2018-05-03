@@ -11,7 +11,7 @@
 #'
 #' @return Returns a dataframe of case rates stratified by multiple variables with confidence intervals.
 #' @export
-#' @import dplyr
+#' @importFrom dplyr filter group_by ungroup select mutate summarise rowwise funs
 #' @import magrittr
 #' @examples
 #'
@@ -50,12 +50,12 @@ case_rate = function(df, rate_for, strat_by = NULL, age_split = NULL,
 
 
   df <- df %>%
-    filter_(paste0('!is.na(', rate_for, ')')) %>%
+    filter(.vars = rate_for, .funs = funs(!is.na(.)))  %>%
     extract_case_counts(strat_var = CaseCountVar) %>%
-    group_by_(.dots = GroupByCase) %>%
+    group_by(.dots = GroupByCase) %>%
     summarise(Cases = sum(Cases, na.rm = TRUE)) %>%
     ungroup %>%
-    group_by_(.dots = GroupByTotCase) %>%
+    group_by(.dots = GroupByTotCase) %>%
     mutate(`Total cases` = sum(Cases, na.rm = TRUE)) %>%
     ungroup() %>%
     rowwise %>%

@@ -7,7 +7,8 @@
 #' @return A dataframe containing age stratified incidence.
 #' @export
 #' @import magrittr
-#' @import dplyr
+#' @importFrom dplyr mutate bind_rows rename
+#' @importFrom tibble as_tibble
 #' @importFrom epiR epi.directadj
 #' @importFrom tibble as_data_frame
 #' @examples
@@ -25,19 +26,19 @@ est_inc_crude_adj = function(filter, pop = pop_age, cases = cases_age, rate_pop 
 
   ##format crude rates
   tmp$crude %>%
-    as_data_frame %>%
+    as_tibble %>%
     mutate(CoB = rep(filter, nrow(tmp$crude))) -> tmp$crude
 
   ##format crude total rates
   tmp$crude.strata %>%
-    as_data_frame %>%
+    as_tibble %>%
     mutate(CoB = rep(filter, nrow(tmp$crude.strata)),
            cov = rep('All cases (crude)', nrow(tmp$crude.strata))) -> tmp$crude.strata
 
   ##format adjusted total rates
 
   tmp$adj.strata %>%
-    as_data_frame %>%
+    as_tibble %>%
     mutate(CoB = rep(filter, nrow(tmp$crude.strata)),
            cov = rep('All cases (adj)', nrow(tmp$crude.strata))) -> tmp$adj.strata
 

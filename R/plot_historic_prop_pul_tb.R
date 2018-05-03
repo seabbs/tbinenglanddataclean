@@ -9,7 +9,7 @@
 #' @import magrittr
 #' @import ggplot2
 #' @import viridis
-#' @importFrom dplyr mutate group_by
+#' @importFrom dplyr mutate group_by ungroup
 #' @importFrom tidyr gather
 #' @importFrom scales percent
 #' @examples
@@ -38,17 +38,18 @@ plot_historic_prop_pul_tb <- function(df = tb_not_ew,
     group_by(year) %>% 
     mutate(total = sum(Notifications, na.rm = TRUE)) %>% 
     mutate(Proportion = Notifications/total) %>%
-    ggplot(aes(x = Year, y = Proportion, fill = `TB type`)) +
-    geom_bar(stat = "identity") +
+    ungroup %>% 
+    ggplot(aes(x = Year, y = Proportion, fill = `TB type`), na.rm = TRUE) +
+    geom_bar(stat = "identity", na.rm = TRUE) +
     plot_theme +
     theme(legend.position = "bottom") +
     scale_y_continuous(labels = scales::percent) +
     colour_scale
 
   if (return) {
-    return(suppressWarnings(p))
+    return(p)
   }else{
-    suppressWarnings(p)
+    p
   }
 }
 

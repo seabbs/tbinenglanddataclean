@@ -18,7 +18,7 @@
 #' @export
 #' @import magrittr
 #' @importFrom readr read_csv
-#' @import dplyr
+#' @importFrom dplyr mutate rename group_by summarise filter ungroup select 
 #' @importFrom tidyr gather
 #' @importFrom idmodelr interactive_plot
 #' @import ggplot2

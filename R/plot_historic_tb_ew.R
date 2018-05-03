@@ -15,7 +15,7 @@
 #' @import ggplot2
 #' @import viridis
 #' @import magrittr
-#' @importFrom dplyr mutate bind_rows data_frame full_join rename
+#' @importFrom dplyr mutate bind_rows data_frame full_join rename pull
 #' @importFrom tidyr gather
 #' @importFrom scales extended_breaks
 #' @examples

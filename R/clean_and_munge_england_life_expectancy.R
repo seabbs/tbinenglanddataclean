@@ -11,10 +11,10 @@
 #' @import magrittr
 #' @import ggplot2
 #' @importFrom readxl read_excel cell_cols
-#' @importFrom dplyr rename select mutate bind_cols full_join
+#' @importFrom dplyr rename select mutate bind_cols full_join mutate_at funs nth
 #' @importFrom purrr map_df transpose
 #' @importFrom stringr str_split
-#' @importFrom ggjoy geom_joy
+#' @importFrom ggridges geom_density_ridges
 #' @examples
 #'
 clean_and_munge_england_life_expectancy <- function(life_tables_path =
@@ -66,7 +66,7 @@ clean_and_munge_england_life_expectancy <- function(life_tables_path =
   if (verbose) {
     p1 <- mortality_rates %>%
       ggplot(aes(x = age , y = year, height = mortality_rate, fill = gender)) +
-      geom_joy(stat = "identity") +
+      geom_density_ridges(stat = "identity") +
       labs(caption = "Mortality rates over time, 3 year rolling estimates split by gender")
 
     interactive_plot(p1, FALSE)
@@ -74,7 +74,7 @@ clean_and_munge_england_life_expectancy <- function(life_tables_path =
     p2 <- mortality_rates %>%
       filter(age <= 65) %>%
       ggplot(aes(x = age , y = year, height = mortality_rate, fill = gender)) +
-      geom_joy(stat = "identity") +
+      geom_density_ridges(stat = "identity") +
       labs(caption = "Mortality rates over time, 3 year rolling estimates split by gender, for those 65 and under")
 
     interactive_plot(p2, FALSE)
@@ -82,7 +82,7 @@ clean_and_munge_england_life_expectancy <- function(life_tables_path =
     p3 <- mortality_rates %>%
       filter(age <= 5) %>%
       ggplot(aes(x = age , y = year, height = mortality_rate, fill = gender)) +
-      geom_joy(stat = "identity") +
+      geom_density_ridges(stat = "identity") +
       labs(caption = "Mortality rates over time, 3 year rolling estimates split by gender, for those 5 and under")
 
     interactive_plot(p3, FALSE)

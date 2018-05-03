@@ -8,7 +8,7 @@
 #'
 #' @return Case counts stratified by the required variables
 #' @export
-#' @import dplyr
+#' @importFrom dplyr mutate group_by tally ungroup rename 
 #' @import magrittr
 #' @examples
 #'
