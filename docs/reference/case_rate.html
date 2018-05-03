@@ -18,13 +18,23 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Function to Estimate the Case Rate for a Given Variable, stratified by given variables, dependant on age, year, agegrp2, and uk birth status. Missing data for the rate variable is dropped — case_rate" />
+
+<meta property="og:description" content="Function to estimate the case rate for a given variable, stratified by given variables,
+dependant on age, year, agegrp2, and uk birth status. Missing data for the rate variable is dropped." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +57,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">tbinenglanddataclean</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">tbinenglanddataclean</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1.1000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -87,6 +101,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -94,21 +109,25 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Function to Estimate the Case Rate for a Given Variable, stratified by given variables, dependant on age, year, agegrp2, and uk birth status. Missing data for the rate variable is dropped</h1>
+    <small class="dont-index">Source: <a href='https://github.com/seabbs/tbinenglanddataclean/blob/master/R/case_rate.R'><code>R/case_rate.R</code></a></small>
+    <div class="hidden name"><code>case_rate.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Function to estimate the case rate for a given variable, stratified by given variables,
 dependant on age, year, agegrp2, and uk birth status. Missing data for the rate variable is dropped.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>case_rate</span>(<span class='no'>df</span>, <span class='no'>rate_for</span>, <span class='kw'>strat_by</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>age_split</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>CoB_split</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>Year_strat</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -171,5 +190,8 @@ dependant on age, year, agegrp2, and uk birth status. Missing data for the rate 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

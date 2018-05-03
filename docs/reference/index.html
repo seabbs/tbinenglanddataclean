@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Function reference" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +53,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">tbinenglanddataclean</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">tbinenglanddataclean</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1.1000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -87,6 +97,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -94,155 +105,150 @@
       
       </header>
 
-      <div class="row">
-  <div class="col-md-9">
+<div class="row">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.0.1.1000</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    <table class="ref-index">
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <colgroup>
+      <col class="alias" />
+      <col class="title" />
+    </colgroup>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
-            <p class="section-desc"><p>Data supplied with the package.</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="tb_interventions_timeline.html">tb_interventions_timeline</a></code> </p>
-          </td>
-          <td><p>Tuberculosis Interventions Timeline</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="tb_not_ew.html">tb_not_ew</a></code> </p>
-          </td>
-          <td><p>Tuberculosis Notifications in England and Wales</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-cleaning-and-munging-functions" class="hasAnchor"><a href="#section-cleaning-and-munging-functions" class="anchor"></a>Cleaning and munging functions</h2>
-            <p class="section-desc"><p>Clean and munge the various raw data sources</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="clean_and_munge_england_births.html">clean_and_munge_england_births</a></code> </p>
-          </td>
-          <td><p>A Function to Clean and Merge Observed and Projected Births in England</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="clean_and_munge_england_life_expectancy.html">clean_and_munge_england_life_expectancy</a></code> </p>
-          </td>
-          <td><p>A Function to Clean and Munge Life Expectancy Estimates from England</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="clean_demographics_uk.html">clean_demographics_uk</a></code> </p>
-          </td>
-          <td><p>Clean and Munge UK Demographic Data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="clean_labour_force_survey.html">clean_labour_force_survey</a></code> </p>
-          </td>
-          <td><p>Load and Clean Labour Force Survey Data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="clean_munge_ets_2016.html">clean_munge_ets_2016</a></code> </p>
-          </td>
-          <td><p>Clean and Munge 2016 Enhanced Tuberculosis Surviellance Data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="calculate_incidence_ets_lfs_ons.html">calculate_incidence_ets_lfs_ons</a></code> </p>
-          </td>
-          <td><p>Function to Calculate Incidence Rates from ETS and Demographic Data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="combine_ons_with_lfs.html">combine_ons_with_lfs</a></code> </p>
-          </td>
-          <td><p>A Function that Combines the ONS Demographic Data, with the LFS
+    <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+          <p class="section-desc"><p>Data supplied with the package.</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="tb_interventions_timeline.html">tb_interventions_timeline</a></code> </p>
+        </td>
+        <td><p>Tuberculosis Interventions Timeline</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="tb_not_ew.html">tb_not_ew</a></code> </p>
+        </td>
+        <td><p>Tuberculosis Notifications in England and Wales</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-cleaning-and-munging-functions" class="hasAnchor"><a href="#section-cleaning-and-munging-functions" class="anchor"></a>Cleaning and munging functions</h2>
+          <p class="section-desc"><p>Clean and munge the various raw data sources</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="clean_and_munge_england_births.html">clean_and_munge_england_births()</a></code> </p>
+        </td>
+        <td><p>A Function to Clean and Merge Observed and Projected Births in England</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="clean_and_munge_england_life_expectancy.html">clean_and_munge_england_life_expectancy()</a></code> </p>
+        </td>
+        <td><p>A Function to Clean and Munge Life Expectancy Estimates from England</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="clean_demographics_uk.html">clean_demographics_uk()</a></code> </p>
+        </td>
+        <td><p>Clean and Munge UK Demographic Data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="clean_labour_force_survey.html">clean_labour_force_survey()</a></code> </p>
+        </td>
+        <td><p>Load and Clean Labour Force Survey Data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="clean_munge_ets_2016.html">clean_munge_ets_2016()</a></code> </p>
+        </td>
+        <td><p>Clean and Munge 2016 Enhanced Tuberculosis Surviellance Data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="calculate_incidence_ets_lfs_ons.html">calculate_incidence_ets_lfs_ons()</a></code> </p>
+        </td>
+        <td><p>Function to Calculate Incidence Rates from ETS and Demographic Data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="combine_ons_with_lfs.html">combine_ons_with_lfs()</a></code> </p>
+        </td>
+        <td><p>A Function that Combines the ONS Demographic Data, with the LFS
 Demographic Data</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-helper-functions" class="hasAnchor"><a href="#section-helper-functions" class="anchor"></a>Helper functions</h2>
-            <p class="section-desc"><p>Functions used to help clean and munge data.</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="est_inc_crude_adj.html">est_inc_crude_adj</a></code> </p>
-          </td>
-          <td><p>Function to Estimate Age Adjusted Incidence</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="extract_case_counts.html">extract_case_counts</a></code> </p>
-          </td>
-          <td><p>Extract Case Counts from the ETS Data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="form_df_epiR_inc_rate.html">form_df_epiR_inc_rate</a></code> </p>
-          </td>
-          <td><p>Function to Split by Country of Birth and Format for epiR</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="case_rate.html">case_rate</a></code> </p>
-          </td>
-          <td><p>Function to Estimate the Case Rate for a Given Variable, stratified by given variables, dependant on age, year, agegrp2, and uk birth status. Missing data for the rate variable is dropped</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-plot" class="hasAnchor"><a href="#section-plot" class="anchor"></a>Plot</h2>
-            <p class="section-desc"><p>Plotting functions for the included data and for the newly generated data.</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="plot_historic_prop_pul_tb.html">plot_historic_prop_pul_tb</a></code> </p>
-          </td>
-          <td><p>Plot Historic Proportions of Pulmonary/Extra-Pulmonary TB</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="plot_historic_tb_ew.html">plot_historic_tb_ew</a></code> </p>
-          </td>
-          <td><p>Plot Historic TB Notifications in England and Wales</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="plot_pop_age_compare_ons_lfs.html">plot_pop_age_compare_ons_lfs</a></code> </p>
-          </td>
-          <td><p>A Function to Plot Differences Between LFS and ONS Data</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-helper-functions" class="hasAnchor"><a href="#section-helper-functions" class="anchor"></a>Helper functions</h2>
+          <p class="section-desc"><p>Functions used to help clean and munge data.</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="est_inc_crude_adj.html">est_inc_crude_adj()</a></code> </p>
+        </td>
+        <td><p>Function to Estimate Age Adjusted Incidence</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="extract_case_counts.html">extract_case_counts()</a></code> </p>
+        </td>
+        <td><p>Extract Case Counts from the ETS Data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="form_df_epiR_inc_rate.html">form_df_epiR_inc_rate()</a></code> </p>
+        </td>
+        <td><p>Function to Split by Country of Birth and Format for epiR</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="case_rate.html">case_rate()</a></code> </p>
+        </td>
+        <td><p>Function to Estimate the Case Rate for a Given Variable, stratified by given variables, dependant on age, year, agegrp2, and uk birth status. Missing data for the rate variable is dropped</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-plot" class="hasAnchor"><a href="#section-plot" class="anchor"></a>Plot</h2>
+          <p class="section-desc"><p>Plotting functions for the included data and for the newly generated data.</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="plot_historic_prop_pul_tb.html">plot_historic_prop_pul_tb()</a></code> </p>
+        </td>
+        <td><p>Plot Historic Proportions of Pulmonary/Extra-Pulmonary TB</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="plot_historic_tb_ew.html">plot_historic_tb_ew()</a></code> </p>
+        </td>
+        <td><p>Plot Historic TB Notifications in England and Wales</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="plot_pop_age_compare_ons_lfs.html">plot_pop_age_compare_ons_lfs()</a></code> </p>
+        </td>
+        <td><p>A Function to Plot Differences Between LFS and ONS Data</p></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -268,5 +274,8 @@ Demographic Data</p></td>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

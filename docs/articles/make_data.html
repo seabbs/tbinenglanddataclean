@@ -8,14 +8,17 @@
 <title>Using package functions and local data to calculate TB incidence rates in England • TB in England Data Clean</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><meta property="og:title" content="Using package functions and local data to calculate TB incidence rates in England">
+<meta property="og:description" content="">
+<meta name="twitter:card" content="summary">
+<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -24,8 +27,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">tbinenglanddataclean</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">tbinenglanddataclean</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1.1000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -72,17 +79,20 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Using package functions and local data to calculate TB incidence rates in England</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2018-01-11</h4>
-          </div>
+            <h4 class="date">2018-05-03</h4>
+      
+      <small class="dont-index">Source: <a href="https://github.com/seabbs/tbinenglanddataclean/blob/master/vignettes/make_data.Rmd"><code>vignettes/make_data.Rmd</code></a></small>
+      <div class="hidden name"><code>make_data.Rmd</code></div>
+
+    </div>
 
     
     
-<div class="contents">
 <div id="clean-and-create-variables-from-the-enhanced-tuberculosis-surveillance-data-set" class="section level1">
 <h1 class="hasAnchor">
 <a href="#clean-and-create-variables-from-the-enhanced-tuberculosis-surveillance-data-set" class="anchor"></a>Clean and Create Variables from the Enhanced Tuberculosis Surveillance Data Set</h1>
@@ -95,7 +105,7 @@ interactive &lt;-<span class="st"> </span><span class="ot">FALSE</span>
 rebuild &lt;-<span class="st"> </span><span class="ot">FALSE</span> 
 
 ## Analysis running in docker or locally? if local set ~ if in docker set ..
-run_envir &lt;-<span class="st"> "../../"</span></code></pre></div>
+run_envir &lt;-<span class="st"> "../"</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean/clean_ets_2016.rds"</span>)) <span class="op">||</span><span class="st"> </span>rebuild) {
   <span class="kw"><a href="../reference/clean_munge_ets_2016.html">clean_munge_ets_2016</a></span>(<span class="dt">data_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/ETS/ETS_2016_extract/SAbbott_BCG dataset_version2_final140217.dta"</span>),
                      <span class="dt">return =</span> <span class="ot">FALSE</span>,
@@ -172,12 +182,12 @@ run_envir &lt;-<span class="st"> "../../"</span></code></pre></div>
                      <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
                      <span class="dt">interactive =</span> interactive) 
 }</code></pre></div>
-<pre><code>## Loading demographic data from: ../..//data/tb_data/tbinenglanddataclean/E_demo_2000_2015.rds</code></pre>
-<pre><code>## Loading labour force survey data from: ../..//data/tb_data/tbinenglanddataclean/formatted_LFS_2000_2016.rds</code></pre>
-<p><img src="make_data_files/figure-html/combine-lfs-ons-1.png" width="672"><img src="make_data_files/figure-html/combine-lfs-ons-2.png" width="672"><img src="make_data_files/figure-html/combine-lfs-ons-3.png" width="672"><img src="make_data_files/figure-html/combine-lfs-ons-4.png" width="672"><img src="make_data_files/figure-html/combine-lfs-ons-5.png" width="672"><img src="make_data_files/figure-html/combine-lfs-ons-6.png" width="672"><img src="make_data_files/figure-html/combine-lfs-ons-7.png" width="672"><img src="make_data_files/figure-html/combine-lfs-ons-8.png" width="672"></p>
-<pre><code>## ONS combined with LFS data saved to: ../..//data/tb_data/tbinenglanddataclean/E_ons_lfs_2000_2016</code></pre>
+<pre><code>## Loading demographic data from: ..//data/tb_data/tbinenglanddataclean/E_demo_2000_2015.rds</code></pre>
+<pre><code>## Loading labour force survey data from: ..//data/tb_data/tbinenglanddataclean/formatted_LFS_2000_2016.rds</code></pre>
+<p><img src="make_data_files/figure-html/combine-lfs-ons-1.png" width="700"><img src="make_data_files/figure-html/combine-lfs-ons-2.png" width="700"><img src="make_data_files/figure-html/combine-lfs-ons-3.png" width="700"><img src="make_data_files/figure-html/combine-lfs-ons-4.png" width="700"><img src="make_data_files/figure-html/combine-lfs-ons-5.png" width="700"><img src="make_data_files/figure-html/combine-lfs-ons-6.png" width="700"><img src="make_data_files/figure-html/combine-lfs-ons-7.png" width="700"><img src="make_data_files/figure-html/combine-lfs-ons-8.png" width="700"></p>
+<pre><code>## ONS combined with LFS data saved to: ..//data/tb_data/tbinenglanddataclean/E_ons_lfs_2000_2016</code></pre>
 <pre><code>## Formated as, rds, csv</code></pre>
-<p><img src="make_data_files/figure-html/combine-lfs-ons-9.png" width="672"></p>
+<p><img src="make_data_files/figure-html/combine-lfs-ons-9.png" width="700"></p>
 </div>
 <div id="clean-and-munge-changes-in-english-population" class="section level1">
 <h1 class="hasAnchor">
@@ -204,10 +214,10 @@ run_envir &lt;-<span class="st"> "../../"</span></code></pre></div>
                                                 <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
                                                 <span class="dt">interactive =</span> interactive)
 }</code></pre></div>
-<p><img src="make_data_files/figure-html/clean-munge-mortality-rates-1.png" width="672"><img src="make_data_files/figure-html/clean-munge-mortality-rates-2.png" width="672"></p>
-<pre><code>## Mortality rates saved to: ../..//data/tb_data/tbinenglanddataclean/england_mortality_rates</code></pre>
+<p><img src="make_data_files/figure-html/clean-munge-mortality-rates-1.png" width="700"><img src="make_data_files/figure-html/clean-munge-mortality-rates-2.png" width="700"></p>
+<pre><code>## Mortality rates saved to: ..//data/tb_data/tbinenglanddataclean/england_mortality_rates</code></pre>
 <pre><code>## Formated as, rds, csv</code></pre>
-<p><img src="make_data_files/figure-html/clean-munge-mortality-rates-3.png" width="672"></p>
+<p><img src="make_data_files/figure-html/clean-munge-mortality-rates-3.png" width="700"></p>
 </div>
 <div id="calculate-tb-incidence-rates-for-england" class="section level1">
 <h1 class="hasAnchor">
@@ -224,10 +234,9 @@ run_envir &lt;-<span class="st"> "../../"</span></code></pre></div>
                                 <span class="dt">cases_demo_incidence_name =</span> <span class="st">"cases_demo_incidence"</span>,
                                 <span class="dt">save_path =</span> <span class="kw">paste0</span>(run_envir, <span class="st">"/data/tb_data/tbinenglanddataclean"</span>),
                                 <span class="dt">save_format =</span> <span class="kw">c</span>(<span class="st">"rds"</span>, <span class="st">"csv"</span>),
-                                <span class="dt">verbose =</span> <span class="ot">FALSE</span>,
+                                <span class="dt">verbose =</span> <span class="ot">TRUE</span>,
                                 <span class="dt">interactive =</span> interactive)
 }</code></pre></div>
-</div>
 </div>
   </div>
 
@@ -259,6 +268,8 @@ run_envir &lt;-<span class="st"> "../../"</span></code></pre></div>
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>

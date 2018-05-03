@@ -2,8 +2,9 @@
 #'
 #' @param df A dataframe, (defaults to using \code{\link[tbinenglanddataclean]{tb_not_ew}})
 #' of historic TB notifications
+#' @param include_interventions Logical, defaults to \code{TRUE}. Should inventions be plotted?
 #' @param df_interventions A dataframe, (defaults to using \code{\link[tbinenglanddataclean]{tb_interventions_timeline}})
-#' of TB interventions, focussing on there history in the UK. If passed as \code{NULL} no interventions will be plotted.
+#' of TB interventions, focussing on there history in the UK.
 #' @param zoom_date_start Numeric, the year to filter notifications from for the second zoomed plot.
 #' @param zoom_date_end Numeric, the year to end the zoom window, defaults to the final year of the data.
 #' @param plot_theme The ggplot2 theme to use, defaults to \code{\link[ggplot2]{theme_minimal}}.
@@ -19,19 +20,28 @@
 #' @importFrom scales extended_breaks
 #' @examples
 #' plot_historic_tb_ew()
-plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
-                                df_interventions = tbinenglanddataclean::tb_interventions_timeline,
+plot_historic_tb_ew <- function(df = NULL,
+                                include_interventions = TRUE,
+                                df_interventions = NULL,
                                 zoom_date_start = 1982,
                                 zoom_date_end = NULL,
                                 plot_theme = NULL,
                                 colour_scale = NULL,
                                 return = FALSE) {
   
+  if (is.null(df)) {
+    df <- tb_not_ew
+  }
+  
+  if (is.null(df_interventions)) {
+    df_interventions <- tb_interventions_timeline
+  }
+  
   if (is.null(zoom_date_end)) {
     zoom_date_end <- max(df$year)
   }
   
-  if (!is.null(df_interventions)) {
+  if (include_interventions) {
    df <- df %>% 
      full_join(df_interventions %>% 
                  mutate(type = factor(type)), by = "year") %>% 
@@ -90,7 +100,7 @@ plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
                            zoom = pull(max_not_facet, zoom))
   }
 
-  if (!is.null(df_interventions)) {
+  if (include_interventions) {
     p <- df_plot %>%
       ggplot(aes(x = Year, y = Notifications, label = Intervention))
   }else{
@@ -100,11 +110,10 @@ plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
   
   if (!is.null(zoom_date_start)) {
     p <- p + geom_rect(data = zoom_dim, aes(ymax = y_max, xmax = x_max, ymin = y_min, xmin = x_min,
-                                            xintercept = NULL, linetype = NULL, label = NULL,
-                                            x = NULL, y = NULL), alpha = 0.05, fill = "blue")
+                                            x = NULL, y = NULL, label = NULL), alpha = 0.05, fill = "blue")
   }
   
-  if (!is.null(df_interventions)) {
+  if (include_interventions) {
     p <- p + 
       geom_vline(data = filter(df_plot, !is.na(`Intervention type`)), aes(xintercept = Year, linetype = `Intervention type`), alpha = 0.6)
   }
@@ -114,6 +123,7 @@ plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
     plot_theme +
     colour_scale +
     scale_x_continuous(breaks = scales::extended_breaks(n = 10)) +
+    scale_y_continuous() +
     theme(legend.position = "bottom", 
           legend.justification = "center",
           legend.box = "horizontal") +
@@ -123,7 +133,7 @@ plot_historic_tb_ew <- function(df = tbinenglanddataclean::tb_not_ew,
     p <- p + facet_wrap(~zoom, scales = "free", ncol = 1)
   }
   
-  if (!is.null(df_interventions)) {
+  if (include_interventions) {
     p <- p + guides(linetype = guide_legend(nrow = 2))
   }
   

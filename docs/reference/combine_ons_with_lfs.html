@@ -19,13 +19,25 @@ Demographic Data — combine_ons_with_lfs • TB in England Data Clean</title>
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="A Function that Combines the ONS Demographic Data, with the LFS
+Demographic Data — combine_ons_with_lfs" />
+
+<meta property="og:description" content="This function takes demographic data summarised by clean_demographics_uk and
+clean_labour_force_survey and combines it into a single tidy dataset.
+Summary statistics and plots can be returned to check both datasets." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -48,8 +60,12 @@ Demographic Data — combine_ons_with_lfs • TB in England Data Clean</title>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">tbinenglanddataclean</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">tbinenglanddataclean</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1.1000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -88,6 +104,7 @@ Demographic Data — combine_ons_with_lfs • TB in England Data Clean</title>
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -95,18 +112,22 @@ Demographic Data — combine_ons_with_lfs • TB in England Data Clean</title>
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>A Function that Combines the ONS Demographic Data, with the LFS
 Demographic Data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/seabbs/tbinenglanddataclean/blob/master/R/combine_ons_with_lfs.R'><code>R/combine_ons_with_lfs.R</code></a></small>
+    <div class="hidden name"><code>combine_ons_with_lfs.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This function takes demographic data summarised by <code><a href='clean_demographics_uk.html'>clean_demographics_uk</a></code> and
 <code><a href='clean_labour_force_survey.html'>clean_labour_force_survey</a></code> and combines it into a single tidy dataset.
 Summary statistics and plots can be returned to check both datasets.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>combine_ons_with_lfs</span>(<span class='kw'>data_path</span> <span class='kw'>=</span> <span class='st'>"~/data/tb_data/tbinenglanddataclean"</span>,
   <span class='kw'>ons_name</span> <span class='kw'>=</span> <span class='st'>"E_demo_2000_2015.rds"</span>,
@@ -115,7 +136,7 @@ Summary statistics and plots can be returned to check both datasets.</p>
   <span class='kw'>save_path</span> <span class='kw'>=</span> <span class='st'>"~/data/tb_data/tbinenglanddataclean"</span>, <span class='kw'>save_format</span> <span class='kw'>=</span> <span class='st'>"rds"</span>,
   <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>theme_set</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -206,5 +227,8 @@ for both ONS and LFS data.</p>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

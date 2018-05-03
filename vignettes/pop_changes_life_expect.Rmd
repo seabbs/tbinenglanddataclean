@@ -28,8 +28,8 @@ library(tidyverse)
 
 ```{r load-in-data}
 ## data paths - run the making data vignette to get this data locally 
-birth_path = "../../data/tb_data/tbinenglanddataclean/england_births.rds"
-demo_path = "../../data/tb_data/tbinenglanddataclean/E_ons_lfs_2000_2016.rds"
+birth_path = "../data/tb_data/tbinenglanddataclean/england_births.rds"
+demo_path = "../data/tb_data/tbinenglanddataclean/E_ons_lfs_2000_2016.rds"
 
 ## read in data
 births <- readRDS(birth_path)

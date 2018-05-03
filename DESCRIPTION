@@ -23,7 +23,8 @@ Imports: magrittr,
 Suggests: testthat,
     knitr,
     rmarkdown,
-    tidyverse
+    tidyverse,
+    vdiffr
 Remotes: seabbs/idmodelr,
          tidyverse/dplyr,
          tidyverse/ggplot2

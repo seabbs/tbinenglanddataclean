@@ -1,7 +1,10 @@
-urls:
-  reference: https://www.samabbott.co.uk/tbinenglanddataclean//reference
-  article: https://www.samabbott.co.uk/tbinenglanddataclean//articles
+pandoc: 1.19.2.1
+pkgdown: 1.0.0
+pkgdown_sha: d43ca38c74827d1d6babc3a80d48cd3a8e8fad8c
 articles:
   make_data: make_data.html
   pop_changes_life_expect: pop_changes_life_expect.html
+urls:
+  reference: https://www.samabbott.co.uk/tbinenglanddataclean//reference
+  article: https://www.samabbott.co.uk/tbinenglanddataclean//articles
 

@@ -4,17 +4,18 @@
 \alias{plot_historic_tb_ew}
 \title{Plot Historic TB Notifications in England and Wales}
 \usage{
-plot_historic_tb_ew(df = tbinenglanddataclean::tb_not_ew,
-  df_interventions = tbinenglanddataclean::tb_interventions_timeline,
-  zoom_date_start = 1982, zoom_date_end = NULL, plot_theme = NULL,
-  colour_scale = NULL, return = FALSE)
+plot_historic_tb_ew(df = NULL, include_interventions = TRUE,
+  df_interventions = NULL, zoom_date_start = 1982, zoom_date_end = NULL,
+  plot_theme = NULL, colour_scale = NULL, return = FALSE)
 }
 \arguments{
 \item{df}{A dataframe, (defaults to using \code{\link[tbinenglanddataclean]{tb_not_ew}})
 of historic TB notifications}
 
+\item{include_interventions}{Logical, defaults to \code{TRUE}. Should inventions be plotted?}
+
 \item{df_interventions}{A dataframe, (defaults to using \code{\link[tbinenglanddataclean]{tb_interventions_timeline}})
-of TB interventions, focussing on there history in the UK. If passed as \code{NULL} no interventions will be plotted.}
+of TB interventions, focussing on there history in the UK.}
 
 \item{zoom_date_start}{Numeric, the year to filter notifications from for the second zoomed plot.}
 
