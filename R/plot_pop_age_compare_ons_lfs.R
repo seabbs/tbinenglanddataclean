@@ -27,5 +27,5 @@ plot_pop_age_compare_ons_lfs = function(df, theme_set = NULL)
     theme(axis.text.x = element_text(angle = 45)) +
     coord_flip() +
     labs(caption = "Comparision of ONS and LFS population estimates ") -> p
-  return(p)
+  return(suppressWarnings(p))
 }

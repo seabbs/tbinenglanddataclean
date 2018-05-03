@@ -154,7 +154,7 @@ if (!file.exists(paste0(run_envir, "/data/tb_data/tbinenglanddataclean/cases_dem
                                 demo_name = "E_ons_lfs_2000_2016.rds",
                                 return = FALSE,
                                 save = TRUE,
-                                incidence_name = "incidence" ,
+                                incidence_name = "incidence",
                                 grouped_incidence_name = "age_grouped_incidence",
                                 condensed_grouped_incidence_name = "condensed_age_group_incidence",
                                 cases_demo_incidence_name = "cases_demo_incidence",

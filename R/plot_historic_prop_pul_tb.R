@@ -46,9 +46,9 @@ plot_historic_prop_pul_tb <- function(df = tb_not_ew,
     colour_scale
 
   if (return) {
-    return(p)
+    return(suppressWarnings(p))
   }else{
-    p
+    suppressWarnings(p)
   }
 }
 

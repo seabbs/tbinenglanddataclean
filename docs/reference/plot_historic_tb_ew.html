@@ -122,10 +122,9 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>plot_historic_tb_ew</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw pkg'>tbinenglanddataclean</span><span class='kw ns'>::</span><span class='no'><a href='https://www.samabbott.co.uk/tbinenglanddataclean//reference/tb_not_ew.html'>tb_not_ew</a></span>,
-  <span class='kw'>df_interventions</span> <span class='kw'>=</span> <span class='kw pkg'>tbinenglanddataclean</span><span class='kw ns'>::</span><span class='no'><a href='https://www.samabbott.co.uk/tbinenglanddataclean//reference/tb_interventions_timeline.html'>tb_interventions_timeline</a></span>,
-  <span class='kw'>zoom_date_start</span> <span class='kw'>=</span> <span class='fl'>1982</span>, <span class='kw'>zoom_date_end</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>plot_theme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>colour_scale</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>plot_historic_tb_ew</span>(<span class='kw'>df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>include_interventions</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>df_interventions</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zoom_date_start</span> <span class='kw'>=</span> <span class='fl'>1982</span>, <span class='kw'>zoom_date_end</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>plot_theme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>colour_scale</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,9 +135,13 @@
 of historic TB notifications</p></td>
     </tr>
     <tr>
+      <th>include_interventions</th>
+      <td><p>Logical, defaults to <code>TRUE</code>. Should inventions be plotted?</p></td>
+    </tr>
+    <tr>
       <th>df_interventions</th>
       <td><p>A dataframe, (defaults to using <code><a href='tb_interventions_timeline.html'>tb_interventions_timeline</a></code>)
-of TB interventions, focussing on there history in the UK. If passed as <code>NULL</code> no interventions will be plotted.</p></td>
+of TB interventions, focussing on there history in the UK.</p></td>
     </tr>
     <tr>
       <th>zoom_date_start</th>
@@ -168,7 +171,7 @@ of TB interventions, focussing on there history in the UK. If passed as <code>NU
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>plot_historic_tb_ew</span>()</div><div class='output co'>#&gt; <span class='message'>Don't know how to automatically pick scale for object of type NULL. Defaulting to continuous.</span></div><div class='output co'>#&gt; <span class='message'>Don't know how to automatically pick scale for object of type NULL. Defaulting to continuous.</span></div><div class='output co'>#&gt; <span class='error'>Error: A continuous variable can not be mapped to linetype</span></div><div class='img'><img src='plot_historic_tb_ew-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>plot_historic_tb_ew</span>()</div><div class='output co'>#&gt; <span class='message'>Don't know how to automatically pick scale for object of type NULL. Defaulting to continuous.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 284 rows containing missing values (geom_path).</span></div><div class='img'><img src='plot_historic_tb_ew-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

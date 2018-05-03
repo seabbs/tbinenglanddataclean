@@ -16,7 +16,7 @@
 #' @return A list of dataframes containing incidence data in an increasingly condensed format.
 #' @export
 #' @import magrittr
-#' @import dplyr
+#' @importFrom dplyr mutate select filter group_by filter rename ungroup
 #' @importFrom tidyr gather spread
 #' @examples
 #'
@@ -61,13 +61,15 @@ calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tb_data/tbinengl
   case_year_age <-  case_year_age %>%
     spread(key = CoB, value = Cases) %>%
     full_join(total_case_year_age, by = c('Age', 'Year', 'Age group', 'Age group (condensed)')) %>%
-    gather(key = CoB, value = Cases, Total, `Total (LFS)`, `UK Born`, `Non-UK Born`, `<NA>`) %>%
+    gather(key = CoB, value = Cases, -Age, -Year, -`Age group (condensed)`, -`Age group`) %>%
     mutate(CoB = recode_factor(CoB, `UK Born` = 'UK born', `Non-UK Born` = 'Non-UK born')) %>%
-    mutate(CoB = replace(CoB, CoB %in% '<NA>', NA) %>% droplevels)
+    mutate(CoB = replace(CoB, CoB %in% '<NA>', NA) %>% 
+             as.character )
  
 
   # Join data sets ----------------------------------------------------------
   cases_demo <- demo %>%
+    mutate(CoB = as.character(CoB)) %>% 
     full_join(case_year_age, by = c('Year', 'Age', 'CoB', 'Age group', 'Age group (condensed)')) %>%
     mutate(Cases = replace(Cases, is.na(Cases),0)) %>%
     mutate(CoB = factor(CoB))
@@ -166,7 +168,9 @@ calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tb_data/tbinengl
   cases_demo_incidence <- cases_demo %>%
     ungroup %>%
     mutate(Year = Year %>% as.character) %>%
-    full_join(incidence) %>%
+    mutate(Age = as.character(Age)) %>% 
+    full_join(incidence %>% 
+                mutate(Age = as.character(Age))) %>%
     mutate(Age = Age %>% as.factor)
 
 

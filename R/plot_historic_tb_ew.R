@@ -138,8 +138,8 @@ plot_historic_tb_ew <- function(df = NULL,
   }
   
   if (return) {
-    return(p)
+    return(suppressWarnings(p))
   }else{
-    p
+    suppressWarnings(p)
   }
 }
