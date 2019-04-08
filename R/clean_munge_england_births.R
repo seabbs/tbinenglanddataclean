@@ -2,8 +2,10 @@
 #' A Function to Clean and Merge Observed and Projected Births in England
 #' @description This functions loads in observed and projected birth data produced by the Office
 #'  of National Statistics and combines both datasets into a single tidy dataframe. Observed births can be
-#'  downloaded [here](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/vitalstatisticspopulationandhealthreferencetables),
-#'   and projected births can be downloaded [here](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/tablea14principalprojectionenglandsummary).
+#'  downloaded 
+#'  [here](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/vitalstatisticspopulationandhealthreferencetables),
+#'   and projected births can be downloaded 
+#'   [here](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/tablea14principalprojectionenglandsummary).
 #' @inheritParams clean_demographics_uk
 #' @param birth_path The file path to the unformated observed births data, see the description for details.
 #' @param projected_birth_path The file path to the unformated projected births data, see the description for details.
@@ -24,7 +26,6 @@ clean_and_munge_england_births <- function(birth_path = "~/data/tb_data/UK_demog
                                           save_path = "~/data/tb_data/tbinenglanddataclean",
                                           save_format = c("rds", "csv"),
                                           verbose = TRUE,
-                                          interactive = TRUE,
                                           theme_set = theme_minimal) {
   if (is.null(birth_path)) {
     stop("The path to the observed birth data must be specified")
@@ -83,7 +84,7 @@ clean_and_munge_england_births <- function(birth_path = "~/data/tb_data/UK_demog
       theme_set() +
       theme(legend.position = "bottom")
 
-    interactive_plot(plot)
+   plot
   }
 
   ## save data to repo and to data folder

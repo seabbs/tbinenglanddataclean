@@ -6,8 +6,8 @@
 \usage{
 clean_munge_ets_2016(data_path = NULL, return = TRUE, save = TRUE,
   save_name = "clean_ets_2016",
-  save_path = "~/data/tb_data/tbinenglanddataclean", save_format = "rds",
-  verbose = TRUE)
+  save_path = "~/data/tb_data/tbinenglanddataclean",
+  save_format = "rds", verbose = TRUE)
 }
 \arguments{
 \item{data_path}{A character string containing the file pathway for the 2016 ETS data.}

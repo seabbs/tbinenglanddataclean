@@ -27,7 +27,6 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
                                       save_path = "~/data/tb_data/tbinenglanddataclean",
                                       save_format = "rds",
                                       verbose = TRUE,
-                                      interactive = TRUE,
                                       theme_set = NULL) {
   
   if (is.null(theme_set)) {
@@ -114,7 +113,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
      theme(axis.text.x = element_text(angle = 90)) +
      labs(caption = "Non-UK born population by age, every 5 years") -> p
 
-   interactive_plot(p, interactive)
+   p
 
    ## Plots of UK born over time
    demo_2000_2016_strat_est %>%
@@ -126,7 +125,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
      theme(axis.text.x = element_text(angle = 90)) +
      labs(caption = "UK born population by age, every 5 years") -> p1
 
-   interactive_plot(p1, interactive)
+   p1
 
 
    ## Compare Population strat by year - 2000
@@ -140,7 +139,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
      labs(caption = "Comparision of ONS, LFS, UK born,
           and non-UK born population estimates for 2000") -> p2
 
- interactive_plot(p2, interactive)
+  p2
 
 
    ## Compare Population strat by year - 2005
@@ -154,7 +153,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
      labs(caption = "Comparision of ONS, LFS, UK born,
           and non-UK born population estimates for 2005") -> p3
 
-   interactive_plot(p3, interactive)
+   p3
 
 
    ## Compare Population strat by year - 2010
@@ -168,7 +167,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
      labs(caption = "Comparision of ONS, LFS, UK born,
           and non-UK born population estimates for 2010") -> p4
 
-   interactive_plot(p4, interactive)
+   p4
 
 
    ## Compare Population strat by year - 2015
@@ -182,7 +181,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
      labs(caption = "Comparision of ONS, LFS, UK born,
           and non-UK born population estimates for 2015") -> p5
 
-   interactive_plot(p5, interactive)
+   p5
 
 
 
@@ -198,7 +197,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
      theme_set +
      labs(caption = "Population estimates over time for both the ONS abd KFS") -> p6
 
-   interactive_plot(p6, interactive)
+   p6
  }
 
   if (verbose) {
@@ -207,7 +206,7 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
       na.omit %>%
       filter(Year < 2016) %>%
       plot_pop_age_compare_ons_lfs(theme_set = theme_set) -> p7
-    interactive_plot(p7, interactive = FALSE)
+    p7
 
     ## plot removing 85+ due to distortion
     demo_2000_2016_strat_est %>%
@@ -215,7 +214,8 @@ combine_ons_with_lfs <- function(data_path = "~/data/tb_data/tbinenglanddataclea
       na.omit %>%
       filter(!(`Age group` %in% c('85-89', '90+'))) %>%
       plot_pop_age_compare_ons_lfs(theme_set = theme_set) -> p8
-    interactive_plot(p8, interactive = FALSE)
+    
+    p8
 
   }
 

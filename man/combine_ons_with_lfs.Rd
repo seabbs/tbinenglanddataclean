@@ -9,8 +9,8 @@ combine_ons_with_lfs(data_path = "~/data/tb_data/tbinenglanddataclean",
   ons_name = "E_demo_2000_2015.rds",
   lfs_name = "formatted_LFS_2000_2016.rds", countries = "England",
   return = TRUE, save = TRUE, save_name = "E_ons_lfs_2000_2016",
-  save_path = "~/data/tb_data/tbinenglanddataclean", save_format = "rds",
-  verbose = TRUE, interactive = TRUE, theme_set = NULL)
+  save_path = "~/data/tb_data/tbinenglanddataclean",
+  save_format = "rds", verbose = TRUE, theme_set = NULL)
 }
 \arguments{
 \item{data_path}{A charater string containing the file path to the demographic data.}
@@ -35,8 +35,6 @@ demographic datasets.}
 csv is also supported. See \code{\link[idmodelr]{save_data}} for details.}
 
 \item{verbose}{A logical indicating whether summary information should be provided.}
-
-\item{interactive}{Logical, defaults to \code{TRUE}. Should the summary graphs be returned as interactive objects.}
 
 \item{theme_set}{The ggplot theme to apply to the summary graphs, defaults to theme_minimal}
 }

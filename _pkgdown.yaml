@@ -2,7 +2,7 @@ title: TB in England Data Clean
 url: https://www.samabbott.co.uk/tbinenglanddataclean/
 template:
   params:
-    bootswatch: flatly
+    bootswatch: lumen
 
 navbar:
   type: inverse
@@ -45,3 +45,7 @@ reference:
       desc: Plotting functions for the included data and for the newly generated data.
       contents:
       - starts_with("plot_")
+    - title: Utilities
+      desc: Utility functions.
+      contents:
+      - save_data

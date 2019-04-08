@@ -6,22 +6,23 @@
 \usage{
 clean_labour_force_survey(data_path = "~/data/tb_data/LFS",
   years = 2000:2016, years_var = list(`2000` = c("age", "sex", "cry",
-  "govtof", "pwt07"), `2001` = c("age", "sex", "cry01", "country", "pwt07"),
-  `2002` = c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2003` = c("AGE",
-  "SEX", "CRY01", "COUNTRY", "PWT14"), `2004` = c("AGE", "SEX", "CRY01",
-  "COUNTRY", "PWT14"), `2005` = c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"),
-  `2006` = c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2007` = c("AGE",
-  "SEX", "CRY01", "COUNTRY", "PWT14"), `2008` = c("AGE", "SEX", "CRY01",
-  "COUNTRY", "PWT14"), `2009` = c("AGE",      "SEX", "CRY01", "COUNTRY",
-  "PWT14"), `2010` = c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2011` =
-  c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2012` = c("AGE", "SEX",
-  "CRY12", "COUNTRY", "PWT14"), `2013` = c("AGE", "SEX", "CRY12", "COUNTRY",
-  "PWT16"), `2014` = c("AGE", "SEX", "CRY12", "COUNTRY", "PWT16"), `2015` =
-  c("AGE", "SEX", "CRY12", "COUNTRY", "PWT16"), `2016` = c("AGE", "SEX",
-  "CRY12", "COUNTRY", "PWT16")), return = TRUE, save = TRUE,
+  "govtof", "pwt07"), `2001` = c("age", "sex", "cry01", "country",
+  "pwt07"), `2002` = c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2003` =
+  c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2004` = c("AGE", "SEX",
+  "CRY01", "COUNTRY", "PWT14"), `2005` = c("AGE", "SEX", "CRY01",
+  "COUNTRY", "PWT14"), `2006` = c("AGE", "SEX", "CRY01", "COUNTRY",
+  "PWT14"), `2007` = c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2008` =
+  c("AGE", "SEX", "CRY01", "COUNTRY", "PWT14"), `2009` = c("AGE",     
+  "SEX", "CRY01", "COUNTRY", "PWT14"), `2010` = c("AGE", "SEX", "CRY01",
+  "COUNTRY", "PWT14"), `2011` = c("AGE", "SEX", "CRY01", "COUNTRY",
+  "PWT14"), `2012` = c("AGE", "SEX", "CRY12", "COUNTRY", "PWT14"), `2013` =
+  c("AGE", "SEX", "CRY12", "COUNTRY", "PWT16"), `2014` = c("AGE", "SEX",
+  "CRY12", "COUNTRY", "PWT16"), `2015` = c("AGE", "SEX", "CRY12",
+  "COUNTRY", "PWT16"), `2016` = c("AGE", "SEX", "CRY12", "COUNTRY",
+  "PWT16")), return = TRUE, save = TRUE,
   save_name = "formatted_LFS_2000_2016",
-  save_path = "~/data/tb_data/tbinenglanddataclean", save_format = "rds",
-  verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
+  save_path = "~/data/tb_data/tbinenglanddataclean",
+  save_format = "rds", verbose = TRUE, theme_set = theme_minimal)
 }
 \arguments{
 \item{data_path}{A charater string containing the file path to the demographic data.}
@@ -43,8 +44,6 @@ to extract from a given year and this should be named with the year of data to e
 csv is also supported. See \code{\link[idmodelr]{save_data}} for details.}
 
 \item{verbose}{A logical indicating whether summary information should be provided.}
-
-\item{interactive}{Logical, defaults to \code{TRUE}. Should the summary graphs be returned as interactive objects.}
 
 \item{theme_set}{The ggplot theme to apply to the summary graphs, defaults to theme_minimal}
 }

@@ -8,8 +8,9 @@
   clean_and_munge_england_life_expectancy(life_tables_path = "~/data/tb_data/UK_demographics/england_life_tables.xls",
   sheets = paste0(seq(2013, 1998, -1), "-", seq(2015, 2000, -1)),
   return = TRUE, save = TRUE, save_name = "england_mortality_rates",
-  save_path = "~/data/tb_data/tbinenglanddataclean", save_format = c("rds",
-  "csv"), verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
+  save_path = "~/data/tb_data/tbinenglanddataclean",
+  save_format = c("rds", "csv"), verbose = TRUE,
+  theme_set = theme_minimal)
 }
 \arguments{
 \item{life_tables_path}{The file path to the unformated life tables data as a single xls sheet.}
@@ -28,8 +29,6 @@
 csv is also supported. See \code{\link[idmodelr]{save_data}} for details.}
 
 \item{verbose}{A logical indicating whether summary information should be provided.}
-
-\item{interactive}{Logical, defaults to \code{TRUE}. Should the summary graphs be returned as interactive objects.}
 
 \item{theme_set}{The ggplot theme to apply to the summary graphs, defaults to theme_minimal}
 }

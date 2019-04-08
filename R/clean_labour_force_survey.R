@@ -14,7 +14,6 @@
 #' @importFrom haven read_stata
 #' @importFrom purrr pmap
 #' @import ggplot2
-#' @importFrom idmodelr save_data interactive_plot
 #' @examples
 #'
 clean_labour_force_survey <- function(data_path = "~/data/tb_data/LFS",
@@ -42,7 +41,6 @@ clean_labour_force_survey <- function(data_path = "~/data/tb_data/LFS",
                           save_path = "~/data/tb_data/tbinenglanddataclean",
                           save_format = "rds",
                           verbose = TRUE,
-                          interactive = TRUE,
                           theme_set = theme_minimal) {
 
   # Read in LFS data --------------------------------------------------------
@@ -269,7 +267,7 @@ if (verbose) {
     theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p
 
-  interactive_plot(p, interactive)
+  p
 
 
   ## 2005 distribution by UK birth status
@@ -281,7 +279,7 @@ if (verbose) {
     theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p1
 
-  interactive_plot(p1, interactive)
+  p1
 
 
   ## 2010 distribution by UK birth status
@@ -293,7 +291,7 @@ if (verbose) {
     theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p2
 
-  interactive_plot(p2, interactive)
+  p2
 
 
 
@@ -317,7 +315,7 @@ if (verbose) {
     theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p4
 
-  interactive_plot(p4, interactive)
+  p4
 
   ## 2005 distribution by Country
   form_LFS_data %>%
@@ -328,7 +326,7 @@ if (verbose) {
     theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p5
 
-  interactive_plot(p5, interactive)
+  p5
 
   ## 2010 distribution by Country
   form_LFS_data %>%
@@ -339,7 +337,7 @@ if (verbose) {
     theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p6
 
-  interactive_plot(p6, interactive)
+  p6
 
   ## 2015 distribution by Country
   form_LFS_data %>%
@@ -350,7 +348,7 @@ if (verbose) {
     theme_set() +
     theme(axis.text.x = element_text(angle = 90)) -> p7
 
-  interactive_plot(p7, interactive)
+  p7
 
 }
 

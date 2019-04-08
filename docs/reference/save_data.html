@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Clean and Munge UK Demographic Data — clean_demographics_uk • TB in England Data Clean</title>
+<title>A Function to Save Results in Multiple Formats — save_data • TB in England Data Clean</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,12 +30,9 @@
 
 
 
-<meta property="og:title" content="Clean and Munge UK Demographic Data — clean_demographics_uk" />
+<meta property="og:title" content="A Function to Save Results in Multiple Formats — save_data" />
 
-<meta property="og:description" content="A function that imports UK demographic data as two seperate files,
-with demographics from 2001 to 2015 and demographics from 2000 only. Demographic data can be filtered
-by country, and either saved to disk or returned to the R enviroment. Summary plots can be returned in
-order to check the data. Data can be downloaded here" />
+<meta property="og:description" content="A Function to Save Results in Multiple Formats" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -119,85 +116,59 @@ order to check the data. Data can be downloaded here" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Clean and Munge UK Demographic Data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/seabbs/tbinenglanddataclean/blob/master/R/clean_demographics_uk.R'><code>R/clean_demographics_uk.R</code></a></small>
-    <div class="hidden name"><code>clean_demographics_uk.Rd</code></div>
+    <h1>A Function to Save Results in Multiple Formats</h1>
+    <small class="dont-index">Source: <a href='https://github.com/seabbs/tbinenglanddataclean/blob/master/R/save_data.R'><code>R/save_data.R</code></a></small>
+    <div class="hidden name"><code>save_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>A function that imports UK demographic data as two seperate files,
-with demographics from 2001 to 2015 and demographics from 2000 only. Demographic data can be filtered
-by country, and either saved to disk or returned to the R enviroment. Summary plots can be returned in
-order to check the data. Data can be downloaded <a href='https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland'>here</a></p>
+    <p>A Function to Save Results in Multiple Formats</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>clean_demographics_uk</span>(<span class='kw'>data_path</span> <span class='kw'>=</span> <span class='st'>"~/data/tb_data/UK_demographics"</span>,
-  <span class='kw'>demo_2000</span> <span class='kw'>=</span> <span class='st'>"UK_2000_age.csv"</span>,
-  <span class='kw'>demo_2001_2015</span> <span class='kw'>=</span> <span class='st'>"UK_2001_2015_age.csv"</span>, <span class='kw'>countries</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"E"</span>),
-  <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"E_demo_2000_2015"</span>,
-  <span class='kw'>save_path</span> <span class='kw'>=</span> <span class='st'>"~/data/tb_data/tbinenglanddataclean"</span>,
-  <span class='kw'>save_format</span> <span class='kw'>=</span> <span class='st'>"rds"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>theme_set</span> <span class='kw'>=</span> <span class='no'>theme_minimal</span>)</pre>
+    <pre class="usage"><span class='fu'>save_data</span>(<span class='no'>df</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"rds"</span>,
+  <span class='kw'>message</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data_path</th>
-      <td><p>A charater string containing the file path to the demographic data.</p></td>
+      <th>df</th>
+      <td><p>The data to be saved in any R supported format.</p></td>
     </tr>
     <tr>
-      <th>demo_2000</th>
-      <td><p>A character string containing the file name of the demographic data for 2000.</p></td>
+      <th>name</th>
+      <td><p>A character string containing the name to save the data under.</p></td>
     </tr>
     <tr>
-      <th>demo_2001_2015</th>
-      <td><p>A character string containing the file name of the demographic data from 2001-2015</p></td>
+      <th>path</th>
+      <td><p>A character string containing the file pathway to the folder into
+which to save the data. If not specified data will be saved into the home directory.</p></td>
     </tr>
     <tr>
-      <th>countries</th>
-      <td><p>A character string, indicating with intials the countries to include in the
-dataset. By default only England (E) is included.</p></td>
-    </tr>
-    <tr>
-      <th>return</th>
-      <td><p>Logical, defaults to <code>TRUE</code>. Specifies whether to return cleanded data.</p></td>
-    </tr>
-    <tr>
-      <th>save</th>
-      <td><p>Logical, defaults to <code>FALSE</code>. Specifies whether to save data</p></td>
-    </tr>
-    <tr>
-      <th>save_name</th>
-      <td><p>A character string contaning the file name for the data to be saved under.</p></td>
-    </tr>
-    <tr>
-      <th>save_path</th>
-      <td><p>The filepath for the data to be saved in</p></td>
-    </tr>
-    <tr>
-      <th>save_format</th>
+      <th>format</th>
       <td><p>A character vector specifying the format/formats to save the data into, defaults to rds. Currently
-csv is also supported. See <code><a href='samabbott.co.uk/idmodelr//reference/save_data.html'>save_data</a></code> for details.</p></td>
+csv is also supported.</p></td>
+    </tr>
+    <tr>
+      <th>message</th>
+      <td><p>An optional character string specifying the message to print.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>A logical indicating whether summary information should be provided.</p></td>
-    </tr>
-    <tr>
-      <th>theme_set</th>
-      <td><p>The ggplot theme to apply to the summary graphs, defaults to theme_minimal</p></td>
+      <td><p>A logical indicating whether progress messages shoud be printed.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tidy tibble of demographic data by age between 2000 and 2015 for the specified countries.</p>
+    <p>Returns nothing, saves data in the specified file formats</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
+## save_data(cars, name = "cars")
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

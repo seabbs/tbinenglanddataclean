@@ -26,7 +26,6 @@ clean_and_munge_england_life_expectancy <- function(life_tables_path =
                                                 save_path = "~/data/tb_data/tbinenglanddataclean",
                                                 save_format = c("rds", "csv"),
                                                 verbose = TRUE,
-                                                interactive = TRUE,
                                                 theme_set = theme_minimal) {
 
   if (is.null(life_tables_path)) {
@@ -69,7 +68,7 @@ clean_and_munge_england_life_expectancy <- function(life_tables_path =
       geom_density_ridges(stat = "identity") +
       labs(caption = "Mortality rates over time, 3 year rolling estimates split by gender")
 
-    interactive_plot(p1, FALSE)
+    p1
 
     p2 <- mortality_rates %>%
       filter(age <= 65) %>%
@@ -77,7 +76,7 @@ clean_and_munge_england_life_expectancy <- function(life_tables_path =
       geom_density_ridges(stat = "identity") +
       labs(caption = "Mortality rates over time, 3 year rolling estimates split by gender, for those 65 and under")
 
-    interactive_plot(p2, FALSE)
+    p2
 
     p3 <- mortality_rates %>%
       filter(age <= 5) %>%
@@ -85,7 +84,7 @@ clean_and_munge_england_life_expectancy <- function(life_tables_path =
       geom_density_ridges(stat = "identity") +
       labs(caption = "Mortality rates over time, 3 year rolling estimates split by gender, for those 5 and under")
 
-    interactive_plot(p3, FALSE)
+    p3
   }
   ## save data to repo and to data folder
   if (save) {

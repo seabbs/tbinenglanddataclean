@@ -8,8 +8,9 @@
   clean_and_munge_england_births(birth_path = "~/data/tb_data/UK_demographics/annual_reference_table.xls",
   projected_birth_path = "~/data/tb_data/UK_demographics/england_population_projections.xls",
   return = TRUE, save = TRUE, save_name = "england_births",
-  save_path = "~/data/tb_data/tbinenglanddataclean", save_format = c("rds",
-  "csv"), verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
+  save_path = "~/data/tb_data/tbinenglanddataclean",
+  save_format = c("rds", "csv"), verbose = TRUE,
+  theme_set = theme_minimal)
 }
 \arguments{
 \item{birth_path}{The file path to the unformated observed births data, see the description for details.}
@@ -29,8 +30,6 @@ csv is also supported. See \code{\link[idmodelr]{save_data}} for details.}
 
 \item{verbose}{A logical indicating whether summary information should be provided.}
 
-\item{interactive}{Logical, defaults to \code{TRUE}. Should the summary graphs be returned as interactive objects.}
-
 \item{theme_set}{The ggplot theme to apply to the summary graphs, defaults to theme_minimal}
 }
 \value{
@@ -39,8 +38,10 @@ A tidy data frame containing observed and projected births for England.
 \description{
 This functions loads in observed and projected birth data produced by the Office
 of National Statistics and combines both datasets into a single tidy dataframe. Observed births can be
-downloaded \href{https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/vitalstatisticspopulationandhealthreferencetables}{here},
-and projected births can be downloaded \href{https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/tablea14principalprojectionenglandsummary}{here}.
+downloaded
+\href{https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/vitalstatisticspopulationandhealthreferencetables}{here},
+and projected births can be downloaded
+\href{https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/tablea14principalprojectionenglandsummary}{here}.
 }
 \examples{
 

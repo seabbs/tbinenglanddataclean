@@ -21,6 +21,10 @@ vignette: >
 
 ## Implementation
 
+```{r knitr-opts, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, eval = FALSE)
+```
+
 ```{r setup, message = FALSE}
 library(tbinenglanddataclean)
 library(tidyverse)

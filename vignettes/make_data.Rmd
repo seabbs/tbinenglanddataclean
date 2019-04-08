@@ -13,21 +13,17 @@ vignette: >
 # Clean and Create Variables from the Enhanced Tuberculosis Surveillance Data Set
 
 ```{r knitr-opts, include = FALSE}
-knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(warning = FALSE, eval = FALSE)
 ```
 
 ```{r setup}
 library(tbinenglanddataclean)
-
-## turn on/off interactive graphs
-interactive <- FALSE
 
 ## rebuild existing data sets
 rebuild <- FALSE
 
 ## Analysis running in docker or locally? if local set ~ if in docker set ..
 run_envir <- ".."
-
 ```
 
 ```{r clean-ets}
@@ -57,8 +53,7 @@ if (!file.exists(paste0(run_envir,"/data/tb_data/tbinenglanddataclean/E_demo_200
                       save_name = "E_demo_2000_2015",
                       save_path = paste0(run_envir, "/data/tb_data/tbinenglanddataclean"),
                       save_format = c("rds", "csv"),
-                      verbose = TRUE,
-                      interactive = interactive)
+                      verbose = TRUE)
 }
 ```
 
@@ -90,8 +85,7 @@ clean_labour_force_survey(data_path = paste0(run_envir, "/data/tb_data/LFS"),
                           save_name = "formatted_LFS_2000_2016",
                           save_path = paste0(run_envir, "/data/tb_data/tbinenglanddataclean"),
                           save_format = c("rds", "csv"),
-                          verbose = TRUE,
-                          interactive = interactive)
+                          verbose = TRUE)
 }
 ```
 
@@ -108,8 +102,7 @@ combine_ons_with_lfs(data_path = paste0(run_envir, "/data/tb_data/tbinenglanddat
                      save_name = "E_ons_lfs_2000_2016",
                      save_path = paste0(run_envir, "/data/tb_data/tbinenglanddataclean"),
                      save_format = c("rds", "csv"),
-                     verbose = TRUE,
-                     interactive = interactive) 
+                     verbose = TRUE) 
 }
 ```
 
@@ -124,8 +117,7 @@ if (!file.exists(paste0(run_envir, "/data/tb_data/tbinenglanddataclean/england_b
                                save_name = "england_births",
                                save_path = paste0(run_envir, "/data/tb_data/tbinenglanddataclean"),
                                save_format = c("rds", "csv"),
-                               verbose = TRUE,
-                               interactive = interactive)
+                               verbose = TRUE)
 }
 ```
 
@@ -139,8 +131,7 @@ clean_and_munge_england_life_expectancy(life_tables_path = paste0(run_envir, "/d
                                                 save_name = "england_mortality_rates",
                                                 save_path = paste0(run_envir, "/data/tb_data/tbinenglanddataclean"),
                                                 save_format = c("rds", "csv"),
-                                                verbose = TRUE,
-                                                interactive = interactive)
+                                                verbose = TRUE)
 }
 ```
 
@@ -160,7 +151,6 @@ if (!file.exists(paste0(run_envir, "/data/tb_data/tbinenglanddataclean/cases_dem
                                 cases_demo_incidence_name = "cases_demo_incidence",
                                 save_path = paste0(run_envir, "/data/tb_data/tbinenglanddataclean"),
                                 save_format = c("rds", "csv"),
-                                verbose = TRUE,
-                                interactive = interactive)
+                                verbose = TRUE)
 }
 ```

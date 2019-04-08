@@ -32,7 +32,6 @@ calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tb_data/tbinengl
                                  save_path = "~/data/tb_data/tbinenglanddataclean",
                                  save_format = "rds",
                                  verbose = TRUE,
-                                 interactive = TRUE,
                                  theme_set = theme_minimal) {
   ## Load ETS data
   ets_path <- file.path(data_path, ets_name)
@@ -186,7 +185,7 @@ calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tb_data/tbinengl
       facet_wrap(~ CoB, scales = 'free', nrow = 3) +
       theme_set() -> p
 
-    interactive_plot(p, interactive)
+    p
 
     ## Incidence by country of birth grouped into 5 year age groups
     age_grouped_incidence %>%
@@ -197,7 +196,7 @@ calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tb_data/tbinengl
       facet_wrap(~ CoB, scales = 'free', nrow = 3) +
       theme_set() -> p2
 
-    interactive_plot(p2, interactive)
+   p2
 
     ## Just UK born for clarity
     age_grouped_incidence %>%
@@ -208,7 +207,7 @@ calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tb_data/tbinengl
       geom_linerange(aes(ymin = Inc_LCI, ymax = Inc_UCI), position = position_dodge(width = 0.94)) +
       theme_set() -> p3
 
-    interactive_plot(p3, interactive)
+    p3
 
     ## By population, stratified by year
     age_grouped_incidence %>%
@@ -221,7 +220,7 @@ calculate_incidence_ets_lfs_ons <- function(data_path = "~/data/tb_data/tbinengl
       facet_wrap(~ CoB, scales = 'free', ncol = 3) +
       theme_set() -> p4
 
-    interactive_plot(p4, interactive)
+    p4
   }
 
   if (save) {

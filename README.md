@@ -2,10 +2,9 @@
 tbinenglanddataclean
 ====================
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/tbinenglanddataclean)](https://cran.r-project.org/package=tbinenglanddataclean) [![Build Status](https://travis-ci.org/seabbs/tbinenglanddataclean.svg?branch=master)](https://travis-ci.org/seabbs/tbinenglanddataclean) [![codecov](https://codecov.io/gh/seabbs/tbinenglanddataclean/branch/master/graph/badge.svg)](https://codecov.io/gh/seabbs/tbinenglanddataclean)
-[![DOI](https://zenodo.org/badge/93072437.svg)](https://zenodo.org/badge/latestdoi/93072437)
+[![develVersion](https://img.shields.io/badge/devel%20version-0.2.0-blue.svg?style=flat)](https://github.com/tbinenglanddataclean) [![Documentation via pkgdown](https://img.shields.io/badge/Documentation-click%20here!-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/tbinenglanddataclean/) [![Build Status](https://travis-ci.org/seabbs/tbinenglanddataclean.svg?branch=master)](https://travis-ci.org/seabbs/tbinenglanddataclean) [![codecov](https://codecov.io/gh/seabbs/tbinenglanddataclean/branch/master/graph/badge.svg)](https://codecov.io/gh/seabbs/tbinenglanddataclean) [![DOI](https://zenodo.org/badge/93072437.svg)](https://zenodo.org/badge/latestdoi/93072437)
 
-tbinenglanddataclean is an R package that contains functions and documentation to reproduce clean and munge available TB data in England.
+`tbinenglanddataclean` is an R package that contains functions and documentation to reproduce clean and munge available TB data in England.
 
 Installation
 ------------

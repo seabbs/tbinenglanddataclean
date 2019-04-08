@@ -6,13 +6,14 @@
 \usage{
 
   calculate_incidence_ets_lfs_ons(data_path = "~/data/tb_data/tbinenglanddataclean",
-  ets_name = "clean_ets_2016.rds", demo_name = "E_ons_lfs_2000_2016.rds",
-  return = TRUE, save = TRUE, incidence_name = "incidence",
+  ets_name = "clean_ets_2016.rds",
+  demo_name = "E_ons_lfs_2000_2016.rds", return = TRUE, save = TRUE,
+  incidence_name = "incidence",
   grouped_incidence_name = "age_grouped_incidence",
   condensed_grouped_incidence_name = "condensed_age_group_incidence",
   cases_demo_incidence_name = "cases_demo_incidence",
-  save_path = "~/data/tb_data/tbinenglanddataclean", save_format = "rds",
-  verbose = TRUE, interactive = TRUE, theme_set = theme_minimal)
+  save_path = "~/data/tb_data/tbinenglanddataclean",
+  save_format = "rds", verbose = TRUE, theme_set = theme_minimal)
 }
 \arguments{
 \item{data_path}{A charater string containing the file path to the demographic data.}
@@ -42,8 +43,6 @@ grouped data under.}
 csv is also supported. See \code{\link[idmodelr]{save_data}} for details.}
 
 \item{verbose}{A logical indicating whether summary information should be provided.}
-
-\item{interactive}{Logical, defaults to \code{TRUE}. Should the summary graphs be returned as interactive objects.}
 
 \item{theme_set}{The ggplot theme to apply to the summary graphs, defaults to theme_minimal}
 }

@@ -11,3 +11,4 @@
 ^Dockerfile$
 ^data/tb_data$
 ^_pkgdown\.yaml$
+^.gitconfig$

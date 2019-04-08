@@ -12,7 +12,6 @@
 #' dataset. By default only England (E) is included.
 #' @param save_name A character string contaning the file name for the data to be saved under.
 #' @param save_path The filepath for the data to be saved in
-#' @param interactive Logical, defaults to \code{TRUE}. Should the summary graphs be returned as interactive objects.
 #' @param theme_set The ggplot theme to apply to the summary graphs, defaults to theme_minimal
 #' @return A tidy tibble of demographic data by age between 2000 and 2015 for the specified countries.
 #' @export
@@ -20,7 +19,6 @@
 #' @importFrom readr read_csv
 #' @importFrom dplyr mutate rename group_by summarise filter ungroup select 
 #' @importFrom tidyr gather
-#' @importFrom idmodelr interactive_plot
 #' @import ggplot2
 #' @examples
 #'
@@ -34,7 +32,6 @@ clean_demographics_uk <- function(data_path = "~/data/tb_data/UK_demographics",
                                   save_path = "~/data/tb_data/tbinenglanddataclean",
                                   save_format = "rds",
                                   verbose = TRUE,
-                                  interactive = TRUE,
                                   theme_set = theme_minimal) {
 
   ## demographics from 2001 to 2015
@@ -100,7 +97,7 @@ if (verbose) {
     theme_set() +
     theme(axis.text.x = element_text(angle = 45)) -> p
 
-  interactive_plot(p, interactive)
+  p
 
 
 
@@ -113,7 +110,7 @@ if (verbose) {
     theme_set() +
     theme(axis.text.x = element_text(angle = 45)) -> p1
 
-  interactive_plot(p1, interactive)
+  p1
 }
 
 ## save data to repo and to data folder
