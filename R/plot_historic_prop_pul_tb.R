@@ -15,10 +15,14 @@
 #' @examples
 #'
 #' plot_historic_prop_pul_tb()
-plot_historic_prop_pul_tb <- function(df = tb_not_ew,
+plot_historic_prop_pul_tb <- function(df = NULL,
                                 plot_theme = NULL,
                                 colour_scale = NULL,
                                 return = FALSE) {
+  
+  if (is.null(df)) {
+    df <- tbinenglanddataclean::tb_not_ew
+    }
   
   if (is.null(colour_scale)) {
     colour_scale <- scale_fill_viridis(discrete = TRUE)
