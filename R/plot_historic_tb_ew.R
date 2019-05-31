@@ -30,11 +30,11 @@ plot_historic_tb_ew <- function(df = NULL,
                                 return = FALSE) {
   
   if (is.null(df)) {
-    df <- tb_not_ew
+    df <- tbinenglanddataclean::tb_not_ew
   }
   
   if (is.null(df_interventions)) {
-    df_interventions <- tb_interventions_timeline
+    df_interventions <- tbinenglanddataclean::tb_interventions_timeline
   }
   
   if (is.null(zoom_date_end)) {
