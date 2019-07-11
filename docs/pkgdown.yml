@@ -1,6 +1,6 @@
-pandoc: 1.19.2.1
-pkgdown: 1.3.0.9000
-pkgdown_sha: 2f40b4769ea9ad2312aa4cc93f27ab116461543b
+pandoc: 2.3.1
+pkgdown: 1.3.0.9100
+pkgdown_sha: 2b8150dacfcdad662773c77eb3866901695fa8e0
 articles:
   make_data: make_data.html
   pop_changes_life_expect: pop_changes_life_expect.html

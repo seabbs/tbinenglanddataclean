@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Estimating UK born mortality and emmigration rates • TB in England Data Clean</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Estimating UK born mortality and emmigration rates">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -85,7 +86,7 @@
       <h1>Estimating UK born mortality and emmigration rates</h1>
                         <h4 class="author">Sam Abbott</h4>
             
-            <h4 class="date">2019-04-08</h4>
+            <h4 class="date">2019-07-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/seabbs/tbinenglanddataclean/blob/master/vignettes/pop_changes_life_expect.Rmd"><code>vignettes/pop_changes_life_expect.Rmd</code></a></small>
       <div class="hidden name"><code>pop_changes_life_expect.Rmd</code></div>
@@ -110,81 +111,81 @@
 <div id="implementation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#implementation" class="anchor"></a>Implementation</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tbinenglanddataclean)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## data paths - run the making data vignette to get this data locally 
-birth_path =<span class="st"> "../data/tb_data/tbinenglanddataclean/england_births.rds"</span>
-demo_path =<span class="st"> "../data/tb_data/tbinenglanddataclean/E_ons_lfs_2000_2016.rds"</span>
-
-## read in data
-births &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(birth_path)
-demographics &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/readRDS">readRDS</a></span>(demo_path)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## munge births
-births &lt;-<span class="st"> </span>births <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">rename</span>(<span class="dt">Year =</span> year, <span class="dt">Births =</span> births, <span class="dt">Data =</span> data) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Age =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/character">as.character</a></span>(<span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>Data)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## clean single year
-demographics_single_year &lt;-<span class="st"> </span>demographics <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span>ungroup <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(<span class="op">-</span><span class="st">`</span><span class="dt">Age group</span><span class="st">`</span>, <span class="op">-</span><span class="st">`</span><span class="dt">Age group (condensed)</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Age =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/character">as.character</a></span>(Age)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(CoB <span class="op">%in%</span><span class="st"> "UK born"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>CoB)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## summarise by age group
-demographics_5yr &lt;-<span class="st"> </span>demographics <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>ungroup <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">group_by</span>(Year, <span class="st">`</span><span class="dt">Age group</span><span class="st">`</span>, CoB) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Population =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(Population), <span class="dt">Age =</span> Age[<span class="dv">1</span>]) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>ungroup <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Age =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/character">as.character</a></span>(Age)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(CoB <span class="op">%in%</span><span class="st"> "UK born"</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>CoB)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">estimate_pop_changes &lt;-<span class="st"> </span><span class="cf">function</span>(demographics, births) {
-    ##Join dataframes
-  demographics &lt;-<span class="st"> </span>demographics <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">full_join</span>(births, <span class="dt">by =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Year"</span>, <span class="st">"Age"</span>)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Births =</span> Births <span class="op">%&gt;%</span>
-<span class="st">             </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/replace">replace</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(Births), <span class="dv">0</span>)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(Year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2000</span>)
-
-  ## set up age baseline and estimate population changes
-  demographics &lt;-<span class="st"> </span>demographics <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">age =</span> Age <span class="op">%&gt;%</span>
-<span class="st">             </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/replace">replace</a></span>(Age <span class="op">%in%</span><span class="st"> "90+"</span>, <span class="st">"90"</span>) <span class="op">%&gt;%</span>
-<span class="st">             </span>as.numeric) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">age_baseline =</span> age <span class="op">-</span><span class="st"> </span>(Year <span class="op">-</span><span class="st"> </span><span class="dv">2000</span>)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(age_baseline) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Pop_Change =</span> (<span class="kw">lead</span>(Population) <span class="op">-</span><span class="st"> </span>Population)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">arrange</span>(age_baseline)
-  
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/function">return</a></span>(demographics)
-}</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Estimate for grouped data
-demographics_5yr &lt;-<span class="st"> </span><span class="kw">estimate_pop_changes</span>(demographics_5yr, births)
-
-## Estimate for single year data
-demographics_single_year &lt;-<span class="st"> </span><span class="kw">estimate_pop_changes</span>(demographics_single_year, births)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">visualise_pop_changes &lt;-<span class="st"> </span><span class="cf">function</span>(demographics, <span class="dt">rate =</span> <span class="ot">FALSE</span>, <span class="dt">scales =</span> <span class="st">"free"</span>) {
-  
-  <span class="cf">if</span> (rate) {
-    demographics &lt;-<span class="st"> </span><span class="kw">mutate</span>(demographics, <span class="dt">Pop_Change =</span> Pop_Change<span class="op">/</span>Population)
-  }
-  ##  basic plot to visualise
-  demographics <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Years =</span> <span class="kw">case_when</span>(Year <span class="op">&lt;</span><span class="st"> </span><span class="dv">2005</span> <span class="op">~</span><span class="st"> "2000-2004"</span>,
-                             Year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2005</span> <span class="op">&amp;</span><span class="st"> </span>Year <span class="op">&lt;</span><span class="st"> </span><span class="dv">2010</span> <span class="op">~</span><span class="st"> "2005-2009"</span>,
-                             Year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2010</span> <span class="op">&amp;</span><span class="st"> </span>Year <span class="op">&lt;</span><span class="st"> </span><span class="dv">2016</span> <span class="op">~</span><span class="st"> "2010-2015"</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/na.fail">na.omit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(age <span class="op">&lt;</span><span class="st"> </span><span class="dv">85</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Year =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/integer">as.integer</a></span>(Year)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Pop_Change, <span class="dt">colour =</span> age, <span class="dt">fill =</span> age, 
-               <span class="dt">group =</span> age)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">"identity"</span>, <span class="dt">position =</span> <span class="st">"dodge"</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">coord_flip</span>() <span class="op">+</span>
-<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Years, <span class="dt">scales =</span> scales) <span class="op">+</span>
-<span class="st">    </span><span class="kw">theme_minimal</span>()
-}</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tbinenglanddataclean)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">## data paths - run the making data vignette to get this data locally </span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">birth_path =<span class="st"> "../data/tb_data/tbinenglanddataclean/england_births.rds"</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">demo_path =<span class="st"> "../data/tb_data/tbinenglanddataclean/E_ons_lfs_2000_2016.rds"</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">## read in data</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">births &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(birth_path)</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">demographics &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(demo_path)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">## munge births</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">births &lt;-<span class="st"> </span>births <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">Year =</span> year, <span class="dt">Births =</span> births, <span class="dt">Data =</span> data) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Age =</span> <span class="kw"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>Data)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co">## clean single year</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">demographics_single_year &lt;-<span class="st"> </span>demographics <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">    </span>ungroup <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span><span class="st">`</span><span class="dt">Age group</span><span class="st">`</span>, <span class="op">-</span><span class="st">`</span><span class="dt">Age group (condensed)</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Age =</span> <span class="kw"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(Age)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(CoB <span class="op">%in%</span><span class="st"> "UK born"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>CoB)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">## summarise by age group</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">demographics_5yr &lt;-<span class="st"> </span>demographics <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span>ungroup <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(Year, <span class="st">`</span><span class="dt">Age group</span><span class="st">`</span>, CoB) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Population =</span> <span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(Population), <span class="dt">Age =</span> Age[<span class="dv">1</span>]) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span>ungroup <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Age =</span> <span class="kw"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(Age)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(CoB <span class="op">%in%</span><span class="st"> "UK born"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>CoB)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">estimate_pop_changes &lt;-<span class="st"> </span><span class="cf">function</span>(demographics, births) {</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">    <span class="co">##Join dataframes</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">  demographics &lt;-<span class="st"> </span>demographics <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">    </span><span class="kw">full_join</span>(births, <span class="dt">by =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Year"</span>, <span class="st">"Age"</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Births =</span> Births <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">             </span><span class="kw"><a href="https://rdrr.io/r/base/replace.html">replace</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(Births), <span class="dv">0</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(Year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2000</span>)</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">  <span class="co">## set up age baseline and estimate population changes</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">  demographics &lt;-<span class="st"> </span>demographics <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">age =</span> Age <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="st">             </span><span class="kw"><a href="https://rdrr.io/r/base/replace.html">replace</a></span>(Age <span class="op">%in%</span><span class="st"> "90+"</span>, <span class="st">"90"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="st">             </span>as.numeric) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">age_baseline =</span> age <span class="op">-</span><span class="st"> </span>(Year <span class="op">-</span><span class="st"> </span><span class="dv">2000</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="st">    </span><span class="kw">group_by</span>(age_baseline) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Pop_Change =</span> (<span class="kw">lead</span>(Population) <span class="op">-</span><span class="st"> </span>Population)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="st">    </span><span class="kw">arrange</span>(age_baseline)</a>
+<a class="sourceLine" id="cb6-18" data-line-number="18">  </a>
+<a class="sourceLine" id="cb6-19" data-line-number="19">  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span>(demographics)</a>
+<a class="sourceLine" id="cb6-20" data-line-number="20">}</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">## Estimate for grouped data</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">demographics_5yr &lt;-<span class="st"> </span><span class="kw">estimate_pop_changes</span>(demographics_5yr, births)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">## Estimate for single year data</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">demographics_single_year &lt;-<span class="st"> </span><span class="kw">estimate_pop_changes</span>(demographics_single_year, births)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">visualise_pop_changes &lt;-<span class="st"> </span><span class="cf">function</span>(demographics, <span class="dt">rate =</span> <span class="ot">FALSE</span>, <span class="dt">scales =</span> <span class="st">"free"</span>) {</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">  <span class="cf">if</span> (rate) {</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">    demographics &lt;-<span class="st"> </span><span class="kw">mutate</span>(demographics, <span class="dt">Pop_Change =</span> Pop_Change<span class="op">/</span>Population)</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">  }</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">  <span class="co">##  basic plot to visualise</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">  demographics <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Years =</span> <span class="kw">case_when</span>(Year <span class="op">&lt;</span><span class="st"> </span><span class="dv">2005</span> <span class="op">~</span><span class="st"> "2000-2004"</span>,</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">                             Year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2005</span> <span class="op">&amp;</span><span class="st"> </span>Year <span class="op">&lt;</span><span class="st"> </span><span class="dv">2010</span> <span class="op">~</span><span class="st"> "2005-2009"</span>,</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">                             Year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2010</span> <span class="op">&amp;</span><span class="st"> </span>Year <span class="op">&lt;</span><span class="st"> </span><span class="dv">2016</span> <span class="op">~</span><span class="st"> "2010-2015"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(age <span class="op">&lt;</span><span class="st"> </span><span class="dv">85</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Year =</span> <span class="kw"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span>(Year)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Pop_Change, <span class="dt">colour =</span> age, <span class="dt">fill =</span> age, </a>
+<a class="sourceLine" id="cb8-15" data-line-number="15">               <span class="dt">group =</span> age)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">"identity"</span>, <span class="dt">position =</span> <span class="st">"dodge"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="st">    </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Years, <span class="dt">scales =</span> scales) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-19" data-line-number="19"><span class="st">    </span><span class="kw">theme_minimal</span>()</a>
+<a class="sourceLine" id="cb8-20" data-line-number="20">}</a></code></pre></div>
 </div>
 <div id="results" class="section level2">
 <h2 class="hasAnchor">
@@ -193,7 +194,7 @@ demographics_single_year &lt;-<span class="st"> </span><span class="kw">estimate
 <h3 class="hasAnchor">
 <a href="#single-year-of-age-estimates" class="anchor"></a>Single year of age estimates</h3>
 <p>Single year of age estimates are to noisy to be useful. This is likely due to varing sampling error between years for the labour force survey. This indicates that the data should only be used with caution to estimate the UK born population. There is little evidence of systematic bias.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">visualise_pop_changes</span>(demographics_single_year)</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">visualise_pop_changes</span>(demographics_single_year)</a></code></pre></div>
 </div>
 <div id="year-age-grouped-estimates" class="section level3">
 <h3 class="hasAnchor">
@@ -203,13 +204,13 @@ demographics_single_year &lt;-<span class="st"> </span><span class="kw">estimate
 <li>However it also reduces the number of years with viable data from 2000-2015, to 2000-2011</li>
 <li>Evidence of exponential increase in deaths</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">visualise_pop_changes</span>(demographics_5yr)</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">visualise_pop_changes</span>(demographics_5yr)</a></code></pre></div>
 <ul>
 <li>Investigating rates we observe some evidence of decreasing mortality over time.</li>
 <li>There is also evidence of higher emmigration/mortality in young adults</li>
 <li>There is some evidence of an increasing population in those aged 15-19, this may be noise that has not been removed through aggregation. However it may also be due to individuals returning to the UK for education/work once they have reached 18.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">visualise_pop_changes</span>(demographics_5yr, <span class="dt">rate =</span> <span class="ot">TRUE</span>, <span class="dt">scales =</span> <span class="st">"free_y"</span>)</code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">visualise_pop_changes</span>(demographics_5yr, <span class="dt">rate =</span> <span class="ot">TRUE</span>, <span class="dt">scales =</span> <span class="st">"free_y"</span>)</a></code></pre></div>
 </div>
 </div>
 <div id="conclusions" class="section level2">
@@ -251,7 +252,7 @@ demographics_single_year &lt;-<span class="st"> </span><span class="kw">estimate
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
       </footer>
 </div>

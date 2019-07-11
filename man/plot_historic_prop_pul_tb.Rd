@@ -4,7 +4,7 @@
 \alias{plot_historic_prop_pul_tb}
 \title{Plot Historic Proportions of Pulmonary/Extra-Pulmonary TB}
 \usage{
-plot_historic_prop_pul_tb(df = tb_not_ew, plot_theme = NULL,
+plot_historic_prop_pul_tb(df = NULL, plot_theme = NULL,
   colour_scale = NULL, return = FALSE)
 }
 \arguments{
