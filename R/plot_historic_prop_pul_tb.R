@@ -48,7 +48,8 @@ plot_historic_prop_pul_tb <- function(df = NULL,
     plot_theme +
     theme(legend.position = "bottom") +
     scale_y_continuous(labels = scales::percent) +
-    colour_scale
+    colour_scale +
+    guides(fill = guide_legend(title = "TB type"))
 
   if (return) {
     return(p)

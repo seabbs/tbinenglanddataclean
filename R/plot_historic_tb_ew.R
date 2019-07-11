@@ -127,14 +127,14 @@ plot_historic_tb_ew <- function(df = NULL,
     theme(legend.position = "bottom", 
           legend.justification = "center",
           legend.box = "horizontal") +
-    guides(col = guide_legend(nrow = 2))
+    guides(col = guide_legend(title = "TB type", nrow = 2))
 
   if (!is.null(zoom_date_start)) {
     p <- p + facet_wrap(~zoom, scales = "free", ncol = 1)
   }
   
   if (include_interventions) {
-    p <- p + guides(linetype = guide_legend(nrow = 2))
+    p <- p + guides(linetype = guide_legend(title = "Intervention", nrow = 2))
   }
   
   if (return) {
