@@ -23,7 +23,9 @@ Suggests: testthat,
     knitr,
     rmarkdown,
     tidyverse,
-    vdiffr
+    vdiffr,
+    usethis,
+    devtools
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1

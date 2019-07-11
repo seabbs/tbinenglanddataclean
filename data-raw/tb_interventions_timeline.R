@@ -39,7 +39,7 @@ tb_interventions_timeline <- data_frame(year = c(1921, 1944, 1944, 1952, 1952, 1
                                            "",
                                            "Second"),
                                   detail = c("The first use of the Bacillus Calmette–Guerin (BCG) vaccine in humans, it remains the only vaccine against Tuberculosis (TB). 
-                                              Efficacy has been shown to vary depending on latitude (0-80%) and there is only strong evidence of protection for 
+                                              Efficacy has been shown to vary depending on latitude and there is only strong evidence of protection for 
                                              10-15 years after vaccination.",
                                             "The first antibiotic and the first bacterial agent against TB.",
                                              "The second antiobiotic to be developed. Due to lower potency than other antibiotics it is not considered a first line
@@ -47,17 +47,17 @@ tb_interventions_timeline <- data_frame(year = c(1921, 1944, 1944, 1952, 1952, 1
                                              "Used against both active and latent TB, it may also be given as a 
                                              prophylatic therapy.",
                                              "An antibiotic with severe side effects such as kidney failure and neurological conditions, which is therefore restricted for use against multiple
-                                             drug resistant Tuberculosis.",
-                                             "First discovered in 1936, it was first used against TB in 1952. Although showing no effect in-vitro it was shown to be effective in treating TB in mice.
-                                             Used only for treating TB and never on it's own.",
-                                             "After a successful trial, which showed high effectiveness
+                                             drug resistant TB.",
+                                             "Discovered in 1936, it was first used against TB in 1952. Although showing no effect in-vitro it was shown to be effective in treating TB in mice.
+                                             Used only for treating TB and never on its own.",
+                                             "After a successful trial which showed high effectiveness
                                              for the vaccine, BCG was introduced in the UK for those at school leaving age
-                                             as peak incidence was then in young, working-adults.",
+                                             as peak incidence was then in young, working adults.",
                                              "Believed to work by interfering with TB bacteria's metabolism. There are some concerns that it may not be safe to give during pregancy,
                                              as it may lead to vision loss in the baby.",
                                              "Taken daily for at least a period of 6 months, if given alone resistance develops quickly. It may also be used in the treatment
                                              of MRSA amongst other diseases.",
-                                             "Directly Observed Treatment, Short-Course (DOTS) is introdued by the World Health Organisation as a control strategy for TB. The intermittent, supervised system
+                                             "Directly Observed Treatment, Short-Course (DOTS) is introdued by the World Health Organization as a control strategy for TB. The intermittent, supervised system
                                              aims to eliminate drug default.",
                                              "Due to a continued decline in TB incidence rates in the indigenous UK population, the BCG 
                                              programme was refocused as risk-based. This meant vaccinating high risk neonates rather than those 
@@ -70,7 +70,7 @@ tb_interventions_timeline <- data_frame(year = c(1921, 1944, 1944, 1952, 1952, 1
 
 
 #' Add to package
-devtools::use_data(tb_interventions_timeline, overwrite = TRUE)
+usethis::use_data(tb_interventions_timeline, overwrite = TRUE)
 
 #' Add as raw csv
 write_csv(tb_interventions_timeline, "./data-raw/tb_intervetions_timeline.csv")
