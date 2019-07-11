@@ -4,6 +4,7 @@ pkgdown_sha: 2b8150dacfcdad662773c77eb3866901695fa8e0
 articles:
   make_data: make_data.html
   pop_changes_life_expect: pop_changes_life_expect.html
+  visualisations_and_tables: visualisations_and_tables.html
 urls:
   reference: https://www.samabbott.co.uk/tbinenglanddataclean//reference
   article: https://www.samabbott.co.uk/tbinenglanddataclean//articles

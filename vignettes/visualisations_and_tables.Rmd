@@ -1,0 +1,56 @@
+---
+title: "Available visualisations and tables"
+author: "Sam Abbott"
+date: "`r Sys.Date()`"
+output: html_document
+
+vignette: >
+  %\VignetteIndexEntry{Available visualisations and tables}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+## Required Packages
+
+```{r}
+library(tbinenglanddataclean)
+library(kableExtra)
+library(rlang)
+library(ggplot2)
+```
+
+### TB Interventions
+
+
+```{r tab-interventions, echo = FALSE, message = FALSE, dpi = 500}
+tb_interventions_timeline %>% 
+  set_names(c("Year",
+              "Intervention",
+              "Type",
+              "Line",
+              "Detail")) %>% 
+  knitr::kable(
+    caption.short = "A timeline of interventions against TB",
+    caption = "A timeline of interventions against TB. Antibiotics used to treat TB are commonly given together, with those with the fewest side effects given first. Second line antibiotics are then used if the initial treatment fails or tests show the strain is multiply drug resistant. BCG - Bacillus Calmette–Guérin; TB – Tuberculosis; MRSA - Methicillin-resistant Staphylococcus aureus; DOTS - Directly Observed Treatment Short-course", booktabs = TRUE, longtable = TRUE, escape = FALSE) %>% 
+  kable_styling(font_size = 8, latex_options = c("repeat_header")) %>% 
+  column_spec(5, width = "10cm") %>% 
+  kable_styling(latex_options = "hold_position") %>% 
+  landscape()
+```
+
+
+#### TB Notifications
+
+
+```{r plot-incidence, echo = FALSE, warning = FALSE, message = FALSE, dpi = 300, fig.height = 10, fig.width = 10, fig.scap = "TB notifications in England and Wales from 1913 to 2017, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB.", fig.cap = "TB notifications in England and Wales from 1913 to 2017, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention, more information on each intervention is available in the corresponding table. Figure produced using tbinenglanddataclean (https://www.samabbott.co.uk/tbinenglanddataclean/)", out.extra = ""}
+plot_historic_tb_ew() + theme(legend.position = "top")
+```
+
+
+#### Pulmonary Vs. Extra-Pulmonary TB
+
+
+```{r plot-prop-pul, echo = FALSE, message = FALSE, warning = FALSE, dpi = 300, fig.height = 10, fig.width = 10, fig.scap = "From 1913 until 1981 the figure shows the proportion respiratory vs. non-respiratory cases and from 1982 it shows the proportion of pulmonary vs. non-pulmonary TB.", fig.cap = "From 1913 until 1981 the figure shows the proportion respiratory vs. non-respiratory cases and from 1982 it shows the proportion of pulmonary vs. non-pulmonary TB. Figure produced using tbinenglanddataclean (https://www.samabbott.co.uk/tbinenglanddataclean/)"}
+plot_historic_prop_pul_tb() + theme(legend.position = "top")
+```
